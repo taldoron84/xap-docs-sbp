@@ -71,7 +71,7 @@ The patterns below are presented as is. While most of them are used in real life
 
 | Pattern | Level | Description |
 |:--------------|:------|:------------|
-|[Map-Reduce Pattern - Executors Example](./map-reduce-pattern---executors-example.html)| Beginner | Implementing Task Executors and Service Executors to perform parallel queries or parallel processing across multiple IMDG partitions. Can be used when moving from **J2EE EJB**/RMI/IIOP into XAP.|
+|[Map-Reduce Pattern - Executors Example](./map-reduce-pattern-executors-example.html)| Beginner | Implementing Task Executors and Service Executors to perform parallel queries or parallel processing across multiple IMDG partitions. Can be used when moving from **J2EE EJB**/RMI/IIOP into XAP.|
 |[Master-Worker Pattern](./master-worker-pattern.html)| Beginner | Grid computing pattern. Implementing distributed processing across multiple workers deployed into the Grid. |
 |[Event Driven Remoting Example](./event-driven-remoting-example.html)| Beginner | Request-Response pattern. Implementing asynchronous remove service invocation. Can be used when moving from **J2EE MDB** into XAP.|
 |[Mule ESB Example](./mule-esb-example.html)| Advanced | Scaling ESB based application. Using the IMDG as the ESB state repository. Deploying the ESB into the GigaSpaces grid allowing it to scale in an elastic manner.|

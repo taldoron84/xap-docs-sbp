@@ -73,7 +73,7 @@ Often this occurs because of the data access layer, which cannot feed data quick
 
 This is known as a starvation scenario.
 
-To solve this bottleneck, the processing unit allows you to **colocate** the business logic and data; both data and business logic are hosted within the same process, sharing the same memory space. Colocating business logic and data can be done statically (user service associated with a colocated space), or dynamically (via [Service Executors](./map-reduce-pattern---executors-example.html#Service Executors Example) or [Task Executors](./map-reduce-pattern---executors-example.html#Executors Task Example)).
+To solve this bottleneck, the processing unit allows you to **colocate** the business logic and data; both data and business logic are hosted within the same process, sharing the same memory space. Colocating business logic and data can be done statically (user service associated with a colocated space), or dynamically (via [Service Executors](./map-reduce-pattern-executors-example.html#Service Executors Example) or [Task Executors](./map-reduce-pattern-executors-example.html#Executors Task Example)).
 
 {{% section %}}
 

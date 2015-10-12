@@ -3,7 +3,7 @@ type: postsbp
 title: XAP.NET SQL Server Delta Server
 categories: SBP
 parent: data-access-patterns.html
-weight: 1300
+weight: 1302
 ---
 
 {{% ssummary page %}}This pattern presents the SQL Server Delta Server allowing the data grid to receive updates from the database conducted by applications that are not using the data grid as their system of record (Non-Aware Data-Grid Clients){{% /ssummary %}}

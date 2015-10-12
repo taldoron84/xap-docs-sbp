@@ -19,7 +19,7 @@ weight: 600
 # Overview
 When using a GigaSpaces cluster as a task queue there are times you will need to determine how the space instances are loaded. This could be to determine where you can route the next task (minimum load partition/instance) or where you want to launch more processors (heavily loaded partition/instance).
 
-There are couple of approaches you could use to identify these partitions: [task executors](#taskexecutor) and an [executor service](#serviceexecutor). You can also see the [Executors example](./map-reduce-pattern---executors-example.html) page for other similar examples.
+There are couple of approaches you could use to identify these partitions: [task executors](#taskexecutor) and an [executor service](#serviceexecutor). You can also see the [Executors example](./map-reduce-pattern-executors-example.html) page for other similar examples.
 
 {{% anchor taskexecutor %}}
 
@@ -149,7 +149,7 @@ public class MyDistributedTask implements
 
 # Using an Executor Service
 
-Another [example](/attachment_files/sbp/GetMinLoadPartition-ExecutorService.zip) shows an implementation using Executor Service. This approach should be used when this functionality is intrinsic part of the system and not needed on ad-hoc basis. Usage instructions are similar to the [Executor Service Example](./map-reduce-pattern---executors-example.html#ExecutorsExample-ServiceExecutorsExample).
+Another [example](/attachment_files/sbp/GetMinLoadPartition-ExecutorService.zip) shows an implementation using Executor Service. This approach should be used when this functionality is intrinsic part of the system and not needed on ad-hoc basis. Usage instructions are similar to the [Executor Service Example](./map-reduce-pattern-executors-example.html#ExecutorsExample-ServiceExecutorsExample).
 
 In this example, we're trying to find the partition with the least number of objects, using GigaSpaces' SpaceRuntimeInfo API to get the count of objects. This API is lot faster than the count API and is the preferred way of getting object counts.
 
