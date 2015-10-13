@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  XAP Integration with Kafka
 categories: SBP
 parent: data-access-patterns.html

@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Parallel Processing & Messaging Patterns
 categories: SBP
 parent: none

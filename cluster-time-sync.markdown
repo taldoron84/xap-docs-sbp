@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Ensuring Accurate Time Across the Cluster
 categories: SBP
 weight: 2000

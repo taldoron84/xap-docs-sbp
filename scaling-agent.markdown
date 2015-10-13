@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Scaling Agent
 categories: SBP
 parent: production.html

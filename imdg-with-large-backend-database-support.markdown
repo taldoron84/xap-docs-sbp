@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  IMDG with Large Backend Database Support
 categories: SBP
 parent: data-access-patterns.html

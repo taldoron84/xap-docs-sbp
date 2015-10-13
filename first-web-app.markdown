@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Your First Web Application
 categories: SBP
 weight: 200

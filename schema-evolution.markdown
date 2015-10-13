@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Schema Evolution
 categories: SBP
 parent: data-access-patterns.html

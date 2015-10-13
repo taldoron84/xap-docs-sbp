@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Your First JPA Application
 categories: SBP
 weight: 300

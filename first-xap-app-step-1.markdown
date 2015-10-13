@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Using Processing Units for Scaling
 categories: SBP
 weight: 100

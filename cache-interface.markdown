@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Cache Interface
 categories: SBP
 parent: data-access-patterns.html

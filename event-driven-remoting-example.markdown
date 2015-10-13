@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Event Driven Remoting Example
 categories: SBP
 parent: processing.html

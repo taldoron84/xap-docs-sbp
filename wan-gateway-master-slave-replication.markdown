@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  WAN Gateway Master Slave Replication
 categories: SBP
 parent: wan-based-deployment.html

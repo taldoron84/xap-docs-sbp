@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Safe Grid Shutdown
 categories: SBP
 parent: production.html

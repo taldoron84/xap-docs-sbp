@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Order Management Tutorial
 categories: SBP
 weight: 600

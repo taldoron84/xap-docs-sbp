@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Setup Production Environment
 categories: SBP
 parent: none

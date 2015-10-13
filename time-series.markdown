@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Time Series with Real Time Analytics
 categories: SBP
 parent: solutions.html

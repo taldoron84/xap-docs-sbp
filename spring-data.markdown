@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  XAP Spring Data
 categories: SBP
 parent: data-access-patterns.html

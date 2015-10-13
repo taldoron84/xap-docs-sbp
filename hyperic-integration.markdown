@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Hyperic integration
 categories: SBP
 parent: production.html

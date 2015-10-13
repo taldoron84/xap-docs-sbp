@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Your First XAP Application
 categories: SBP
 weight: 100

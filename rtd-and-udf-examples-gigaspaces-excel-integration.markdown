@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  RTD and UDF Examples - GigaSpaces-Excel Integration
 categories: SBP
 parent: excel-that-scales-solution.html

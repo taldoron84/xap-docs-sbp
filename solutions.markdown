@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Solutions
 categories: SBP
 parent: none

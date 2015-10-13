@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Custom Eviction
 categories: SBP
 parent: data-access-patterns.html

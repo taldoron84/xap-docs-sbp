@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Building and Running the Application
 categories: SBP
 weight: 300

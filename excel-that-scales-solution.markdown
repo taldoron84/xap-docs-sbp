@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Excel that Scales Solution
 categories: SBP
 parent: data-access-patterns.html

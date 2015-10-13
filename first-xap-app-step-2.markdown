@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Creating the Hello World Application
 categories: SBP
 weight: 200

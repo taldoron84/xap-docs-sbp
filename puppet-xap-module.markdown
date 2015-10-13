@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Puppet XAP Module
 categories: SBP
 parent: production.html

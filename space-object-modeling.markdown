@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Space Object Modeling
 categories: SBP
 parent: data-access-patterns.html

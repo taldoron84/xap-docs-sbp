@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:   Deploying Your Web Application
 categories: SBP
 weight: 100

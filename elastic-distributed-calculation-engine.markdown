@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Elastic Distributed Calculation Engine
 categories: SBP
 parent: solutions.html

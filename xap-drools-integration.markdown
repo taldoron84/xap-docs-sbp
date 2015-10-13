@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Drools Rule Engine Integration
 categories: SBP
 parent: processing.html

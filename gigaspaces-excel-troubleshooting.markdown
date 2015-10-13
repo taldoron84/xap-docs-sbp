@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  GigaSpaces-Excel Troubleshooting
 categories: SBP
 parent: excel-that-scales-solution.html

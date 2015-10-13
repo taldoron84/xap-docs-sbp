@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Embedding Tomcat as a Web Container
 categories: SBP
 weight: 1800

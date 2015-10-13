@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  ODBC Driver
 categories: SBP
 parent: data-access-patterns.html

@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Deploying and Interacting with the Space
 categories: SBP
 weight: 400

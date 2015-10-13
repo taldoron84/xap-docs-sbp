@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  A Typical SBA Application
 categories: SBP
 weight: 700

@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title: Oracle Delta Server
 categories: SBP
 parent: data-access-patterns.html

@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Scaling the Data Access Layer
 categories: SBP
 weight: 200

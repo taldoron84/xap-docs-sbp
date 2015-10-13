@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Spring Cache Abstraction with XAP
 categories: SBP
 parent: data-access-patterns.html

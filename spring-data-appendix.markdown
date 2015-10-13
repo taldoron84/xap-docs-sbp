@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title: Appendix
 categories: SBP
 weight: 600

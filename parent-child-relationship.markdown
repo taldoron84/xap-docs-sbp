@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Parent Child Relationship
 categories: SBP
 parent: modeling-your-data.html

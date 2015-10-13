@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  XAP Repository
 categories: SBP
 weight: 400

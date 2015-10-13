@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Integration testing with scalatest
 categories: SBP
 parent: solutions.html

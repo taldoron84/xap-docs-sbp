@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Spring Batch PU
 categories: SBP
 parent: processing.html

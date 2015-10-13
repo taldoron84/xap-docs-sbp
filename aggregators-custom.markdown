@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Custom Aggregators
 categories: SBP
 parent: data-access-patterns.html

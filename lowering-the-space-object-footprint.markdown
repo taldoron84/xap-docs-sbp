@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Lowering the Space Object Footprint
 categories: SBP
 parent: data-access-patterns.html

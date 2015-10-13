@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  WAN Multi-Master Replication Gateway
 parent: wan-based-deployment.html
 categories: SBP

@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Deploying onto the Service Grid
 categories: SBP
 weight: 300

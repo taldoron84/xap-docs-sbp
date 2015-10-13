@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Even Data Distribution
 categories: SBP
 parent: data-access-patterns.html

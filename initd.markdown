@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Managing XAP with init.d
 categories: SBP
 weight: 1900

@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Mirror Monitor
 categories: SBP
 parent: production.html

@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Your First Real Time Big Data Analytics Application
 categories: SBP
 weight: 1000

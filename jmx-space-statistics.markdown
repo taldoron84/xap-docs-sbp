@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  JMX Space Statistics
 categories: SBP
 parent: production.html

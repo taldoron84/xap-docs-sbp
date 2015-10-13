@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Data-Collocation Deployment Topology
 categories: SBP
 parent: production.html

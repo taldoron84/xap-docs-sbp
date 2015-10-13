@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Mule ESB Example
 categories: SBP
 parent: processing.html

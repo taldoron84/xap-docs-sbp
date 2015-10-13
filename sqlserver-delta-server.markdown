@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title: XAP.NET SQL Server Delta Server
 categories: SBP
 parent: data-access-patterns.html

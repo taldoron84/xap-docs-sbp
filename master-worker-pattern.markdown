@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Master-Worker Pattern
 categories: SBP
 parent: processing.html

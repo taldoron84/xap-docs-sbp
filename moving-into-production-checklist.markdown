@@ -1,5 +1,5 @@
 ---
-type: postsbp
+type: post
 title:  Moving into Production Checklist
 categories: SBP
 parent: production.html
