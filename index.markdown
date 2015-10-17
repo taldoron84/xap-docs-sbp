@@ -34,6 +34,8 @@ The patterns below are presented as is. While most of them are used in real life
 
 | Pattern | Level | Description |
 |:--------------|:------|:------------|
+|[Custom Aggregators](./aggregators-custom.html) | Advanced | Aggregators provided by the core XAP platform are extensible, allowing developers to modify existing functionality as well as add new features.|
+|[XAP Spring Data](./spring-data.html) | Advanced | XAP Spring Data implements the Spring Data Framework |
 |[Spark Integration](./spark-integration.html) | Advanced | This pattern explains how to integrate XAP with Spark.|
 |[Storm Integration](./storm-integration.html) | Advanced | This pattern explains how to integrate XAP with Storm.|
 |[Kafka Integration](./kafka-integration.html) | Advanced | This pattern explains how to integrate XAP with Kafka.|
