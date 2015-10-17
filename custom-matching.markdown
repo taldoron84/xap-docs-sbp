@@ -3,7 +3,7 @@ type: post
 title:  Custom Matching
 categories: SBP
 parent: data-access-patterns.html
-weight: 100
+weight: 150
 ---
 
 {{% ssummary page %}}This article illustrates custom Matching Implementation.{{% /ssummary %}}

@@ -3,7 +3,7 @@ type: post
 title:  Puppet XAP Module
 categories: SBP
 parent: production.html
-weight: 100
+weight: 110
 ---
 {{% ssummary page %}}This pattern explains how to use Puppet to install and configure XAP.{{% /ssummary %}}
  {{% tip %}}

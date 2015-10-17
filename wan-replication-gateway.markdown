@@ -19,6 +19,7 @@ weight: 100
 # Overview
 
 This [WAN Gateway]({{%latestjavaurl%}}/multi-site-replication-over-the-wan.html) example includes PU folders with config files for a [Multi-Master]({{%latestjavaurl%}}/multi-site-replication-over-the-wan.html#Multi-Master Topology) topology that includes 3 sites: DE , RU , US. Each site have an independent cluster and a Gateway.
+
 ![wan_example1.jpg](/attachment_files/sbp/wan_example1.jpg)
 
 You will find folders for the following PUs:
@@ -69,28 +70,36 @@ You will find within the `scripts` folder running scripts to start [Grid Service
 
 - Start the `\gigaspaces-xap-premium-{{%latestxaprelease%}}-ga\bin\GS-UI.bat/sh`.
 - Once you deployed make sure you enable the relevant groups within the GS-UI:
+
 ![wan_example3.jpg](/attachment_files/sbp/wan_example3.jpg)
 
 You should check all Groups:
+
 ![wan_example4.jpg](/attachment_files/sbp/wan_example4.jpg)
 
 You should see this:
+
 [<img src="/attachment_files/sbp/wan_example5.jpg" width="140" height="100">](/attachment_files/sbp/wan_example5.jpg)
 
 Once deployed successfully you should see this:
+
 [<img src="/attachment_files/sbp/wan_example6.jpg" width="140" height="100">](/attachment_files/sbp/wan_example6.jpg)
 
 # Testing the WAN Gateway Replication
 You can test the setup by using the [benchmark utility]({{%latestadmurl%}}/benchmark-browser.html) comes with the GS-UI. Move the one of the Clusters Benchmark icon and click the Start Button:
+
 [<img src="/attachment_files/sbp/wan_example7.jpg" width="140" height="100">](/attachment_files/sbp/wan_example7.jpg)
 
 You will see all spaces **Object Count** across all clusters by clicking the **Spaces icon** on the Space Browser Tab. You should see identical number of objects (5000) for all members:
+
 [<img src="/attachment_files/sbp/wan_example8.jpg" width="140" height="100">](/attachment_files/sbp/wan_example8.jpg)
 
 You can remove objects from each space cluster by selecting the **Take operation** and click Start:
+
 [<img src="/attachment_files/sbp/wan_example9.jpg" width="140" height="100">](/attachment_files/sbp/wan_example9.jpg)
 
 You will see the Object Count changing having zero object count for each space:
+
 [<img src="/attachment_files/sbp/wan_example10.jpg" width="140" height="100">](/attachment_files/sbp/wan_example10.jpg)
 
 # Replication Throughput Capacity
@@ -125,14 +134,19 @@ A client application located within the US East coast EC2 region running multipl
 
 ![wan_bench1.jpg](/attachment_files/sbp/wan_bench1.jpg)
 
+<br>
+
 {{% color blue %}}Blue line{{% /color %}} - The amount of data generated at the source site (EC2 EU East coast region) by the client application.
 
 {{% color green %}}Green line{{% /color %}}- The amount of consumed bandwidth is measured  at the target site (EC2 EU Ireland region).
 
 {{% color red %}}Red line{{% /color %}} - The network bandwidth.
 
+<br>
+
 ![wan_bench2.jpg](/attachment_files/sbp/wan_bench2.jpg)
 
+<br>
 Up to 16 client threads at the client application, the utilized bandwidth at the target site is increasing. Once the maximum bandwidth has been consumed, no matter how many client threads will be writing data to the source space, the target site bandwidth consumption will stay the same.
 
 We do see some difference between the amount of data generated and replicated at the source site and the amount of bandwidth consumed at the target site. This difference caused due-to the overhead associated with the replicated data over the WAN and the network latency. For each replicated packet some meta data is added. It includes info about the order of the packet, its source location, etc.

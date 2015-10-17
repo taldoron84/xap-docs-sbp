@@ -3,7 +3,7 @@ type: post
 title:  XAP Integration with Storm
 categories: SBP
 parent: data-access-patterns.html
-weight: 40
+weight: 45
 ---
 
 {{% mute %}}This pattern explains how XAP can be used to:<br/>- scale Storm activity by using a distributed IMDG acting as its system of record instead of a slow database.<br/>- act as a distributed broker for the Storm Spouts buffering high speed streams instead of traditional slow messaging.{{% /mute %}}

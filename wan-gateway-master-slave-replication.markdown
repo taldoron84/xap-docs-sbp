@@ -44,12 +44,14 @@ As a result of this topology setup, the following scenario will take place once 
 
 # Configuring Master-Slave Replication
 
-The master-slave topology configuration is simply implemented through delegators on the master (New York) and a sink on each slave (London, Hong Kong). In this case, New York's site will be the active site while London and  Hong Kong will be the passive sites. While the slave sites are passive,  this does not necessarily mean that no work is done in these sites. However, in  terms of replication over the WAN, these sites should not replicate to  the other sites and usually should not alter data replicated from other  sites because it may cause conflicts:
+The master-slave topology configuration is simply implemented through delegators on the master (New York) and a sink on each slave (London, Hong Kong). In this case, New York's site will be the active site while London and
+Hong Kong will be the passive sites. While the slave sites are passive,  this does not necessarily mean that no work is done in these sites. However,
+in  terms of replication over the WAN, these sites should not replicate to  the other sites and usually should not alter data replicated from other
+ sites because it may cause conflicts:
 
 {{%tabs%}}
 
-{{%tab "  New York Space "%}}
-
+{{%tab "New York Space"%}}
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -124,7 +126,6 @@ The master-slave topology configuration is simply implemented through delegators
 
 
 ```xml
-
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
@@ -157,8 +158,6 @@ The master-slave topology configuration is simply implemented through delegators
 {{% /tab %}}
 
 {{%tab "  London Gateway "%}}
-
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -189,8 +188,6 @@ The master-slave topology configuration is simply implemented through delegators
 {{% /tab %}}
 
 {{%tab "  Hong Kong Space "%}}
-
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -224,8 +221,6 @@ The master-slave topology configuration is simply implemented through delegators
 {{% /tab %}}
 
 {{%tab "  Hong Kong Gateway "%}}
-
-
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -274,9 +269,11 @@ The `scripts` folder contains the necessary scripts to start the [Grid Service A
 
 - Start the GigaSpaces Management Center and configure the appropriate lookup groups through the "Group Management" dialog.
 - Once all clusters are up and running, you will need to enable the relative groups:
+
 ![group_management_dialog.jpg](/attachment_files/sbp/group_management_dialog.jpg)
 
 Check to enable all three advertised groups for each site:
+
 ![groups_selection_dialog.jpg](/attachment_files/sbp/groups_selection_dialog.jpg)
 
 As a result, you should see the service grid components for each site displayed under the "Hosts" tree as follows:
@@ -286,19 +283,23 @@ As a result, you should see the service grid components for each site displayed 
 
 
 Once The deployAll.bat/sh script finishes running, you should be able to see all three sites deployed as follows:
+
 [<img src="/attachment_files/sbp/pu_deployments.jpg" width="140" height="100">](/attachment_files/sbp/pu_deployments.jpg)
 
 
 If you are using the GS-WEBUI, you can also view the site topology through the "Data Grids > Gateways" view as the following:
+
 [<img src="/attachment_files/sbp/webui_gw_topology.png" width="140" height="100">](/attachment_files/sbp/webui_gw_topology.png)
 
 # Testing Master-Slave Replication
 
 You can test the setup by using the [benchmark utility]({{%latestadmurl%}}/benchmark-browser.html) comes with the GS-UI. Select the US Benchmark icons and click Start to begin writing objects to the space:
+
 [<img src="/attachment_files/sbp/masterslave_space_write.png" width="140" height="100">](/attachment_files/sbp/masterslave_space_write.png)
 
 
 Click the Spaces icon on the Space Browser Tab to get a global view of all spaces. As objects are being written, you should see replication occurring across both HK and GB sites until there are 5000 objects in each space:
+
 [<img src="/attachment_files/sbp/masterslave_space_count.png" width="140" height="100">](/attachment_files/sbp/masterslave_space_count.png)
 
 

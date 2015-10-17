@@ -22,9 +22,7 @@ weight: 100
 
 # Overview
 
-{{% section %}}
 
-{{% column width="50%"%}}
 
 Financial services, Healthcare, Transportations,Fraud Detection, Payment systems,etc. produce reports constantly. Some of them produce reports where the data required for the report is generated over night via batch processing, and some other type of reports are produced instantly upon user request. This type of processing activity requires fast access to the raw data and the ability to utilize distributed resources available on the local environment or on the cloud.
 
@@ -35,15 +33,7 @@ The Elastic Calculation Engine example illustrates the following:
 3. Simulating lazy data load in a batch mode optimizing database access in case of a cache miss.
 4. While the calculation is going on, dynamically scaling up and down the compute/data grid. This will increase the capacity of the compute/data grid and will allow it to utilize additional CPU resources to speed up the calculation time.
 
-{{% /column %}}
 
-{{% column width="50%"%}}
-
-![risk_anal.jpg](/attachment_files/sbp/risk_anal.jpg)
-
-{{% /column %}}
-
-{{% /section %}}
 
 The Distributed Calcualtion Engine performs Net Present Value calculations where the Trades used for the calculation divided into several Books. These books could represent different types of Trades, different markets, different customers , etc.
 
@@ -76,7 +66,9 @@ The Calculating Flow includes the following:
 
 ![ElasticDistributedRiskAnalysisEngine_colocated_workers.jpg](/attachment_files/sbp/ElasticDistributedRiskAnalysisEngine_colocated_workers.jpg)
 
-{{% exclamation %}} When running the Elastic Calcualtion Engine on a single machine, scaling up and down will not affect the calculation time, but when running this on a grid with multiple machines, you will see better or worse calculation time when the grid scales up or down.
+{{%note%}}
+When running the Elastic Calcualtion Engine on a single machine, scaling up and down will not affect the calculation time, but when running this on a grid with multiple machines, you will see better or worse calculation time when the grid scales up or down.
+{{%/note%}}
 
 ## Intelligent Map-Reduce
 The Elastic Calcualtion Engine uses the [ExecutorBuilder]({{%latestjavaurl%}}/task-execution-over-the-space.html#executorbuilder-api). This allows executing multiple `AnalysisTasks` in a parallel manner where each Task includes a different Trade ID list to use for the calculation. Each List is sent to a relevant node where it is used to fetch the Trade data from the colocated space or to be loaded from the database.
@@ -134,7 +126,10 @@ For long calculations that consume relatively large amount of CPU time, the reco
 ```java
 startAgent.bat
 ```
-{{% exclamation %}} You will need a machine with at least 2GB free memory to run this demo.
+{{% note%}}
+You will need a machine with at least 2GB free memory to run this demo.
+{{%/note%}}
+
 3. Run the Elastic Data-Grid deploy script:
 
 ```java

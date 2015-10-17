@@ -21,7 +21,7 @@ The Processing Unit that we deploy onto the Service Grid is our Hello World Proc
 Reminder - the Feeder application writes each Message object to the processor Processing Unit, which in turn processes them.
 {{% /column %}}
 {{% column width="30%" %}}
-{{%popup "/attachment_files/Application"  "Components.jpg"%}}
+{{%popup "/attachment_files/Application Components.jpg"%}}
 {{% /column %}}
 {{% /section %}}
 
@@ -37,7 +37,7 @@ The Grid Service Manager manages the deployment of processing units and their pr
 The _GigaSpaces Management Center_ is the graphical user interface for administrating and monitoring the _Service Grid_ and the deployed applications.
 {{%/column%}}
 {{%column width="30%" %}}
-{{%popup "/attachment_files/Infra"  "Components.jpg"%}}
+{{%popup "/attachment_files/Infra Components.jpg"%}}
 {{% /column %}}
 {{% /section %}}
 

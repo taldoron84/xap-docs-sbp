@@ -3,7 +3,7 @@ type: post
 title:  XAP.NET Custom Aggregators
 categories: SBP
 parent: processing.html
-weight: 400
+weight: 450
 ---
 
 {{% ssummary  %}}  {{% /ssummary %}}

@@ -2,7 +2,7 @@
 type: post
 title: Appendix
 categories: SBP
-weight: 600
+weight: 700
 parent: spring-data.html
 ---
 

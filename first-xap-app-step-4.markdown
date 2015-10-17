@@ -19,7 +19,7 @@ Learn how to scale the Hello World Application.
 The Processing Unit we deploy onto the Service Grid is our Hello World Processor application from the [previous steps](./first-xap-app.html). Reminder - a feeder application writes each Message object to the processor Processing Unit, which is in turn processed by the Processor class.
 {{% /column %}}
 {{% column width="30%" %}}
-{{%popup "/attachment_files/Application"  "Components.jpg"%}}
+{{%popup "/attachment_files/Application Components.jpg"%}}
 {{% /column %}}
 {{%/section%}}
 
@@ -35,7 +35,7 @@ The Grid Service Manager manages the deployment of processing units and their pr
 The _GigaSpaces Management Center_ is the graphical user interface for administrating and monitoring the _Service Grid_ and the deployed applications.
 {{% /column %}}
 {{% column width="30%" %}}
-{{%popup "/attachment_files/Infra"  "Components.jpg"%}}
+{{%popup "/attachment_files/Infra Components.jpg"%}}
 {{% /column %}}
 {{% /section %}}
 

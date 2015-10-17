@@ -297,28 +297,37 @@ The `scripts` folder contains the necessary scripts to start the [Grid Service A
 
 - Start the GigaSpaces Management Center and configure the appropriate lookup groups through the "Group Management" dialog.
 - Once all clusters are up and running, you will need to enable the relative groups:<br/>
+
 ![group_management_dialog.jpg](/attachment_files/sbp/group_management_dialog.jpg)<br/>
+
 Check to enable all three advertised groups for each site:<br/>
+
 ![groups_selection_dialog.jpg](/attachment_files/sbp/groups_selection_dialog.jpg)<br/>
+
 As a result, you should see the service grid components for each site displayed under the "Hosts" tree as follows:<br/>
+
 [<img src="/attachment_files/sbp/service_grid.jpg" width="140" height="100">](/attachment_files/sbp/service_grid.jpg)
 
 Once The deployAll.bat/sh script finishes running, you should be able to see all three sites deployed as follows:<br/>
+
 [<img src="/attachment_files/sbp/pu_deployments.jpg" width="140" height="100">](/attachment_files/sbp/pu_deployments.jpg)
 
 
 # Testing Pass Through Replication
 You can test the setup by using the [benchmark utility]({{%latestadmurl%}}/benchmark-browser.html) comes with the GS-UI. Select one of the HK or US Benchmark icons and click Start to begin writing objects to the space:
+
 [<img src="/attachment_files/sbp/space_write.jpg" width="140" height="100">](/attachment_files/sbp/space_write.jpg)
 
 
 
 Click the Spaces icon on the Space Browser Tab to get a global view of all spaces. As objects are being written, you should see replication occurring across both HK and US sites until there are 5000 objects in each space. Notice that since the GB site is a pass through, the object count should remain zero:
+
 [<img src="/attachment_files/sbp/space_object_count.jpg" width="140" height="100">](/attachment_files/sbp/space_object_count.jpg)
 
 
 
 You can also utilize the Take operation and click Start to remove objects from either the HK or US space. As a result, you will see the object count reaching zero across both HK and US as the pass through replication is taking place:
+
 [<img src="/attachment_files/sbp/object_count_zero.jpg" width="140" height="100">](/attachment_files/sbp/object_count_zero.jpg)
 
 
