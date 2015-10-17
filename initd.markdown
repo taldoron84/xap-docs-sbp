@@ -32,10 +32,12 @@ This basic set of features can manage a simple   XAP configuration. More complex
 A typical init.d script follows this pattern:
 
 
-```bash
+``java
 #!/bin/sh
 
-# Script description
+`# Script description`
+
+
 start(){
 }
 
@@ -57,3 +59,4 @@ case "$1" in start)
      stop
      start
    
+``
