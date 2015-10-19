@@ -1,6 +1,6 @@
 ---
 type: post
-title:  Your First Real Time Big Data Analytics Application
+title:  Real Time Big Data Analytics Application
 categories: SBP
 weight: 1000
 parent: examples.html
@@ -456,7 +456,7 @@ Once the application is running, you can use the XAP UI tools to view your appli
 - For the Web Based UI run gs-webui.bat/sh and point your browser to localhost:8099 http://localhost:8099
 - For the Rich Based UI run gs-ui.bat/sh
 
-{{% info title="More Deployment Options "%}}
+{{% info "More Deployment Options "%}}
 To learn about additional options for deploying your XAP processing units, please see [Deploying onto the Service Grid]({{%latestjavaurl%}}/deploying-onto-the-service-grid.html)
 {{% /info %}}
 
