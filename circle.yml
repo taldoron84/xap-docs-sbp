@@ -17,7 +17,7 @@ dependencies:
   pre:
     - bash ./xap-docs/install-hugo.sh
   override:
-    - bundle install: 
+    - cd ./xap-docs $$ bundle install: 
         timeout: 3600 # fail if command has no output for 60 minutes
     - bash ./xap-docs/build-site.sh
   cache_directories:
