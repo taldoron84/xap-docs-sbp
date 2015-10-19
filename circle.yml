@@ -7,7 +7,7 @@ machine:
 
 checkout:
   post:
-    - rm -rf wiki 
+    - rm -rf xap-docs 
     - git clone https://github.com/Gigaspaces/xap-docs.git ./xap-docs
     - cd ./xap-docs && git submodule init && git submodule update 
     - cd ./xap-docs/site/content/sbp && git checkout master && git pull
@@ -15,12 +15,10 @@ checkout:
 
 dependencies:
   pre:
-    - cd xap-docs
-    - bash ./install-hugo.sh
+    - bash ./xap-docs/install-hugo.sh
   override:
     - bundle install: 
         timeout: 3600 # fail if command has no output for 60 minutes
-    - cd xap-docs
     - bash ./xap-docs/build-site.sh
   cache_directories:
     - /home/ubuntu/.rvm/gems/ruby-2.1.2
