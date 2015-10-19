@@ -1,0 +1,39 @@
+## Customize the test machine
+machine:
+  # Version of ruby to use
+  ruby:
+    version:
+      2.1.2
+
+checkout:
+  post:
+    - rm -rf wiki 
+    - git clone https://github.com/Gigaspaces/xap-docs.git ./xap-docs
+    - cd ./xap-docs && git submodule init && git submodule update 
+    - cd ./xap-docs/site/content/sbp && git checkout master && git pull
+
+
+dependencies:
+  pre:
+    - cd xap-docs
+    - bash ./install-hugo.sh
+  override:
+    - bundle install: 
+        timeout: 3600 # fail if command has no output for 60 minutes
+    - cd xap-docs
+    - bash ./xap-docs/build-site.sh
+  cache_directories:
+    - /home/ubuntu/.rvm/gems/ruby-2.1.2
+    - ./xap-docs/hugo 
+
+test:
+  override:
+    - echo "No tests are needed, this is a static website :)"
+
+## Customize deployment commands
+deployment:
+  production:
+    branch: master
+    commands:
+      - cd ./xap-docs
+      - s3_website push
