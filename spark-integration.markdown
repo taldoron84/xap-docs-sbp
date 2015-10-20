@@ -6,38 +6,11 @@ parent: data-access-patterns.html
 weight: 40
 ---
 
-{{% mute %}} This pattern explains how to integrate Spark with XAP.{{% /mute %}}
-
-{{% panel %}}
-{{%section%}}
-{{%column width="15%" %}}
-**XAP Version**<br>
-**Last Updated**<br>
-**Reference**<br>
-**Example**
-{{%/column%}}
-{{%column  width="50%" %}}
-10.1<br>
-March 2015<br>
-[Apache Spark](https://spark.apache.org/streaming/)<br>
-{{%git "https://github.com/fe2s/xap-spark" %}}
-{{%/column%}}
-{{%column  width="10%" %}}
-{{%align right%}}
-**Author**
-{{%/align%}}
-{{%/column%}}
-{{%column  width="25%" %}}
-{{%align center%}}
-Oleksiy Dyagilev
-{{%/align%}}
-{{%/column%}}
-{{%/section%}}
-{{% /panel %}}
 
 
-{{%ssummary%}}{{%/ssummary%}}
-
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Oleksiy Dyagilev| 10.1| March 2015| [Apache Spark](https://spark.apache.org/streaming/)| {{%git "https://github.com/fe2s/xap-spark" %}}|
 
 
 

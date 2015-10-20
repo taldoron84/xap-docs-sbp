@@ -6,37 +6,12 @@ parent: data-access-patterns.html
 weight: 45
 ---
 
-{{% mute %}}This pattern explains how XAP can be used to:<br/>- scale Storm activity by using a distributed IMDG acting as its system of record instead of a slow database.<br/>- act as a distributed broker for the Storm Spouts buffering high speed streams instead of traditional slow messaging.{{% /mute %}}
-
-{{% panel %}}
-{{%section%}}
-{{%column width="15%" %}}
-**XAP Version**<br>
-**Last Updated**<br>
-**Reference**<br>
-**Example**
-{{%/column%}}
-{{%column  width="50%" %}}
-10.0<br>
-August 2014<br>
-[Storm](https://storm.incubator.apache.org)<br>
-{{%git "https://github.com/fe2s/xap-storm" %}}
-{{%/column%}}
-{{%column  width="10%" %}}
-{{%align right%}}
-**Author**
-{{%/align%}}
-{{%/column%}}
-{{%column  width="25%" %}}
-{{%align center%}}
-Oleksiy Dyagilev
-{{%/align%}}
-{{%/column%}}
-{{%/section%}}
-{{% /panel %}}
 
 
-{{%ssummary%}}{{%/ssummary%}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Oleksiy Dyagilev| 10.0| August 2014| [Storm](https://storm.incubator.apache.org)| {{%git "https://github.com/fe2s/xap-storm" %}}|
+
 
 # Introduction
 
