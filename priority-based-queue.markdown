@@ -6,15 +6,15 @@ parent: processing.html
 weight: 800
 ---
 
-{{% tip %}}
-**Summary:**  Implementing Priority based Queue <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0<br/>
-**Last Update**: Feb 2011<br/>
-**Contents:**<br/>
 
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0.0| Feb 2011|    |    |
+
+
+
+
 
 # Overview
 

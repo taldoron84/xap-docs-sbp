@@ -6,37 +6,11 @@ parent: data-access-patterns.html
 weight: 50
 ---
 
-{{% mute %}} This pattern explains how to use Kafka with XAP.{{% /mute %}}
 
-{{% panel %}}
-{{%section%}}
-{{%column width="15%" %}}
-**XAP Version**<br>
-**Last Updated**<br>
-**Reference**<br>
-**Example**
-{{%/column%}}
-{{%column  width="50%" %}}
-9.6<br>
-February 2014<br>
-[Apache Kafka](http://kafka.apache.org)<br>
-{{%zip "/download_files/sbp/kafka-integration.tar"%}}
-{{%/column%}}
-{{%column  width="10%" %}}
-{{%align right%}}
-**Author**
-{{%/align%}}
-{{%/column%}}
-{{%column  width="25%" %}}
-{{%align center%}}
-Oleksiy Dyagilev
-{{%/align%}}
-{{%/column%}}
-{{%/section%}}
-{{% /panel %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Oleksiy Dyagilev| 9.6| February 2014| [Apache Kafka](http://kafka.apache.org)|{{%zip "/download_files/sbp/kafka-integration.tar"%}}|
 
-
-{{%ssummary%}}{{%/ssummary%}}
 
 
 # Introduction

@@ -7,16 +7,13 @@ weight: 600
 ---
 
 
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim <br>Rafi Pinto| 8.0.1| March 2011| Mule: 3.1.0  |    |
 
-{{% ssummary %}}Mule ESB Distributed Multi Service Example{{% /ssummary %}}
 
 
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-Using Mule:**3.1.0**<br/>
-Using XAP:**8.0.1**<br/>
-JDK:**Sun JDK 1.6**<br/>
-Updated by: Rafi Pinto, R&D Solutions developer, GigaSpaces<br/>
-Date: March 2011<br/>
+
 
 # Overview
 GigaSpaces [Mule ESB]({{%latestjavaurl%}}/mule-esb.html) OpenSpaces comes with comprehensive support for Mule 3.1.0. It allows you to use the [Space as a Mule external transport]({{%latestjavaurl%}}/mule-event-container-transport.html), enabling receiving and dispatching of POJO messages over the Space.

@@ -6,15 +6,12 @@ parent: data-access-patterns.html
 weight: 60
 ---
 
-{{%ssummary%}}{{%/ssummary%}}
 
-{{% tip %}}
-**Summary:** This article illustrates how to integrate IBM's DynaCache with GigaSpaces XAP <br/>
-**Author**: Allen Terleto<br/>
-**Recently tested with GigaSpaces version**: XAP 9.7<br/>
-**Last Update:** September 2014<br/>
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Allen Terleto| 9.7| September 2014|  |     |
+
 
 
 

@@ -6,11 +6,13 @@ parent: data-access-patterns.html
 weight: 200
 ---
 
-{{% ssummary page %}}This article illustrates the approaches that can be used to build Custom Eviction functionality.{{% /ssummary %}}
-{{% tip %}}
-**Author**: Shravan (Sean) Kumar, Solutions Architect, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 7.1.2<br/>
-{{% /tip %}}
+
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Shravan (Sean) Kumar| 7.1.2| January 2009 |           |          |
+
+
 
 # Overview
 GigaSpaces being an in memory grid, is limited by the amount of memory allocated to the JVM's that make the cluster. Applications that are built using GigaSpaces and use it as a run time environment should be designed to work with this constraint. This article shows common strategies GigaSpaces applications use for Evicting old objects and make room for new data.

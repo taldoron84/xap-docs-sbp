@@ -6,18 +6,16 @@ parent: processing.html
 weight: 1000
 ---
 
-{{% ssummary page %}}The Unit of work Pattern - Parallel atomic ordered data processing for associated data objects{{% /ssummary %}}
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Shay Hassidim| 8.0 | Feb 2011  |           |          |
 
 
-
-{{% tip %}}
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.0<br/>
-**Last Update:** Feb 2011<br/>
+# Overview
+The Unit of work Pattern - Parallel atomic ordered data processing for associated data objects
 
 
-
-{{% /tip %}}
 
 # GigaSpaces Unit of Work
 GigaSpaces Unit of Work (UOW) enables a stand-alone message producer to group messages into a single unit such that those messages can be handled in order - similar to a FIFO queue localized within a transaction. This single unit is called a Unit-of-work and requires that all messages from that unit be processed **sequentially in the order** they were created (within the unit of work). Other units can be processes in parallel. This approach maximize the system performance and its scalability and allows it to processes vast amount of data consuming memory and CPU resources in a very optimal manner.

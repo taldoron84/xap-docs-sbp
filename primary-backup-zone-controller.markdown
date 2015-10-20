@@ -7,15 +7,13 @@ weight: 900
 ---
 
 
-{{% ssummary page %}} {{% /ssummary %}}
-{{% tip %}}
-**Summary:**  Primary-Backup Zone Controller, allows you to specify a specific zone for primary instances and a different zone for backup instances. <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0<br/>
-**Last Update:** April 2011<br/>
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0| April 2011|    |    |
 
 
-{{% /tip %}}
+
 
 # Overview
 

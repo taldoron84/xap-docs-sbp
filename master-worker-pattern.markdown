@@ -7,13 +7,12 @@ weight: 500
 ---
 
 
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 7.0| August 2009|   |    |
 
-{{% ssummary %}}Implementing the Master-Worker Pattern with GigaSpaces XAP.{{% /ssummary %}}
 
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-Using XAP:**7.0GA**<br/>
-JDK:**Sun JDK 1.6**<br/>
-Date: August 2009<br/>
+
 
 # Overview
 The [Master-Worker Pattern](http://books.google.com/books?id=9cV3TbahjW0C&pg=PA153&lpg=PA153&dq=JavaSpaces+Master-Worker+Pattern&source=bl&ots=1l_DQmEGNl&sig=IU2UTbG-xytamrby2r5yaJLnAkk&hl=en&ei=lm6RSo-dGJXjlAeYqOWjDA&sa=X&oi=book_result&ct=result&resnum=1#v=onepage&q=JavaSpaces%20Master-Worker%20Pattern&f=false) (sometimes called the Master-Slave or the Map-Reduce pattern) is used for parallel processing. It follows a simple approach that allows applications to perform simultaneous processing across multiple machines or processes via a `Master` and multiple `Workers`.

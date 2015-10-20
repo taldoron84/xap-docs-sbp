@@ -8,14 +8,11 @@ weight: 200
 
 
 
-{{% tip %}}
-**Summary:**  Event based remoting example <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.4<br/>
-**Contents:**<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0.4| September 2014|   |    |
 
 
-{{% /tip %}}
 
 # Overview
 

@@ -5,13 +5,12 @@ categories: SBP
 parent: data-access-patterns.html
 weight: 100
 ---
-{{% ssummary page %}}This pattern explains how to implement a cache interface using the Map API.{{% /ssummary %}}
- {{% tip %}}
- **Author**:  Shay Hassidim<br/>
- **Recently tested with GigaSpaces version**: XAP 9.6<br/>
- **Last Update:** Feb 2014<br/>
 
-{{% /tip %}}
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 9.6| February 2014|  |     |
+
 
 
 
@@ -294,10 +293,12 @@ map.put("key1", "value");
 map.put("key2", "value");
 map.put("key3", "value");
 cacheService.putAll(map);
+
 ```
 
-# Further reading
+{{%refer%}}
 
 - [Modeling and Accessing Your Data]({{%latestjavaurl%}}/modeling-your-data.html)
 - [Deploying and Interacting with the Space](./deploying-and-interacting-with-the-space.html)
 
+{{%/refer%}}

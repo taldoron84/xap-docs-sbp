@@ -7,6 +7,10 @@ weight: 100
 ---
 
 
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim|  | Feb 2014|    |    |
+
 
 {{% ssummary page %}}Explains how to deploy and manage a [Data Grid](/product_overview/the-in-memory-data-grid.html), catering to quick OEM installation.{{% /ssummary %}}
 
@@ -101,8 +105,9 @@ With this class in the classpath, getting a datagrid reference is as simple as:
 GigaSpace space=DataGridConnectionUtility.getSpace("myGrid");
 ```
 
-## Further reading:
+{{%refer%}}
 
 - [Modeling and Accessing Your Data]({{%latestjavaurl%}}/modeling-your-data.html)
 - [Deploying and Interacting with the Space](./deploying-and-interacting-with-the-space.html)
 
+{{%/refer%}}

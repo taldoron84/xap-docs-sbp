@@ -6,13 +6,12 @@ parent: data-access-patterns.html
 weight: 1305
 ---
 
-{{% ssummary page %}}This pattern presents a Data Grid using SQL Server as its persistence layer.  Initial Load and Write behind are demonstrated with this best practice.{{% /ssummary %}}
-{{% tip %}}
-**Author**:  Shay Hassidim<br/>
-**Recently tested with GigaSpaces version**: XAP.NET 9.7.0 x64<br/>
-**Last Update:** April 2014<br/>
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 9.7 | April 2014|  |     |
+
+
 
 # Overview
 
@@ -21,9 +20,9 @@ The SQL Server Data-Grid example demonstrates a common Data Grid / Caching archi
 - A Client application that perform write and read operations against a remote clustered IMDG.
 - A Clustered IMDG with write-behind (Mirror service) with pre-fetch (initial load) enabled. The Data grid using [nHibernate](https://community.jboss.org/wiki/NHibernateForNET) to Map .Net objects to database tables and persist data into the SQL Server database.
 
-[<img src="/sbp/attachment_files/datagrid-sqlserver002.jpg" width="400" height="300">](/sbp/attachment_files/datagrid-sqlserver002.jpg)
+![image](/sbp/attachment_files/datagrid-sqlserver002.jpg)
 
-This best practice will demonstrate show to implement this with XAP.NET. 
+This best practice will demonstrate how to implement this with XAP.NET.
 
 # Structure
 

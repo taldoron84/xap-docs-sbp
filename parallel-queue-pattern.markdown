@@ -7,15 +7,11 @@ weight: 700
 ---
 
 
-
-{{% tip %}}
-**Summary:**  The Parallel Queue Pattern - High speed data processing pattern for low-latency systems <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.0<br/>
-**Last Update:** Feb 2011<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0.0| Feb 2011|    |    |
 
 
-{{% /tip %}}
 
 # Overview
 When building [low latency systems](http://en.wikipedia.org/wiki/High_frequency_trading), a critical requirement of such systems is to be able to process the incoming data as fast as they can, but also to do that in the exact order the request has been submitted into the system. The system can't process requests associated with the same Order in parallel, but in the exact order these has been created at the client side.

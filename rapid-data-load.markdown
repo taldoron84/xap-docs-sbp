@@ -7,15 +7,11 @@ weight: 1400
 ---
 
 
-
-{{% tip %}}
-**Summary:**  This article illustrates the usage of Task Executors to rapidly load data into the In-Memory-Data-Grid <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 7.0<br/>
-**Last Update:** July 2009<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 7.0| July 2009|    |    |
 
 
-{{% /tip %}}
 
 # Overview
 In some cases you might need to load data into the data grid in a very fast manner. This is mostly needed as part of your development phase or unit tests. You might not have a fast database on hand to load data, from using the [HibernateExternalDataSource]({{%latestjavaurl%}}/space-persistency-initial-load.html) implementation, or it might be easier for you to create a data generator utility that simulates the real life data your application needs. A simple technique to load data very rapidly into the data grid, is to use a [DistributedTask]({{%latestjavaurl%}}/executor-based-remoting.html) implementation that generates the data and writes it into the collocated space. The generated data is constructed in such a way that its routing field value "matches" the collocated space.

@@ -6,7 +6,7 @@ parent: excel-that-scales-solution.html
 weight: 200
 ---
 
-{{% ssummary  %}}Using the data offload pattern.{{% /ssummary %}}
+
 
 # Overview
 

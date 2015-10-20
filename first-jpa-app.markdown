@@ -6,7 +6,7 @@ weight: 300
 parent: examples.html
 ---
 
-<br>
+
 
 
 This tutorial explains how the sample Spring PetClinic application can be fine tuned to use GigaSpaces XAP [JPA API]({{%latestjavaurl%}}/jpa-api.html) and deployed into the GigaSpaces XAP platform.

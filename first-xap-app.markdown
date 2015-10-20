@@ -6,9 +6,9 @@ weight: 100
 parent: examples.html
 ---
 
-<br>
+
 This tutorial explains how to build your first XAP Application in 4 easy steps, from basic API usage to scaling your application and making it highly available.
-<br>
+
 <br>
 
 {{%fpanel%}}

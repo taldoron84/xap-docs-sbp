@@ -7,15 +7,12 @@ weight: 900
 ---
 
 
-{{% ssummary page %}} {{% /ssummary %}}
-{{% tip %}}
-**Summary:**  GigaSpaces Spring Batch Elastic Processing Unit <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0. Spring Batch 2.1.6.<br/>
-**Last Update:** March 2011<br/>
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0| March 2011| Spring Batch 2.1.6   |    |
 
 
-{{% /tip %}}
 
 # Overview
 [Batch processing](http://en.wikipedia.org/wiki/Batch_processing) involves usually complex flows using conditional or sequential steps. This involves relatively large CPU cycles and IO access. In such case the data access time required for the processing is relatively small compared to the processing/IO activities duration time.

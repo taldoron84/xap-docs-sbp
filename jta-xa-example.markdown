@@ -7,15 +7,13 @@ weight: 300
 ---
 
 
-{{% tip %}}
-**Summary:**  Integrating GigaSpaces with External JMS Server using JTA/XA<br/>
-**Author**: Shravan (Sean) Kumar, Solutions Architect, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.1<br/>
-**Last Update**: April 2011<br/>
-**Contents:**<br/>
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Shravan (Sean) Kumar| 8.0.1 | April 2011  |           |          |
 
 
-{{% /tip %}}
+
 
 # Overview
 

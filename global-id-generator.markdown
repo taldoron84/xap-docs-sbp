@@ -6,12 +6,13 @@ parent: data-access-patterns.html
 weight: 700
 ---
 
-{{% ssummary page %}}Unique Global ID Generator{{% /ssummary %}}
-{{% tip %}}
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 7.1<br/>
-**Last Update:** Jan 2011<br/>
-{{% /tip %}}
+
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 7.1 | Jan 2011|    |    |
+
+
 
 # Overview
 When writing objects into the space, you may need to generate a global unique ID for your space objects. The ID will be used later to fetch the object based on its ID via the readById/readByIds methods, or associate it with another object by placing the object ID as a field value within another object.

@@ -8,14 +8,11 @@ weight: 1100
 
 
 
-{{% tip %}}
-**Summary:**  Moving Spring/Hibernate Application to GigaSpaces <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0<br/>
-**Last Update:** Feb 2011<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Shay Hassidim| 8.0 | Feb 2011  |           |          |
 
 
-{{% /tip %}}
 
 # Overview
 The following example is based on the standard [Spring Hibernate Integration tutorial](http://www.vaannila.com/spring/spring-hibernate-integration-1.html).

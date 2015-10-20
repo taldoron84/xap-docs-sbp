@@ -7,7 +7,7 @@ parent: examples.html
 ---
 
 
-<br>
+
 
 
 This tutorial explains how your existing web JEE web application can benefit from the XAP platform, showing you how to deploy a simple standard web application into the XAP environment to achieve high availability and self healing capabilities, how to achieve failover capabilities for your HTTP session and how to access the XAP data grid from within the web application.

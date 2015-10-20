@@ -7,13 +7,11 @@ weight: 300
 ---
 
 
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 7.0 | September 2009|  |     |
 
-{{% ssummary %}}Choosing the right data-collocation deployment topology - to Collocate or not to Collocate?{{% /ssummary %}}
 
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces
-Using XAP:**7.0GA**
-JDK:**Sun JDK 1.6**
-Date: September 2009
 
 # The ABCs of the Processing Unit
 GigaSpaces XAP includes a universal grid-based runtime environment for real-time extreme transaction processing (XTP) for Java, C++ and .Net applications. The runtime environment includes a Service Level Agreement-based container called a [GSC](/product_overview/service-grid.html#gsc), in which you are able to deploy business logic and stateful data.

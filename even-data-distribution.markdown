@@ -8,13 +8,13 @@ weight: 400
 
 
 
-{{% tip %}}
-**Summary:**  This page covers some of the concepts to consider when partitioning data. It does not replace the load-balancing pages, where the concept is explored in greater detail, but provides a slightly higher-level view. <br/>
-**Author**: Joe Ottinger, Technology Evangelist, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 7.1.2<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Joe Ottinger| 7.1.2 |   |           |          |
 
 
-{{% /tip %}}
+
+
 
 # Overview
 

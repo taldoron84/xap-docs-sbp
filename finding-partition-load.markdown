@@ -7,14 +7,11 @@ weight: 600
 ---
 
 
-
-{{% tip %}}
-**Summary:**  This page describes two ways to determine the partition load in a Gigaspaces grid programmatically. <br/>
-**Author**: Joe Ottinger, Technology Evangelist, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 7.1.2<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Joe Ottinger| 7.1.2 | July 2010|    |    |
 
 
-{{% /tip %}}
 
 # Overview
 When using a GigaSpaces cluster as a task queue there are times you will need to determine how the space instances are loaded. This could be to determine where you can route the next task (minimum load partition/instance) or where you want to launch more processors (heavily loaded partition/instance).

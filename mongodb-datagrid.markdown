@@ -6,13 +6,11 @@ parent: data-access-patterns.html
 weight: 1310
 ---
 
-{{% ssummary page %}}This pattern presents a Data Grid using MongoDB as its persistence layer.  Initial Load and Write behind are demonstrated with this best practice.{{% /ssummary %}}
-{{% tip %}}
-**Author**:  Shay Hassidim<br/>
-**Recently tested with GigaSpaces version**: XAP.NET 9.7.0 x64<br/>
-**Last Update:** April 2014<br/>
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Shay Hassidim| 9.7| April 2014| |           |          |
+
 
 # Overview
 
@@ -21,7 +19,7 @@ The MongoDB Data-Grid example demonstrates a common Data Grid / Caching architec
 - A Client application that perform write and read operations against a remote clustered IMDG.
 - A Clustered IMDG with write-behind (Mirror service) with pre-fetch (initial load) enabled. The Data grid using MongoDB database.
 
-[<img src="/sbp/attachment_files/mongodatagrid002.jpg" width="400" height="300">](/sbp/attachment_files/mongodatagrid002.jpg)
+![image.jpeg](/sbp/attachment_files/mongodatagrid002.jpg)
 
 This best practice will demonstrate show to implement this with XAP.NET. 
 
@@ -90,7 +88,7 @@ Run GigaSpaces UI: Go to `<GigaSpaces Root>\Bin` and run `Gs-ui.exe`. This will 
 
 # Viewing data Persist into MongoDB
 
-```java
+```bash
 \mongodb-win32-x86_64-1.8.2\bin>mongo.exe
 > use db
 switched to db db
@@ -107,7 +105,7 @@ a18590-ffb3-4dad-9548-009004b86353" }¦
 
 To modify the `MongoDB URL` used with the example update the `pu.xml` within the `Datagrid-mongo.jar` and `mirror-mongo.jar` to have the right value instead the one used:
 
-```java
+```xml
 <constructor-arg value="mongodb://localhost:27017/db" type="java.lang.String" />
 ```
 									  
@@ -115,38 +113,37 @@ To modify the `MongoDB URL` used with the example update the `pu.xml` within the
 
 To run the Data Grid in Cache miss mode update the `pu.xml` within the `Datagrid-mongo.jar` to have:
 
-```java
-<os-core:embedded-space id="space" name="datagrid-mongo"
-        space-data-source="mongospaceDataSource" mirror="true" schema="persistent">
-        <os-core:properties>
-               <props>
-					<!-- 0 for LRU , 1 for IN CACHE --> 
-					<prop key="space-config.engine.cache_policy">0</prop>                  
+```xml
+<os-core:embedded-space id="space" name="datagrid-mongo" space-data-source="mongospaceDataSource" mirror="true" schema="persistent">
+  <os-core:properties>
+    <props>
+	    <!-- 0 for LRU , 1 for IN CACHE -->
+		<prop key="space-config.engine.cache_policy">0</prop>
 					
-					<prop key="space-config.engine.initial_load">0</prop>					   
-					<prop key="space-config.engine.cache_size">100000</prop>
+		<prop key="space-config.engine.initial_load">0</prop>
+		<prop key="space-config.engine.cache_size">100000</prop>
 
-					<prop key="space-config.engine.memory_usage.enabled">true</prop>
-					<prop key="cluster-config.cache-loader.central-data-source">true</prop>
-					<prop key="cluster-config.mirror-service.supports-partial-update">true</prop>
-					<prop key="space-config.engine.memory_usage.high_watermark_percentage">90</prop>
-					<prop key="space-config.engine.memory_usage.write_only_block_percentage">85</prop>
-					<prop key="space-config.engine.memory_usage.write_only_check_percentage">76</prop>
-					<prop key="space-config.engine.memory_usage.low_watermark_percentage">75</prop>
-					<prop key="space-config.engine.memory_usage.eviction_batch_size">100</prop>
-					<prop key="space-config.engine.memory_usage.retry_yield_time">2000</prop>
-					<prop key="space-config.engine.memory_usage.retry_count">10</prop>
-					<prop key="space-config.engine.memory_usage.explicit-gc">false</prop>
-					<prop key="space-config.engine.memory_usage.gc-before-shortage">false</prop>
+		<prop key="space-config.engine.memory_usage.enabled">true</prop>
+		<prop key="cluster-config.cache-loader.central-data-source">true</prop>
+		<prop key="cluster-config.mirror-service.supports-partial-update">true</prop>
+		<prop key="space-config.engine.memory_usage.high_watermark_percentage">90</prop>
+		<prop key="space-config.engine.memory_usage.write_only_block_percentage">85</prop>
+		<prop key="space-config.engine.memory_usage.write_only_check_percentage">76</prop>
+		<prop key="space-config.engine.memory_usage.low_watermark_percentage">75</prop>
+		<prop key="space-config.engine.memory_usage.eviction_batch_size">100</prop>
+		<prop key="space-config.engine.memory_usage.retry_yield_time">2000</prop>
+		<prop key="space-config.engine.memory_usage.retry_count">10</prop>
+		<prop key="space-config.engine.memory_usage.explicit-gc">false</prop>
+		<prop key="space-config.engine.memory_usage.gc-before-shortage">false</prop>
 					   
-               </props>
-        </os-core:properties>
+     </props>
+  </os-core:properties>
 </os-core:embedded-space>
 ```
 
 The following controls how Cache miss works:
 
-```java
+```xml
 <prop key="space-config.engine.cache_size">10000</prop>
 <prop key="space-config.engine.initial_load">0</prop>
 ```

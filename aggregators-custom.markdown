@@ -6,7 +6,11 @@ parent: data-access-patterns.html
 weight: 20
 ---
 
-{{% ssummary  %}}  {{% /ssummary %}}
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 10.1 | July 2015|    |    |
+
 
 Aggregators provided by the core XAP platform are extensible, allowing developers to modify existing functionality as well as add new features. This flexibility allows the framework to grow with changing requirements and new technologies.  Creating a new aggregator or extending an existing one is a small level of effort for the developer.  This document will describe different patterns to write custom aggregators and some common use cases.
 

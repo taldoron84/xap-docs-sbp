@@ -8,14 +8,11 @@ weight: 1200
 
 
 
-{{% tip %}}
-**Summary:**  Access GgaSpaces Data-Grid via ODBC Driver <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 7.1<br/>
-**Last Update:** April 2010<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 7.1| April 2010|  |     |
 
 
-{{% /tip %}}
 
 # Overview
 GigaSpaces Data-Grid support standard data access API. One of them is the [JDBC Driver]({{%latestjavaurl%}}/jdbc-driver.html). Using the JDBC API and ODBC-JDBC bridge such as the one comes from [Open Link Software](http://uda.openlinksw.com), you can use standard ODBC API to access the GigaSpaces Data-Grid.

@@ -6,12 +6,12 @@ parent: data-access-patterns.html
 weight: 150
 ---
 
-{{% ssummary page %}}This article illustrates custom Matching Implementation.{{% /ssummary %}}
-{{% tip %}}
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 7.0<br/>
-**Last Update:** January 2010<br/>
-{{% /tip %}}
+
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Shay Hassidim| 9.7| January 2010 |           |          |
+
 
 # Overview
 
@@ -25,7 +25,8 @@ The [Comparable](http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/Comparab
 
 Such custom business logic might be useful when comparing vector data (2 dimensional Cartesian space). These may represent sound, maps, pictures or any other 2 or 3 dimensional artifacts. You may use this technique to query data based on any other mathematical or financial related formulas such as [Time value of money](http://en.wikipedia.org/wiki/Time_value_of_money) like Present Value of a Cash Flow Series, Future Value of a Cash Flow Series, etc. Other areas where such custom matching is relevant, are Pattern recognition, Sequence analysis, Surveillance, Forensic, Social network behavior etc.
 
-{{% exclamation %}} In some cases, you may index the data to speed up the custom matching process. To enable this, you should index the field so that its class implements the `Comparable` interface using the `EXTENDED` index type as part of the space class. See the [Indexing]({{%latestjavaurl%}}/indexing.html) page for additional information about how to enable the `EXTENDED` index. Indexing the custom type field **should be used carefully since it does not support** a `Comparable.compareTo` implementation that performs relative-based matching, as demonstrated by the following example.
+{{% info %}} In some cases, you may index the data to speed up the custom matching process. To enable this, you should index the field so that its class implements the `Comparable` interface using the `EXTENDED` index type as part of the space class. See the [Indexing]({{%latestjavaurl%}}/indexing.html) page for additional information about how to enable the `EXTENDED` index. Indexing the custom type field **should be used carefully since it does not support** a `Comparable.compareTo` implementation that performs relative-based matching, as demonstrated by the following example.
+{{%/info%}}
 
 # Vector Compare Example
 The following example illustrates a business logic implementation used to query for vector data (an array of Integer values), using the [Euclidean distance](http://en.wikipedia.org/wiki/Euclidean_distance) formula:

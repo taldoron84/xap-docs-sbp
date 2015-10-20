@@ -6,13 +6,13 @@ parent: data-access-patterns.html
 weight: 800
 ---
 
-{{% tip %}}
-**Summary:**  Very Large Backend database/IMDG support. Query IMDG with on going data eviction. <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0<br/>
 
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0 | Jan 2011|    |    |
+
+
 
 # Overview
 

@@ -5,28 +5,24 @@ categories: SBP
 parent: production.html
 weight: 110
 ---
-{{% ssummary page %}}This pattern explains how to use Puppet to install and configure XAP.{{% /ssummary %}}
- {{% tip %}}
- **Author**:  Shay Hassidim<br/>
- **Recently tested with GigaSpaces version**: XAP 9.6<br/>
- **Last Update:** Feb 2014<br/>
 
-{{% /tip %}}
 
-{{%section%}}
-{{%column width="50%" %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 9.6| Feb 2014|    |    |
+
+
+
 
 # Overview
-This XAP module for Puppet performs two main tasks:
+This pattern explains how to use Puppet to install and configure XAP. This XAP module for Puppet performs two main tasks:
 
 **Step 1:** Install Gigaspaces XAP.
 
 **Step 2:** Configure node with one or more XAP roles e.g. Management role, Container role and Web-ui role.
-{{%/column%}}
-{{%column width="45%" %}}
-[<img src="/attachment_files/puppet/xap-puppet.jpg" width="400" height="300">](/attachment_files/puppet/xap-puppet.jpg)
-{{%/column%}}
-{{%/section%}}
+
+![image](/attachment_files/puppet/xap-puppet.jpg)
+
 
 
 # Preparing Development and Testing Environment

@@ -8,13 +8,10 @@ parent: production.html
 
 
 
-{{% ssummary page %}} {{% /ssummary %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| John Burke|   | October 2014|  |     |
 
-{{% tip %}}
-**Summary:** This article illustrates how to ensure accurate time across the cluster <br/>
-**Author:** John Burke<br/>
-**Last Update:** October 2014<br/>
-{{% /tip %}}
 
 
 
