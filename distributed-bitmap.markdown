@@ -6,14 +6,12 @@ parent: data-access-patterns.html
 weight: 1900
 ---
 
-{{% ssummary page %}} {{% /ssummary %}}
- {{% tip %}}
- **Summary:**  Use XAP to distribute a bitmap across a partitioned cluster <br/>
- **Author**:  DeWayne Filppi, Director of Solution Architecture, GigaSpaces <br/>
- **Recently tested with GigaSpaces version**: XAP 9.6<br/>
- **Last Update:** October 2013<br/>
 
-{{% /tip %}}
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| DeWayne Filppi| 9.6 | October 2013|    |    |
+
 
 
 # Overview

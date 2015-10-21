@@ -6,12 +6,14 @@ parent: data-access-patterns.html
 weight: 1302
 ---
 
-{{% ssummary page %}}This pattern presents the SQL Server Delta Server allowing the data grid to receive updates from the database conducted by applications that are not using the data grid as their system of record (Non-Aware Data-Grid Clients){{% /ssummary %}}
-{{% tip %}}
-**Author**:  Ronnie Guha<br/>
-**Recently tested with GigaSpaces version**: XAP.NET 9.7.0 x64<br/>
-**Last Update:** April 2014<br/>
-{{% /tip %}}
+
+
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Ronnie Guha| 9.7.0 | April 2014|    |    |
+
+
 
 # Overview
 

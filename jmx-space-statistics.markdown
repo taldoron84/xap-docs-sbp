@@ -6,14 +6,11 @@ parent: production.html
 weight: 600
 ---
 
-{{% tip %}}
-**Summary:**  JMX Space Statistics Agent <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 6.6<br/>
-**Contents:**<br/>
 
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 6.6 | Feb 2008|    |    |
 
-{{% /tip %}}
 
 # Overview
 

@@ -6,13 +6,12 @@ parent: data-access-patterns.html
 weight: 1550
 ---
 
-{{% ssummary %}}How to model application data for in-memory data grid{{% /ssummary %}}
 
-{{% tip %}}
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 9.7<br/>
-**Last Update:** March 2015<br/>
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 9.7 | March 2015|    |    |
+
+
 
 # Moving from Centralized to Distributed Data Model
 

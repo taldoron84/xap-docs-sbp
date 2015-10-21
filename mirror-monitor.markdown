@@ -6,15 +6,13 @@ parent: production.html
 weight: 700
 ---
 
-{{% tip %}}
-**Summary:**  Mirror Service Monitoring Utility <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 7.1<br/>
-**Last Update:** April 2010<br/>
-**Contents:**<br/>
 
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 7.1 | April 2010|    |    |
+
+
 
 # Overview
 The Mirror Service is an essential component when persisting your data into the enterprise database. The [Mirror Service]({{%latestjavaurl%}}/asynchronous-persistency-with-the-mirror.html) delegates the IMDG activities into the database in a reliable asynchronous manner, allowing the application to access the data stored in-memory without having the database as part of the critical path of the transaction. When using the Mirror Service, the database performance and availability would not impact the application response time.

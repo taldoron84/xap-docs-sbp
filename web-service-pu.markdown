@@ -6,12 +6,13 @@ parent: data-access-patterns.html
 weight: 1800
 ---
 
-{{% ssummary page %}}Web Service Processing Unit{{% /ssummary %}}
-{{% tip %}}
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.<br/>
-**Last Update:** May 2011<br/>
-{{% /tip %}}
+
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0 | March 2011|    |    |
+
+
 
 # Overview
 This example illustrates a simple web service packaged as a WAR using [Apache CXF](http://cxf.apache.org) 2.4. Web service is also interacting with a space and performing read and write operations on behalf of the client.

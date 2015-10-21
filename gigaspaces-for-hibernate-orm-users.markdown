@@ -6,13 +6,12 @@ parent: data-access-patterns.html
 weight: 2000
 ---
 
-{{%ssummary%}}{{%/ssummary%}}
 
-{{% tip %}}
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 9.6<br/>
-**Last Update:** Feb 2014<br/>
-{{% /tip %}}
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 9.6 | Feb 2014|    |    |
+
 
 
 
