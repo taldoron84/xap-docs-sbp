@@ -5,15 +5,12 @@ categories: SBP
 parent: solutions.html
 weight: 250
 ---
-{{% ssummary page %}} {{% /ssummary %}}
 
-{{% tip %}}
-**Summary:**  This pattern presents the HTTP Session sharing blueprint for IIS servers and .NET apps <br/>
-**Author**: Ronnie Guha<br/>
-**Recently tested with GigaSpaces version**: XAP.NET 9.7.0 x86<br/>
-**Last Update:** May 2014<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Ronnie Guha| 9.7.0 | May 2014|    |    |
 
-{{% /tip %}}
+
 
 
 # XAP.NET ASP.NET Session State Store

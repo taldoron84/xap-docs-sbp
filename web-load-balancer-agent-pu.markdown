@@ -6,16 +6,11 @@ parent: production.html
 weight: 1600
 ---
 
-{{% ssummary page %}}This best practice illustrates creating a Web Load Balancer Agent as a processing unit{{% /ssummary %}}
-
-{{% tip %}}
-**Author:** Jeroen Remmerswaal, Tricode<br/>
-**Recently tested with GigaSpaces version**: XAP 7.1.1<br/>
-**Last Update:** November 2010<br/>
-**Contents:**<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Jeroen Remmerswaal| 7.1.1 | November 2010|    |    |
 
 
-{{% /tip %}}
 
 # Overview
 

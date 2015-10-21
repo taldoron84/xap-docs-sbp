@@ -6,15 +6,13 @@ parent: solutions.html
 weight: 500
 ---
 
-{{% ssummary page %}} {{% /ssummary %}}
-{{% tip %}}
-**Summary:**  Trading Settlement Demo. <br/>
-**Authors**: Shay Hassidim, Deputy CTO, GigaSpaces; Norm Leitman, Sales Engineer, GigaSpaces; Shravan (Sean) Kumar, Solutions Architect, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.4<br/>
-**Last Update:** Nov 2011<br/>
 
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0.4 | Nov 2011|    |    |
+
+
 
 # Overview
 This is a demo of a trading settlement system.  Settlement occurs after a trade, and involves the delivery of securities for payment between one party and another.  Because the demo operates in real-time, it can be expanded to provide risk management or be integrated with a rules engine for complex event processing (CEP).

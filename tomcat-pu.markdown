@@ -6,13 +6,11 @@ weight: 1800
 parent: production.html
 ---
 
-{{% ssummary %}}This article presents embedding Tomcat 7 within the XAP data grid{{% /ssummary %}}
 
- {{% tip %}}
- **Author**:Ali Hodroj, Director of Solution Architecture, GigaSpaces<br/>
- **Recently tested with GigaSpaces version**: XAP 9.6<br/>
- **Last Update:** Feb 2014<br/>
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Ali Hodroj| 9.6 | Feb 2014|    |    |
+
 
 
 

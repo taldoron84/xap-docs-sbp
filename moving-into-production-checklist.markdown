@@ -7,17 +7,14 @@ weight: 800
 ---
 
 
-{{% ssummary %}}{{% /ssummary %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 10.0 | April 2014|    |    |
 
+# Overview
 
-{{% tip %}}
-**Summary:** The following list should provide you with the main activities to be done prior moving your system into production. Reviewing this list and executing the relevant recommendations should result in a stable environment with a low probability of unexpected behavior or failures that are result of a GigaSpaces XAP environment misconfiguration.
-<br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces XAP version**: XAP 10.0<br/>
-**Last Update:** April 2014<br/>
+The following list should provide you with the main activities to be done prior moving your system into production. Reviewing this list and executing the relevant recommendations should result in a stable environment with a low probability of unexpected behavior or failures that are result of a GigaSpaces XAP environment misconfiguration.
 
-{{% /tip %}}
 
 In general, XAP runs on every OS supporting the JVM technology (Windows, Linux, Solaris, AIX, HP, etc). See below tuning and configuration recommendations that most of the applications running on GigaSpaces XAP might need.
 

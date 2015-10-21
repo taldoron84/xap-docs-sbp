@@ -7,17 +7,12 @@ weight: 300
 ---
 
 
-{{% ssummary page %}} {{% /ssummary %}}
-
-{{% tip %}}
-**Summary:**  Mainframe (Z/OS) based systems integration with GigaSpaces. <br/>
-**Authors**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 9<br/>
-**Creation Update:** Dec 2011<br/>
-**Last Update:** Sep 2013<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 9.0 | Dec 2011|    |    |
 
 
-{{% /tip %}}
+
 
 # Overview
 Mainframe (Z/OS) based systems running COBOL programs , DB2 or VSAM are legacy systems in many organizations. These are planned to be replaced with low cost commodity servers running Java or .Net based systems, saving the cost of the expensive mainframe MIPS and COBOL-based development.

@@ -6,15 +6,17 @@ parent: production.html
 weight: 1200
 ---
 
-{{% ssummary page %}}This best practice illustrates an approach that can be used to perform a clean shutdown mechanism by waiting for all asynchronous persistence to finish before killing Grid Service Containers.{{% /ssummary %}}
 
 
-{{% tip %}}
-**Author**: Ali Hodroj, Senior Solutions Architect, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 9.6.0<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Ali Hodroj| 9.6 | July 2013|    |    |
+
+# Overview
+
+This best practice illustrates an approach that can be used to perform a clean shutdown mechanism by waiting for all asynchronous persistence to finish before killing Grid Service Containers.
 
 
-{{% /tip %}}
 
 # Problem
 Shutting down an entire cluster in GigaSpaces XAP is usually done through the "gsa shutdown" command in the [gsa - GigaSpaces CLI]({{%latestadmurl%}}/command-line-interface.html#gsa). However, in cases of a space asynchronously replicating to a persistent store ([Asynchronous Persistency with the Mirror]({{%latestjavaurl%}}/asynchronous-persistency-with-the-mirror.html)) or a remote grid ([Multi-Site Replication over the WAN]({{%latestjavaurl%}}/multi-site-replication-over-the-wan.html)), the gsa shutdown workflow does not wait for replication redo logs to completely flush before killing the child GSC processes. Since replication redo logs are almost always stored in memory, this could lead to a situation where pending space changes do not make it to an external data store or cluster.

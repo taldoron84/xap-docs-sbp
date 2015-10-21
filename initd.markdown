@@ -7,13 +7,11 @@ parent: production.html
 ---
 
 
-{{% ssummary page %}}{{%/ssummary %}}
-{{% tip %}}
-**Summary**: This pattern explains how to manage XAP with init.d.  <br>
-**Author**:Patrick May<br/>
-**Recently tested with GigaSpaces version**: XAP 10.0<br/>
-**Last Update:** Sept 2014<br/>
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Patrick May| 10.0 | Sept 2014|    |    |
+
+
 
 
 # Introduction
@@ -32,10 +30,10 @@ This basic set of features can manage a simple   XAP configuration. More complex
 A typical init.d script follows this pattern:
 
 
-``java
+```console
 #!/bin/sh
 
-`# Script description`
+# Script description
 
 
 start(){
@@ -59,4 +57,4 @@ case "$1" in start)
      stop
      start
    
-``
+```

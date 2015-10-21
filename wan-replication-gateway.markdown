@@ -6,15 +6,11 @@ categories: SBP
 weight: 100
 ---
 
-{{% ssummary page %}}WAN Multi-Master replication example{{% /ssummary %}}
 
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0.3| April 2013|    |    |
 
-{{% tip %}}
-**Author**: Shay Hassidim, Deputy CTO GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.3<br/>
-
-
-{{% /tip %}}
 
 # Overview
 

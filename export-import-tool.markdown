@@ -6,13 +6,12 @@ parent: solutions.html
 weight: 50
 ---
 
-{{% ssummary %}}XAP IMDG Exporting-Importing Data Tool{{% /ssummary %}}
 
-{{% tip %}}
- **Author**:Shay Hasidim, John Burke, Christos Erototcritou, Pavlo Romanenko<br/>
- **Recently tested with GigaSpaces version**: XAP 10.1.1<br/>
- **Last Update:** July 2015<br/>
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hasidim, John Burke<br>Christos Erototcritou, Pavlo Romanenko| 10.1.1 | July 2015|    |    |
+
+
 
 # Introduction
 

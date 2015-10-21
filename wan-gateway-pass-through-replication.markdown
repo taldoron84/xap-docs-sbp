@@ -6,14 +6,9 @@ parent: wan-based-deployment.html
 weight: 300
 ---
 
-{{% ssummary page %}}WAN Pass Through replication example{{% /ssummary %}}
-
-{{% tip %}}
-**Author**: Ali Hodroj, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.7<br/>
-
-
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Ali Hodroj| 8.0.7 | July 2013|    |    |
 
 # Overview
 

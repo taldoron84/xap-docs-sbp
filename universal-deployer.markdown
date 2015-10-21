@@ -6,16 +6,11 @@ parent: production.html
 weight: 1500
 ---
 
-{{% ssummary page %}} {{% /ssummary %}}
 
-{{% tip %}}
-**Summary:**  GigaSpaces Universal Deployer tool. Allows deploying composite applications without any coding. <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.1<br/>
-**Last Update:** April 2011<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0.1 | April 2011|    |    |
 
-
-{{% /tip %}}
 
 # Overview
 The GigaSpaces Universal Deployer (GUD) allows deploying the different supported processing units ([Space PU]({{%latestjavaurl%}}/the-processing-unit-overview.html), [Regular PU]({{%latestjavaurl%}}/the-processing-unit-structure-and-configuration.html), [Elastic PU]({{%latestjavaurl%}}/elastic-processing-unit.html), [memCache PU]({{%latestjavaurl%}}/memcached-api.html) or [Web PU]({{%latestjavaurl%}}/web-processing-unit-container.html) via a simple configuration file. The GUD support dependency based deployment allowing multiple processing units to be deployed as one atomic process (e.g. composite application).

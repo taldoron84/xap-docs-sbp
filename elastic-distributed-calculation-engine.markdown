@@ -8,17 +8,11 @@ weight: 100
 
 
 
-{{% ssummary %}} {{% /ssummary %}}
-
-{{% tip %}}
-**Summary:**  Elastic Distributed Calculation Engine implementation using Map-Reduce approach. <br/>
-**Author**: Shay Hassidim, Deputy CTO, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP 8.0.3<br/>
-**Last Update:** Sep 2011<br/>
-**Contents:**<br/>
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Shay Hassidim| 8.0.3 | Sep 2011|    |    |
 
 
-{{% /tip %}}
 
 # Overview
 

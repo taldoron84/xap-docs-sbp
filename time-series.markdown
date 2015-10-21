@@ -6,13 +6,12 @@ parent: solutions.html
 weight: 600
 ---
 
-{{% ssummary page %}} {{% /ssummary %}}
- {{% tip %}}
- **Author**:  Allen Terleto<br/>
- **Recently tested with GigaSpaces version**: XAP 9.7<br/>
- **Last Update:** March 2014<br/>
 
-{{% /tip %}}
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| Allen Terleto| 9.7| March 2014|    |    |
+
 
 # Overview
 

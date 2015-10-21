@@ -6,16 +6,12 @@ parent: production.html
 weight: 1700
 ---
 
-{{% ssummary page %}} {{% /ssummary %}}
-{{% tip %}}
-**Summary:**  Recipes For XAP Cloud Deployment <br/>
- *Author*: DeWayne Filppi, Director of Solution Architecture, GigaSpaces<br/>
- *Recently tested with GigaSpaces version*: XAP 9.6.0<br/>
- *Last Update:* Nov 2013 <br/>
- *Contents:*
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+| DeWayne Filppi| 9.6.0 | November 2013|    |    |
 
 
-{{% /tip %}}
 
 
 # Overview
