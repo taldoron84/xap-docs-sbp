@@ -61,9 +61,9 @@ With the above scenario requests 1, 3 and 4 should be processed as one atomic op
 		4. Transaction is committed.
 		5. Other groups are processes in-parallel by other polling containers.
 
-{{% indent %}}
+{{% align center %}}
 ![uow_1.jpg](/attachment_files/sbp/uow_1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 # UOW Example
 
@@ -78,15 +78,15 @@ You can [download](/attachment_files/sbp/uow.zip) eclipse project with example s
 {{%tab "  Running the UOWProcessor within your IDE "%}}
 You can run the UOW Data-Grid with the collocated `UOWProcessor` within your IDE using the following configuration:
 
-{{% indent %}}
+{{% align center %}}
 ![uow_3.jpg](/attachment_files/sbp/uow_3.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 Here is a configuration for a UOW Data-Grid with 2 partitions:
 
-{{% indent %}}
+{{% align center %}}
 ![uow_2.jpg](/attachment_files/sbp/uow_2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 
@@ -114,9 +114,9 @@ This will deploy the UOW Data-Grid with 2 partitions and a backup.
 {{%tab "  Running the UOWFeeder "%}}
 You can run the `UOWFeeder` within your IDE using the following configuration:
 
-{{% indent %}}
+{{% align center %}}
 ![uow_4.jpg](/attachment_files/sbp/uow_4.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 or using the following:
 

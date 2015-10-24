@@ -6,14 +6,12 @@ parent: excel-that-scales-solution.html
 weight: 500
 ---
 
-{{% tip %}}
-**Summary:**  This example shows the usage of Microsoft Excel spreadsheets and GigaSpaces XAP for working with stock market data. It also demonstrates the building of Excel RTD and UDF components in C# .NET. <br/>
-**Author**: Pini Cohen, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP.NET 6.6<br/>
-**Contents:**<br/>
+
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Pini Cohen| 6.6 |   |           |          |
 
 
-{{% /tip %}}
 
 # Overview
 
@@ -52,21 +50,21 @@ The .NET files are created in the `<Example Root>\Release` directory.
 1. In Excel, go to **Tools** > **add ins** > **automation**.
 2. Scroll down to **GigaSpaces.Examples.ExcelStocks.Operations.StockOperations**, select it and click **OK**.
 
-{{% indent %}}
+{{% align center %}}
 ![automation.jpg](/attachment_files/sbp/automation.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 3. You might get a dialog at this point about mscoree.dll. Click No to this dialog (Yes will delete the add-in from the list).
 
-{{% indent %}}
+{{% align center %}}
 ![mscoree_dll.jpg](/attachment_files/sbp/mscoree_dll.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 4. Click **OK** in the Add-ins dialog.
 
-{{% indent %}}
+{{% align center %}}
 ![add-ins.jpg](/attachment_files/sbp/add-ins.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 ## Opening .NET Solution with Microsoft Visual Studio
 

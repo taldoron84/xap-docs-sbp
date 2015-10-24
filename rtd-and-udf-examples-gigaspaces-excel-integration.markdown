@@ -6,14 +6,13 @@ parent: excel-that-scales-solution.html
 weight: 700
 ---
 
-{{% tip %}}
-**Summary:**  Basic and advanced code examples for using RTD and UDF with the GigaSpaces-Excel integration. <br/>
-**Author**: Pini Cohen, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP.NET 6.6<br/>
-**Contents:**<br/>
 
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Pini Cohen| 6.6 |   |           |          |
+
+
 
 # Overview
 

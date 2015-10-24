@@ -17,9 +17,9 @@ weight: 500
 # Overview
 The [Master-Worker Pattern](http://books.google.com/books?id=9cV3TbahjW0C&pg=PA153&lpg=PA153&dq=JavaSpaces+Master-Worker+Pattern&source=bl&ots=1l_DQmEGNl&sig=IU2UTbG-xytamrby2r5yaJLnAkk&hl=en&ei=lm6RSo-dGJXjlAeYqOWjDA&sa=X&oi=book_result&ct=result&resnum=1#v=onepage&q=JavaSpaces%20Master-Worker%20Pattern&f=false) (sometimes called the Master-Slave or the Map-Reduce pattern) is used for parallel processing. It follows a simple approach that allows applications to perform simultaneous processing across multiple machines or processes via a `Master` and multiple `Workers`.
 
-{{% indent %}}
+{{% align center %}}
 ![the_master_worker.jpg](/attachment_files/sbp/the_master_worker.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 In GigaSpaces XAP, you can implement the Master-Worker pattern using several methods:
 
@@ -53,9 +53,9 @@ With the Random Workers approach, each worker can consume `Request` objects from
 
 Step 1:
 
-{{% indent %}}
+{{% align center %}}
 ![master_worker_rr1.jpg](/attachment_files/sbp/master_worker_rr1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /column %}}
 
@@ -63,9 +63,9 @@ Step 1:
 
 Step 2:
 
-{{% indent %}}
+{{% align center %}}
 ![master_worker_rr2.jpg](/attachment_files/sbp/master_worker_rr2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /column %}}
 
@@ -294,9 +294,9 @@ With this approach, each new worker is assigned a specific ID and consumes `Requ
 
 Step 1:
 
-{{% indent %}}
+{{% align center %}}
 ![master_worker_de1.jpg](/attachment_files/sbp/master_worker_de1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /column %}}
 
@@ -304,9 +304,9 @@ Step 1:
 
 Step 2:
 
-{{% indent %}}
+{{% align center %}}
 ![master_worker_de2.jpg](/attachment_files/sbp/master_worker_de2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /column %}}
 

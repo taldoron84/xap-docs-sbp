@@ -37,29 +37,29 @@ A Space is identified by its name, and is comprised of one or more Space instanc
 
 - `sync_replicated` - defines a replicated cluster with synchronous replication between Space instances.
 
-{{% indent %}}
+{{% align center %}}
 ![sync_rep_space.jpg](/attachment_files/sync_rep_space.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 - `async_replicated` - defines a replicated cluster with asynchronous replication between Space instances.
 
-{{% indent %}}
+{{% align center %}}
 ![async_rep_space.jpg](/attachment_files/async_rep_space.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 - `partitioned-sync2backup` - defines a partitioned cluster with zero or more backups for each partition. Replication between primaries and backups is synchronous.
 Examples:
 A partitioned cluster with zero backups:
 
-{{% indent %}}
+{{% align center %}}
 ![part_space.jpg](/attachment_files/part_space.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 A partitioned cluster with one primary and one backup for each partition:
 
-{{% indent %}}
+{{% align center %}}
 ![part_backup_space.jpg](/attachment_files/part_backup_space.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% refer %}}
 For details about scaling a running space cluster **in runtime** see the [Elastic Processing Unit]({{%latestjavaurl%}}/elastic-processing-unit.html) section.
@@ -99,30 +99,30 @@ After starting the appropriate amount of GSCs and GSMs in your cluster (note tha
 {{%tabs%}}
 {{%tab "  Sync-Replicated "%}}
 
-{{% indent %}}
+{{% align center %}}
 ![deploy_wiz_sync_rep.jpg](/attachment_files/deploy_wiz_sync_rep.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 {{%tab "  A-Sync-Replicated "%}}
 
-{{% indent %}}
+{{% align center %}}
 ![deploy_wiz_async_rep.jpg](/attachment_files/deploy_wiz_async_rep.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 {{%tab "  Partitioned without backups "%}}
 
-{{% indent %}}
+{{% align center %}}
 ![deploy_wiz_part.jpg](/attachment_files/deploy_wiz_part.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 {{%tab "  Partitioned with one backup "%}}
 
-{{% indent %}}
+{{% align center %}}
 ![deploy_wiz_part_back.jpg](/attachment_files/deploy_wiz_part_back.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 {{% /tabs %}}
@@ -516,9 +516,9 @@ Person[] multipleResults2 = gigaSpace.takeMultiple(query, 50);
 
 The `GigaSpace.change` operation allows you to change a specific content of an existing object(s) in the space. Unlike the write operation that may update an existing object, the `change` operation does not require reading the object and later sending its updated copy with the operation back to the space.
 
-{{% indent %}}
+{{% align center %}}
 ![changeAPI.jpg](/attachment_files/changeAPI.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 Unlike the write operation `PARTIAL_UPDATE` modifier, you may use the `change` operation to update a specific field value without retrieving its prior value. This is very helpful when incrementing or decrementing a numeric field, updating value of nested field or adding an item to a collection field without having to send the entire updated collection to the space.
 

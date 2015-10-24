@@ -119,7 +119,7 @@ Edit your SessionFactory Setup. This is the section inside your Spring Applicati
 
 **Add or modify** the following properties under `<property name="hibernateProperties">`:
 
-{{% indent %}}
+{{% align center %}}
 &bull;&nbsp; Set `hibernate.cache.provider_class` to `org.openspaces.hibernate.cache.SimpleMapCacheProvider`:
 
 
@@ -141,7 +141,7 @@ Edit your SessionFactory Setup. This is the section inside your Spring Applicati
 ```xml
 <prop key="gigaspace.hibernate.cache.url">/./dataGrid</prop>
 ```
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 {{%tab "  Direct Configuration hibernate.properties "%}}
@@ -149,7 +149,7 @@ Edit your SessionFactory Setup. This is the section inside your Spring Applicati
 
 Edit your `hibernate.properties` file. **Add or modify** the following properties in the Second-Level Cache section:
 
-{{% indent %}}
+{{% align center %}}
 &bull;&nbsp; Set `hibernate.cache.provider_class` to `org.openspaces.hibernate.cache.SimpleMapCacheProvider`:
 
     hibernate.cache.provider_class org.openspaces.hibernate.cache.SimpleMapCacheProvider
@@ -162,14 +162,14 @@ Edit your `hibernate.properties` file. **Add or modify** the following propertie
 
     gigaspace.hibernate.cache.url /./dataGrid
 
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 {{%tab "  Direct Configuration hibernate.cfg.xml "%}}
 **Direct Configuration (hibernate.cfg.xml)**
 Edit your `hibernate.cfg.xml` file. **Add or modify** the following properties under `<session-factory>`:
 
-{{% indent %}}
+{{% align center %}}
 &bull;&nbsp; Set `hibernate.cache.provider_class` to `org.openspaces.hibernate.cache.SimpleMapCacheProvider`:
 
 
@@ -191,7 +191,7 @@ Edit your `hibernate.cfg.xml` file. **Add or modify** the following properties u
 ```xml
 <property name="gigaspace.hibernate.cache.url">/./dataGrid</property>
 ```
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 {{% /tabs %}}
@@ -235,9 +235,9 @@ You must include the following JARs from the Hibernate distribution package:
 
 In this topology each application accessing a remote cache.
 
-{{% indent 2 %}}
+{{% align center 2 %}}
 ![HB Remote GS.jpg](/attachment_files/HB Remote GS.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 **To use the remote cache topology:**
 
@@ -261,9 +261,9 @@ Wait to see the following output:
 **Master-Local Cache Topology**
 In this topology each application has a lightweight, embedded cache, which is initially empty. The first time data is read, it is loaded from a master cache to the local cache (lazy load); the next time the same data is read, it is loaded quickly from the local cache. Later on data is either updated from the master or evicted from the cache.
 
-{{% indent 2 %}}
+{{% align center 2 %}}
 ![HB for community.jpg](/attachment_files/HB for community.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 **To use the master-local topology:**
 
@@ -292,9 +292,9 @@ In this topology, data is split between two spaces (partitions) according to an 
 This topology requires XAP Premium Edition.
 {{%/info%}}
 
-{{% indent 2 %}}
+{{% align center 2 %}}
 ![HB Master Local Partitioned GS.jpg](/attachment_files/HB Master Local Partitioned GS.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 **To use the master-local partitioned topology with two partitions:**
 
@@ -328,9 +328,9 @@ This topology consists of two or more space instances with replication between t
 This topology requires XAP Premium Edition.
 {{%/info%}}
 
-{{% indent 2 %}}
+{{% align center 2 %}}
 ![Hibernate with 2 emedded replicated.jpg](/attachment_files/hibernate-with-2-embedded-replicated.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 **To use the embedded replicated topology with two replicated instances:**
 

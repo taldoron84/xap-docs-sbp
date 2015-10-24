@@ -33,9 +33,9 @@ Here are the example components:
 - An Approver Service consuming state=1 objects and moving these into state=2
 - A Monitor Service used to Scale Up and Down the Verifier Service in a Dynamic Manner.
 
-{{% indent %}}
+{{% align center %}}
 ![mule_example_flow1.jpg](/attachment_files/sbp/mule_example_flow1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 The example using the polling container as the inbound-endpoint with each Service and a space connector as the outbound-endpoint where a state field within the [Data](#The Space Data Class) object acts as the workflow "Queue".
 
@@ -320,13 +320,13 @@ with mule 3.5 you can deploy from you project with the cmd:
 
 Once the different processing will be deployed you should have the following displayed as part of the GS-UI:
 
-{{% indent %}}
+{{% align center %}}
 ![mule_deploy.jpg](/attachment_files/sbp/mule_deploy.jpg)
-{{% /indent %}}
+{{% /align %}}
 
-{{% indent %}}
+{{% align center %}}
 ![mule_grid.jpg](/attachment_files/sbp/mule_grid.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 
 You may check the statistics you review the Write and Take operations called by the different Services when interacting with the Data-Grid.
@@ -334,16 +334,16 @@ You may check the statistics you review the Write and Take operations called by 
 # Scale Manually
 You may have multiple instances of each service running. Running multiple instances of the Feeder service will push more Data objects into the Space. Running multiple services of the Approver or Verifier will consume relevant objects faster.
 
-{{% indent %}}
+{{% align center %}}
 ![mule_example_flow2.jpg](/attachment_files/sbp/mule_example_flow2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 In order to increase the amount of the deployed services (Feeder, Approver or Verifier) , select the relevant processing unit and click the Increase button. See example below:
 
 
-{{% indent %}}
+{{% align center %}}
 ![mule_scale_manual.jpg](/attachment_files/sbp/mule_scale_manual.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 A new instance of the relevant service will be created at of the existing running GSCs.
 
@@ -393,9 +393,9 @@ To see how the Verifier Service scale up, deploy the Feeder with 2 instances:
 
 The Monitor Service will increment the amount of verifier instances when there will be 50 ,100, 150 and 200 Data objects with `state=0` within the IMDG.
 
-{{% indent %}}
+{{% align center %}}
 ![mule_scale_u.jpg](/attachment_files/sbp/mule_scale_u.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 You can Query the IMDG via the Query view for Data objects with `state=0` using the following Query:
 
@@ -413,9 +413,9 @@ To scale Down the verifier Service undeploy the Feeder PU.
 
 The Monitor Service will decrement the amount of verifier instances when there will be 50 ,40 30 and 20 Data objects with `state=0` within the IMDG.
 
-{{% indent %}}
+{{% align center %}}
 ![mule_scale_d.jpg](/attachment_files/sbp/mule_scale_d.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 # Transaction Support
 You may add [transaction support]({{%latestjavaurl%}}/mule-event-container-transport.html#Transaction+Support) to the Mule Service by adding the `distributed-tx-manager` and the `tx-support` tags. Since we are using a clustered space we will be using the [Distributed Jini Transaction Manager|XAP8:Transaction Management#Distributed Jini Transaction Manager].

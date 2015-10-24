@@ -27,9 +27,9 @@ In both cases, the business logic will be invoked with a collocated space.
 1. Download the [example](/attachment_files/sbp/ExecutorExample.zip) and extract the zip file. Open your IDE and import the project files.
 2. Set the project libraries to have the correct GigaSpaces libraries location. Make sure your project libraries list will include all the libraries located at `gigaspaces-xap\lib\required`.
 
-{{% indent %}}
+{{% align center %}}
 ![project_libraries.jpg](/attachment_files/sbp/project_libraries.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 # Executors Task Example
 
@@ -236,9 +236,9 @@ Log file: C:\gigaspaces-xap-premium-7.1.2-ga\logs\2010-12-17~14.14-gigaspaces-se
 
 You can view the space operations statistics by running the `\gigaspaces-xap\bin\gs-ui`:
 
-{{% indent %}}
+{{% align center %}}
 ![exe_example_stats.jpg](/attachment_files/sbp/exe_example_stats.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 
 # Service Executors Example
@@ -485,7 +485,7 @@ Log file: C:\gigaspaces-xap-premium-7.1.2-ga\logs\2010-12-17~14.12-gigaspaces-se
 
 You can view the space operations statistics by running the `\gigaspaces-xap\bin\gs-ui`:
 
-{{% indent %}}
+{{% align center %}}
 ![exe_example_stats.jpg](/attachment_files/sbp/exe_example_stats.jpg)
-{{% /indent %}}
+{{% /align %}}
 

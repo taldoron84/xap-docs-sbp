@@ -6,15 +6,6 @@ parent: excel-that-scales-solution.html
 weight: 300
 ---
 
-{{% tip %}}
-**Summary:**  The Excel space viewer allows you to create customized views of data for spaces running in your network. <br/>
-**Author**: Pini Cohen, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: GigaSpaces 6.5 GA (build 2352)<br/>
-**Contents:**<br/>
-
-
-{{% /tip %}}
-
 
 
 # Overview
@@ -42,9 +33,9 @@ The Space Viewer toolbar includes the following options:
 - **[Configure View](#Changing Existing View)** -- allows you to edit and customize existing views
 - **Refresh results** -- refreshes the view or views with updated data
 
-{{% indent %}}
+{{% align center %}}
 ![Toolbar3.jpg](/attachment_files/sbp/Toolbar3.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 ## Creating New View
 
@@ -56,9 +47,9 @@ The **Create View** option allows you to create a view of space data inside your
 - The **Undisplayable Columns** area lists fields that belong to this class, but can't be displayed in Excel (usually user-defined fields).
 - The **Selected Columns** area displays the fields you choose to display in this view. Use the arrow buttons (for example: ![arrowExcel.jpg](/attachment_files/sbp/arrowExcel.jpg)) to move columns back and forth. The buttons with two arrows (for example: ) move all of the columns from one area to the other. The up and down arrows on the right (for example: ![excelUpArrow.jpg](/attachment_files/sbp/arrowExcel.jpg)) to move columns back and forth. The buttons with two arrows (for example: ) move all of the columns from one area to the other. The up and down arrows on the right (for example: ![excelUpArrow.jpg](/attachment_files/sbp/arrowExcel.jpg)) allow you to organize the fields in the order in which they will appear in the final view.
 
-{{% indent %}}
+{{% align center %}}
 ![ConfigureView2.jpg](/attachment_files/sbp/ConfigureView2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 - It is possible to connect to any running space in your network.
 To connect to a space:
@@ -68,9 +59,9 @@ To connect to a space:
 ```java
         <protocol>://<host name>:<port>/<container name>/<space name>?<properties>
 ```
-    {{% indent %}}
+    {{% align center %}}
     ![Connect1.jpg](/attachment_files/sbp/Connect1.jpg)
-    {{% /indent %}}
+    {{% /align %}}
 
 - The **Customize the Selection** button opens the [Customize the Selection](#Customize the Selection) window.
 
@@ -83,9 +74,9 @@ To create a new view:
 4. If you want to narrow your view to more specific results (by querying your class fields), click the **Customize the Selection** button (see [**Customize the Selection**](#Customize the Selection)).
 {{<infosign>}} This step is optional. If you want to generate the view with all the existing entries of the selected type in the space, proceed to the next step.
     1. On the left side of the Customize the Selection window, click the class field you want to query. (For example, the **Age** field is selected below.)
-    {{% indent %}}
+    {{% align center %}}
     ![CustomizeTheSelection1.jpg](/attachment_files/sbp/CustomizeTheSelection1.jpg)
-    {{% /indent %}}
+    {{% /align %}}
     2. The selected field appears on the right, under **WHERE**. You can now select the desired expression and value, and choose to sort your results in an ascending or descending manner.
     3. When you've finished selecting, press **Save**.
     4. Your query syntax is shown in the **SQL** area. Under the **SQL** box, the number of instances (the query's result) is displayed.
@@ -116,9 +107,9 @@ Pressing **Save** saves the query for this field.
 
 The **SQL** area at the bottom displays the query syntax in SQL. After pressing **Save** on the right, the number of instances found as a result of this query is displayed under the **SQL** area (this is also the number of rows that will appear in this column). You can refresh this result using the refresh button ( ![ExcelRefresh.jpg](/attachment_files/sbp/ExcelRefresh.jpg)).
 
-{{% indent %}}
+{{% align center %}}
 ![CustomizeTheSelection1.jpg](/attachment_files/sbp/CustomizeTheSelection1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 ## Changing Existing View
 
@@ -158,24 +149,24 @@ The Excel Space Viewer has been tested with the following editions of Microsoft 
 
 3. The Excel Space Viewer Setup Wizard is displayed:
 
-{{% indent %}}
+{{% align center %}}
 ![ExcelSpaceViewer_setup_1.jpg](/attachment_files/sbp/ExcelSpaceViewer_setup_1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 4. In the Select Installation Folder window, browse to the desired installation folder. Choose whether you want the Excel Space Viewer to be used by you only, or by other users:
 
-{{% indent %}}
+{{% align center %}}
 ![ExcelSpaceViewer_setup_2.jpg](/attachment_files/sbp/ExcelSpaceViewer_setup_2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 5. In the Confirm Installation window, click **Next**.
 6. Wait for the installation to complete and click **Next**, then click **Close**.
 7. Open Excel.
 8. A new toolbar appears in the top left:
 
-{{% indent %}}
+{{% align center %}}
 ![Toolbar4.jpg](/attachment_files/sbp/Toolbar4.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 # Troubleshooting
 

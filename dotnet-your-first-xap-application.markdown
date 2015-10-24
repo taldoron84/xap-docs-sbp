@@ -323,9 +323,9 @@ Since the spaces are running inside the `DataProcessor`, the `DataProcessor` sho
 
 |**Step 1.** In the Management Center, click on the tab named Deployments, Details, and then click the **Deploy new application** button| ![deploy button.jpg](/attachment_files/dotnet/deploy button.jpg).|
 
-{{% indent %}}
+{{% align center %}}
 ![deploy picture.jpg](/attachment_files/dotnet/deploy picture.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 **Step 2.** Now, all you need to do is type the name of the Processing Unit (identical to the name of the folder that is now in the `deploy` directory) in the `Processing Unit Name` field. Since there's an existing sla.xml with specific cluster topology, there's no need to specify the cluster topology at deploy time.
 

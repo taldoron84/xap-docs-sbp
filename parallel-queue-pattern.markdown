@@ -20,9 +20,9 @@ Such a requirement would be relevant with algorithmic trading engines , Order Ma
 
 GigaSpaces introduce the ability to partition data in memory across multiple data-grid partitions. This provides the ability to scale the system, but it does not ensure fast data processing in the correct order. You should add another component that allows the system to "slice" each partition into virtual queues or several buckets. The polling container consuming data in a FIFO manner is the missing required component.
 
-{{% indent %}}
+{{% align center %}}
 ![par_q2.jpg](/attachment_files/sbp/par_q2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 Having multiple polling containers running collocated with each partition allows us to scale at the partition level, forming set of "virtual queues", that consume data pushed into the partition in a parallel manner, but also in the correct order. The amount of polling containers will be usually the **number of machine cores**. This will optimize the ability to use the machine CPUs in the most efficient manner.
 
@@ -30,9 +30,9 @@ With our example we will simulate a simple Order Management processing system wh
 
 Here is an example for the latency duration for the Order request processing time:
 
-{{% indent %}}
+{{% align center %}}
 ![par_q1.jpg](/attachment_files/sbp/par_q1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 The above results retrieved when running the Data-Grid with 4 partitions with a backup.
 
@@ -68,24 +68,24 @@ The `bucketId` is calculated using the following formula:
 {{%tab "  Running the Order Processor "%}}
 You can run the Data-Grid with the collocated Order Processor within your IDE using the following configuration:
 
-{{% indent %}}
+{{% align center %}}
 ![par_q4.jpg](/attachment_files/sbp/par_q4.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 Here is a configuration for a data-grid with 2 partitions that will be running the polling containers:
 
-{{% indent %}}
+{{% align center %}}
 ![par_q5.jpg](/attachment_files/sbp/par_q5.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 
 {{%tab "  Running the Feeder "%}}
 You can run the Feeder within your IDE using the following configuration:
 
-{{% indent %}}
+{{% align center %}}
 ![par_q3.jpg](/attachment_files/sbp/par_q3.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /tab %}}
 

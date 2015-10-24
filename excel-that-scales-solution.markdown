@@ -6,14 +6,13 @@ parent: data-access-patterns.html
 weight: 500
 ---
 
-{{% tip %}}
-**Summary:**  Available functionality, how to develop the integration components and how to configure, deploy and run the GigaSpaces-Excel solution. <br/>
-**Author**: Pini Cohen, GigaSpaces<br/>
-**Recently tested with GigaSpaces version**: XAP.NET 6.6<br/>
-**Contents:**<br/>
 
 
-{{% /tip %}}
+|Author|XAP Version|Last Updated | Reference | Download |
+|------|-----------|-------------|-----------|----------|
+|Pini Cohen| 6.6 |   |           |          |
+
+
 
 # Overview
 

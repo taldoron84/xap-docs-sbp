@@ -41,9 +41,9 @@ With the compact serialization pattern:
 - You serialize/de-serialize all indexed fields as usual (have the `writeExternal` , `readExternal` implementation to write and read these into the stream).
 - After reading the object from the space you should de-serialize the byte array data (unpack).
 
-{{% indent %}}
+{{% align center %}}
 ![bin_ser.jpg](/attachment_files/sbp/bin_ser.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 When the object is written to the space:
 

@@ -43,9 +43,9 @@ Here is the full query execution strategy:
     - Load data in order - first into the partition with the highest amount of free memory.
     - Optional - check with other partitions if they access the database to avoid concurrent database access.
 
-{{% indent %}}
+{{% align center %}}
 ![imdg_eviction_large_db.jpg](/attachment_files/sbp/imdg_eviction_large_db.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 ## Data Eviction Options
 Evicting data from the space can be done using the following options:

@@ -31,21 +31,21 @@ When deploying the processing unit, one of the following data colocation deploym
 
 - Pure business logic - the state is stored within another processing unit deployed separately. Multiple instances of the business logic can be deployed and scaled dynamically.
 
-{{% indent %}}
+{{% align center %}}
 ![pu_with_bean.gif](/attachment_files/sbp/pu_with_bean.gif)
-{{% /indent %}}
+{{% /align %}}
 
 - Space instance(s) - these are deployed using one of the built-in cluster topologies (replicated, partitioned or partitioned-replicated) or a custom topology.
 
-{{% indent %}}
+{{% align center %}}
 ![pu_with_space.gif](/attachment_files/sbp/pu_with_space.gif)
-{{% /indent %}}
+{{% /align %}}
 
 - Business logic and colocated space instance(s) - the business logic accesses only the colocated spaces or remote space instances running within another processing instance (or running as part of different processing unit). You can deploy these using any of the built-in cluster topologies.
 
-{{% indent %}}
+{{% align center %}}
 ![pu_with_space_and_bean.gif](/attachment_files/sbp/pu_with_space_and_bean.gif)
-{{% /indent %}}
+{{% /align %}}
 
 - Business logic with a local cache - this scenario is relevant for read-mostly cases, where some of the data is cached at the client side.
 
@@ -79,9 +79,9 @@ To solve this bottleneck, the processing unit allows you to **colocate** the bus
 
 Collocated Mode - The Task Executor-Step 1:
 
-{{% indent %}}
+{{% align center %}}
 ![DistributedTaskExecution_phase1.jpg](/attachment_files/sbp/DistributedTaskExecution_phase1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /column %}}
 
@@ -89,9 +89,9 @@ Collocated Mode - The Task Executor-Step 1:
 
 Collocated Mode - The Task Executor-Step 2:
 
-{{% indent %}}
+{{% align center %}}
 ![DistributedTaskExecution_phase2.jpg](/attachment_files/sbp/DistributedTaskExecution_phase2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /column %}}
 
@@ -108,9 +108,9 @@ In this case, it makes better sense to have the data and business logic running 
 
 Non-Collocated Mode - The Master Worker Pattern-Step 1:
 
-{{% indent %}}
+{{% align center %}}
 ![master_worker_rr1.jpg](/attachment_files/sbp/master_worker_rr1.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /column %}}
 
@@ -118,9 +118,9 @@ Non-Collocated Mode - The Master Worker Pattern-Step 1:
 
 Non-Collocated Mode - The Master Worker Pattern-Step 2:
 
-{{% indent %}}
+{{% align center %}}
 ![master_worker_rr2.jpg](/attachment_files/sbp/master_worker_rr2.jpg)
-{{% /indent %}}
+{{% /align %}}
 
 {{% /column %}}
 
