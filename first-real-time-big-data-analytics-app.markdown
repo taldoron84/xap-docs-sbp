@@ -62,7 +62,7 @@ The third challenge is the **efficient processing** of the data in a distributed
 
 
 {{% section %}}
-{{% column width="90%" %}}
+{{% column width="80%" %}}
 In our Twitter example, we need to build a flow that provides the **Map** / **Reduce** flow in real time. For this we use XAP's Processing and Messaging features collocated with its corresponding data.
 
 {{% /column %}}
