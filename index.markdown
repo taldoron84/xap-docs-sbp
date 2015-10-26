@@ -1,6 +1,6 @@
 ---
 type: post
-title:  Examples, Solutions, Patterns & Best Practices
+title:  Solutions, Patterns & Best Practices
 categories: SBP
 ---
 
