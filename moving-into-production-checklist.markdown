@@ -9,12 +9,11 @@ weight: 800
 
 |Author|XAP Version|Last Updated | Reference | Download |
 |------|-----------|-------------|-----------|----------|
-| Shay Hassidim| 10.0 | April 2014|    |    |
+|Shay Hassidim| 10.0 | April 2014  |           |          |
 
 # Overview
 
 The following list should provide you with the main activities to be done prior moving your system into production. Reviewing this list and executing the relevant recommendations should result in a stable environment with a low probability of unexpected behavior or failures that are result of a GigaSpaces XAP environment misconfiguration.
-
 
 In general, XAP runs on every OS supporting the JVM technology (Windows, Linux, Solaris, AIX, HP, etc). See below tuning and configuration recommendations that most of the applications running on GigaSpaces XAP might need.
 
@@ -187,13 +186,8 @@ When there are several GSCs running on the same machine, or several servers runn
 
 # Client LRMI Connection Pool and Server LRMI Connection Thread Pool
 
-{{%section%}}
-{{%column width="70%" %}}
-{{%/column%}}
-{{%column width="30%" %}}
-{{%popup   "/attachment_files/sbp/lrmi_archi2.jpg"%}}
-{{% /column%}}
-{{%/section%}}
+
+{{%popup "/attachment_files/sbp/lrmi_archi2.jpg"%}}
 
 The default LRMI behavior will open a different connection at the client side and start a connection thread at the server side, once a multithreaded client accesses a server component. All client connections may be shared between all the client threads when communicating with the server. All server side connection threads may be shared between all client connections.
 
@@ -201,11 +195,11 @@ The default LRMI behavior will open a different connection at the client side an
 ## Client LRMI Connection Pool
 The client LRMI connection pool is maintained per server component - i.e. by each space partition. For each space partition a client maintains a dedicated connection pool shared between all client threads accessing a specific partition. When having multiple partitions (N) hosted within the same GSC, a client may open maximum of `N * com.gs.transport_protocol.lrmi.max-conn-pool` connections against the GSC JVM process.
 
-{{% tip %}}
+
 You may need to change the `com.gs.transport_protocol.lrmi.max-conn-pool` value (1024) to have a smaller number. The default value might be high for application with multiple partitions.
 
 
-```bash
+```console
 Client total # of open connections = com.gs.transport_protocol.lrmi.max-conn-pool * # of partitions
 ```
 
@@ -217,13 +211,12 @@ ulimit -n 65536
 ```
 
 or by lowering the `com.gs.transport_protocol.lrmi.max-conn-pool` value.
-{{% /tip %}}
+
 
 ## Server LRMI Connection Thread Pool
 The LRMI connection thread pool is a server side component. It is in charge of executing the incoming LRMI invocations. It is a single thread pool within the JVM that executes all the invocations, from all the clients and all the replication targets.
 
-{{% tip %}}
-{{% /tip %}}
+
 
 # Lookup Locators and Groups
 A space (or any other service, such as a GSC or GSM) publishes (or registers/exports) itself within the [Lookup Service](/product_overview/the-lookup-service.html). The lookup service acts as the system directory service. The lookup service (aka service proxy) keeps information about each service, such as its location and its exposed remote methods. Every client or service needs to discover a lookup service as part of its bootstrap process.
@@ -354,42 +347,42 @@ call gs-agent.bat
 You may have a set of LUS/GSM managing GSCs associated to a specific group. Let's assume you would like to "break" your network into 2 groups. Here is how you should start the GigaSpaces XAP runtime environment:
 
 {{%accordion%}}
-{{%accord parent=acc3 | title="Step 1. Run gs-agent starting LUS/GSM with GroupX: "%}}
+{{%accord  title="Step 1. Run gs-agent starting LUS/GSM with GroupX: "%}}
 
 ```bash
 export LOOKUPGROUPS=GroupX
 gs-agent.sh gsa.global.lus 0 gsa.lus 1 gsa.global.gsm 0 gsa.gsm 1 gsa.gsc 0
 ```
 {{%/accord%}}
-{{%accord parent=acc3 | title="Step 2. Run gs-agent that will start GSCs with GroupX (4 GGCs with this example): "%}}
+{{%accord  title="Step 2. Run gs-agent that will start GSCs with GroupX (4 GGCs with this example): "%}}
 
 ```bash
 export LOOKUPGROUPS=GroupX
 gs-agent.sh gsa.global.lus 0 gsa.lus 0 gsa.global.gsm 0 gsa.gsm 0 gsa.gsc 4
 ```
 {{%/accord%}}
-{{%accord parent=acc3 | title="Step 3. Run gs-agent starting LUS/GSM with GroupY: "%}}
+{{%accord  title="Step 3. Run gs-agent starting LUS/GSM with GroupY: "%}}
 
 ```bash
 export LOOKUPGROUPS=GroupX
 gs-agent.sh gsa.global.lus 0 gsa.lus 1 gsa.global.gsm 0 gsa.gsm 1 gsa.gsc 0
 ```
 {{%/accord%}}
-{{%accord parent=acc3 | title="Step 4. Run gs-agent that will start GSCs with GroupY (2 GGCs with this example): "%}}
+{{%accord  title="Step 4. Run gs-agent that will start GSCs with GroupY (2 GGCs with this example): "%}}
 
 ```bash
 export LOOKUPGROUPS=GroupY
 gs-agent.sh gsa.global.lus 0 gsa.lus 0 gsa.global.gsm 0 gsa.gsm 0 gsa.gsc 2
 ```
 {{%/accord%}}
-{{%accord parent=acc3 | title="Step 5. Deploy a space into GroupX GSCs "%}}
+{{%accord   title="Step 5. Deploy a space into GroupX GSCs "%}}
 
 ```bash
 export LOOKUPGROUPS=GroupX
 gs deploy-space -cluster schema=partitioned total_members=4 spaceX
 ```
 {{%/accord%}}
-{{%accord parent=acc3 | title="Step 6. Deploy a space into GroupY GSCs"%}}
+{{%accord  title="Step 6. Deploy a space into GroupY GSCs"%}}
 
 ```bash
 export LOOKUPGROUPS=GroupY
@@ -406,7 +399,7 @@ gs deploy-space -cluster schema=partitioned total_members=2 spaceY
 You may have a set of LUS/GSM managing GSCs associated to a specific locator. Let's assume you would like to "break" your network into 2 groups using different lookup locators. Here is how you should start the GigaSpaces XAP runtime environment:
 
 {{%accordion%}}
-{{%accord parent=acc1 | title="Step 1. Run gs-agent starting LUS/GSM with a lookup service listening on port 8888:"%}}
+{{%accord   title="Step 1. Run gs-agent starting LUS/GSM with a lookup service listening on port 8888:"%}}
 
 ```bash
 export LUS_JAVA_OPTIONS=-Dcom.sun.jini.reggie.initialUnicastDiscoveryPort=8888
@@ -415,7 +408,7 @@ export EXT_JAVA_OPTIONS=-Dcom.gs.multicast.enabled=false
 gs-agent.sh gsa.global.lus 0 gsa.lus 1 gsa.global.gsm 0 gsa.gsm 1 gsa.gsc 0
 ```
 {{%/accord%}}
-{{%accord parent=acc1 | title="Step 2. Run gs-agent that will start GSCs using the lookup listening on port 8888 (4 GGCs with this example):"%}}
+{{%accord   title="Step 2. Run gs-agent that will start GSCs using the lookup listening on port 8888 (4 GGCs with this example):"%}}
 
 ```bash
 export LOOKUPLOCATORS=127.0.0.1:8888
@@ -423,7 +416,7 @@ export EXT_JAVA_OPTIONS=-Dcom.gs.multicast.enabled=false
 gs-agent.sh gsa.global.lus 0 gsa.lus 0 gsa.global.gsm 0 gsa.gsm 0 gsa.gsc 4
 ```
 {{%/accord%}}
-{{%accord parent=acc1 | title="Step 3. Run gs-agent starting LUS/GSM with a lookup service listening on port 9999:"%}}
+{{%accord   title="Step 3. Run gs-agent starting LUS/GSM with a lookup service listening on port 9999:"%}}
 
 ```bash
 export LUS_JAVA_OPTIONS=-Dcom.sun.jini.reggie.initialUnicastDiscoveryPort=9999
@@ -432,7 +425,7 @@ export EXT_JAVA_OPTIONS=-Dcom.gs.multicast.enabled=false
 gs-agent.sh gsa.global.lus 0 gsa.lus 1 gsa.global.gsm 0 gsa.gsm 1 gsa.gsc 0
 ```
 {{%/accord%}}
-{{%accord parent=acc1 | title="Step 4. Run gs-agent that will start GSCs using the lookup listening on port 9999 (2 GGCs with this example):"%}}
+{{%accord   title="Step 4. Run gs-agent that will start GSCs using the lookup listening on port 9999 (2 GGCs with this example):"%}}
 
 
 ```bash
@@ -441,14 +434,14 @@ export EXT_JAVA_OPTIONS=-Dcom.gs.multicast.enabled=false
 gs-agent.sh gsa.global.lus 0 gsa.lus 0 gsa.global.gsm 0 gsa.gsm 0 gsa.gsc 2
 ```
 {{%/accord%}}
-{{%accord parent=acc1 | title="Step 5. Deploy a space using lookup listening on port 8888:"%}}
+{{%accord   title="Step 5. Deploy a space using lookup listening on port 8888:"%}}
 
 ```bash
 export LOOKUPLOCATORS=127.0.0.1:8888
 gs deploy-space -cluster schema=partitioned total_members=4 spaceX
 ```
 {{%/accord%}}
-{{%accord parent=acc1 | title="Step 6. Deploy a space using lookup listening on port 9999"%}}
+{{%accord  title="Step 6. Deploy a space using lookup listening on port 9999"%}}
 
 ```bash
 export LOOKUPLOCATORS=127.0.0.1:9999
@@ -484,7 +477,7 @@ You should make sure you have an adequate number of GSCs running, prior to deplo
 To use Zones when deploying your PU you should:
 
 {{%accordion%}}
-{{%accord parent=acc4 | title="Step 1. Start the GSC using the `com.gs.zones` system property. Example: "%}}
+{{%accord   title="Step 1. Start the GSC using the `com.gs.zones` system property. Example: "%}}
 
 
 ```bash
@@ -492,7 +485,7 @@ export EXT_JAVA_OPTIONS=-Dcom.gs.zones=webZone ${EXT_JAVA_OPTIONS}
 gs-agent gsa.gsc 2
 ```
 {{%/accord%}}
-{{%accord parent=acc4 | title="Step 2. Deploy the PU using the `-zones` option. Example: "%}}
+{{%accord   title="Step 2. Deploy the PU using the `-zones` option. Example: "%}}
 
 ```bash
 gs deploy -zones webZone myWar.war
@@ -507,20 +500,20 @@ gs deploy -zones webZone myWar.war
 You may have a set of LUS/GSM managing multiple zones (recommended) or have a separate LUS/GSM set per zone. In such a case (set of LUS/GSM managing multiple zones) you should run these in the following manner:
 
 {{%accordion%}}
-{{%accord parent=acc0| title="Step 1. Run gs-agent on the machines you want to have the LUS/GSM:"%}}
+{{%accord  title="Step 1. Run gs-agent on the machines you want to have the LUS/GSM:"%}}
 
 ```bash
 gs-agent.sh gsa.global.lus 0 gsa.lus 1 gsa.global.gsm 0 gsa.gsm 1 gsa.gsc 0
 ```
 {{%/accord%}}
-{{%accord parent=acc0| title="Step 2. Run gs-agent that will start GSCs with zoneX (4 GGCs with this example):"%}}
+{{%accord   title="Step 2. Run gs-agent that will start GSCs with zoneX (4 GGCs with this example):"%}}
 
 ```bash
 export EXT_JAVA_OPTIONS=-Dcom.gs.zones=zoneX ${EXT_JAVA_OPTIONS}
 gs-agent.sh gsa.global.lus 0 gsa.lus 0 gsa.global.gsm 0 gsa.gsm 0 gsa.gsc 4
 ```
 {{%/accord%}}
-{{%accord parent=acc0| title="Step 3. Run gs-agent that will start GSCs with zoneY (2 GGCs with this example):"%}}
+{{%accord   title="Step 3. Run gs-agent that will start GSCs with zoneY (2 GGCs with this example):"%}}
 
 ```bash
 export EXT_JAVA_OPTIONS=-Dcom.gs.zones=zoneY ${EXT_JAVA_OPTIONS}
@@ -558,11 +551,11 @@ When deploying your XAP based system in production you should consider the follo
 
 When using notifications (notify container, session messaging API) you should enable Guaranteed Notifications to address a primary space failure while sending notifications. This allows the backup once promoted into a primary, to continue the notification delivery. The Guaranteed Notifications managed on the client side. 
 
-When considering a notify container that is embedded with the space, please note the guaranteed notifications are not supported in this scenario - This means that upon failure notifications that has been send might not be fully processed. In this case blocking read/asyc read should be considered as an alternative to notifications.
+When considering a notify container that is embedded with the space, please note the guaranteed notifications are not supported in this scenario â€“ This means that upon failure notifications that has been send might not be fully processed. In this case blocking read/asyc read should be considered as an alternative to notifications.
 
 ## Balanced Primary-Backups Provisioning
 
-When having a failure of the data grid nodes or a machine running XAP you should consider having even distribution of the primary and backups instances across all existing machines running XAP. This ensure balanced CPU utilization across all XAP machines. The Elastic processing unit should be used to deploy the data grid - it support even primary/backup distribution automatically when XAP machine fails and when a new one added to the grid. In this case spare GSCs on each XAP machine are not required.
+When having a failure of the data grid nodes or a machine running XAP you should consider having even distribution of the primary and backups instances across all existing machines running XAP. This ensure balanced CPU utilization across all XAP machines. The Elastic processing unit should be used to deploy the data grid â€“ it support even primary/backup distribution automatically when XAP machine fails and when a new one added to the grid. In this case spare GSCs on each XAP machine are not required. 
 
 ## CPU Utilization
 
@@ -600,7 +593,7 @@ XA Transactions involves the XA transaction manager, XAP data grid node(s) and s
 
 The Mirror Service like the WAN Gateway acting as a broker, responsible to persist activities conducted at the data grid into external data source such as a database.
 
-The Mirror Service does not hold state so its failure would not result any data lose, but its failure means data will not be stored into the external data source. You do not need to deploy the mirror in a clustered configuration (aka primary-backup). By default XAP will try to start the mirror service in case it failed. Since in many cases the Mirror service accessing a database, you might have the database accepting connection only from specific machine with specific ports. To address this, you should configure the database to allow connections from all machines that may run the mirror service - by default all machines running XAP.
+The Mirror Service does not hold state so its failure would not result any data lose, but its failure means data will not be stored into the external data source. You do not need to deploy the mirror in a clustered configuration (aka primary-backup). By default XAP will try to start the mirror service in case it failed. Since in many cases the Mirror service accessing a database, you might have the database accepting connection only from specific machine with specific ports. To address this, you should configure the database to allow connections from all machines that may run the mirror service â€“ by default all machines running XAP. 
 
 ## WAN Gateway Failure
 
@@ -661,4 +654,446 @@ Guest OS Memory + JVM Memory for all GSCs + JVM Memory for GSM + JVM Memory for 
 
 ```bash
 JVM Memory for a GSC = 
-JVM Max Heap (-Xmx value) + JVM Perm Size 
+JVM Max Heap (-Xmx value) + JVM Perm Size (-XX:MaxPermSize) + NumberOfConcurrentThreads * (-Xss) + â€œextra memoryâ€�
+```
+
+## Space Object Footprint
+
+In many cases you may need to calculate the Space Object Footprint. The object footprint within the IMDG is determined, based on:
+
+- The original object size - the number of object fields and their content size.
+- The JVM type (32 or 64 bit) - a 64 bit JVM might consume more memory due to the pointer address size.
+- The number of indexed fields - every indexed value means another copy of the value within the index list.
+- The number of different indexed values - more different values (uniform distribution) means a different index list per value.
+- The object UID size - the UID is a string-based field, and consumes about 35 characters. You might have the object UID based on your own unique ID.
+
+The actual footprint depends on the amount of indexed fields and the data distribution. Each index consumes:
+
+```bash
+120 BytesÂ  + index value size + (number of object instances  with this indexed value X 16)
+```
+
+### Footprint Test
+
+The best way to determine the exact footprint is via a simple test that allows you to perform some extrapolation when running the application in production. Here is how you should calculate the footprint:
+
+Step 1. Start a single IMDG instance.<br>
+Step 2. Take a measurement of the free memory (use JConsole or jmap).<br>
+Step 3. Write a sample number of objects into the IMDG (have a decent number of objects written - 100,000 is a good number).<br>
+Step 4. Measure the free memory again.
+
+This test should give good understanding of the object footprint within the IMDG. Donâ€™t forget that if you have a backup instance running, the amount of memory you will need to accommodate for your objects, is double.
+
+### Compound Index reduce Index Footprint
+
+A Compound Index used with **AND** queries to speed up the Query execution time. It combines multiple fields into a single index. Using A Compound Index may avoid multiple indexes on multiple fields that may reduce Index footprint.
+
+### UseCompressedOops JVM Option
+The `-XX:+UseCompressedOops` allows 64 bit JVM heap up to 32GB to use 32 bit reference address. It may reduce overall footprint in 20-40%.
+
+### Compressed Storage Mode
+The Compressed Storage mode may be used to reduce non-primitive fields footprint when stored within the space. This option is not available for .Net. This option compress the data on the client , where data stays compressed in the space and de-compress it when reading it back on the client side. It may impact performance.
+
+### Customized Initial Load
+The default Space Data source Initial Load behavior loads all space classes data into each partition and later filter out irrelevant objects. This activity may introduce large amount of garbage to be collected. Using `SQL MOD` query to fetch only the relevant data items to be loaded into each partition would speed up the initial load time and drastically reduce the amount of garbage generated during this process.
+
+### Redo Log Sizing
+
+The amount of redo log data depends on :
+
+- Amount of in flight activity
+- Backup performance
+- Primary backup connectivity â€“ long disconnection means plenty of redo log in memory.
+
+Since redo log swap in some point to the disk, have its location on SSD drive. Do not use HDD to store redolog data. Redo log footprint similar to actual raw data footprint without indexes.
+
+## JVM Basic Settings
+See below examples of JVM settings recommended for applications that might generate large number of temporary objects. In such situations you afford long pauses due to garbage collection activity.
+
+These settings are good for cases where you are running a IMDG or when the business logic and the IMDG are collocated. For example IMDG with collocated Polling /Notify containers, Task executors or Service remoting:
+
+### JDK 1.6
+For JDK 1.6 - CMS mode - good for low latency scenarios:
+
+
+```bash
+-server -Xms8g -Xmx8g -Xmn2g -XX:+UseConcMarkSweepGC -XX:+UseParNewGC
+-XX:CMSInitiatingOccupancyFraction=60 -XX:+UseCMSInitiatingOccupancyOnly
+-XX:MaxPermSize=256m -XX:+ExplicitGCInvokesConcurrent -XX:+UseCompressedOops
+-XX:+CMSClassUnloadingEnabled -XX:+CMSParallelRemarkEnabled
+```
+
+### JDK 1.7/1.8
+
+For JDK 1.7/1.8 - g1 mode - good for low latency scenarios:
+
+```bash
+-server -Xms8g -Xmx8g -XX:+UseG1GC -XX:MaxGCPauseMillis=500 -XX:InitiatingHeapOccupancyPercent=50 -XX:+UseCompressedOops
+```
+
+Advanced options for JDK 1.7 with suggested values provided:
+
+```bash
+-XX:MaxTenuringThreshold=25 -XX:ParallelGCThreads=8 -XX:ConcGCThreads=8 -XX:G1ReservePercent=10 -XX:G1HeapRegionSize=32m
+```
+
+{{% tip %}}
+In case your JVM is throwing an 'OutOfMemoryException', the JVM process should be restarted. You need to add this property to your JVM setting:
+SUN -XX:+HeapDumpOnOutOfMemoryError -XX:OnOutOfMemoryError="kill -9 %p"
+JROCKIT -XXexitOnOutOfMemory
+{{% /tip %}}
+
+## Young generation Size (Xmn)
+
+This setting controls the size of the heap allocated for the young generation objects  it represents all the objects which have a short lifetime. Young generation objects are in a specific location into the heap, where the garbage collector will pass often. All new objects are created into the young generation region (called "eden"). When an object survive is still "alive" after more than 2-3 gc cleaning, then it will be swap has an "old generation" : they are "survivor". A recommended value for the `Xmn` should be 33% of the `Xmx` value.
+
+## Thread Stack Tuning (Xss)
+The threads stack size many times should be tuned. Its default size may be too high. In Java SE 6, the default on Sparc is 512k in the 32-bit VM, and `1024k` in the 64-bit VM. On x86 Solaris/Linux it is `320k` in the 32-bit VM and 1024k in the 64-bit VM.
+On Windows, the default thread stack size is read from the binary (java.exe). As of Java SE 6, this value is 320k in the 32-bit VM and 1024k in the 64-bit VM.
+You can reduce your stack size by running with the -Xss option. For example:
+
+```bash
+java -server -Xss384k
+```
+
+On some versions of Windows, the OS may round up thread stack sizes using very coarse granularity. If the requested size is less than the default size by 1K or more, the stack size is rounded up to the default; otherwise, the stack size is rounded up to a multiple of 1 MB. 64k is the least amount of stack space allowed per thread.
+
+## Extra Memory
+This is memory required for NIO direct memory buffers, JIT code cache, classloaders, Socket Buffers (receive/send), JNI, GC internal info.
+Direct memory buffers usage for Socket Buffers utilization on the GSC side :
+
+```java
+com.gs.transport_protocol.lrmi.maxBufferSize X com.gs.transport_protocol.lrmi.max-threads
+```
+
+For example - with default `maxBufferSize` size and 100 threads :
+
+```bash
+64k X 100 = 6400KB = 6.4MB
+```
+
+With large objects and batch operations (readMultiple , writeMultiple , Space Iterator) increasing the maxBufferSize may improve the performance.
+
+### MaxDirectMemorySize
+
+This JVM option specifies the maximum total size of java.nio (New I/O package) direct buffer allocations. It is used with network data transfer and serialization activity.
+
+The default value for direct memory buffers depends on your version of your JVM. Oracle HotSpot has a default equal to maximum heap size (`-Xmx` value), although some early versions may default to a particular value. To control this specific memory area use the `-XX:MaxDirectMemorySize`. See example below:
+
+
+```bash
+java -XX:MaxDirectMemorySize=2g myApp
+```
+
+Format:
+
+```bash
+-XX:MaxDirectMemorySize=size[g|G|m|M|k|K]`
+```
+
+
+Some useful references:
+
+- [Getting Started with the G1 Garbage Collector](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/G1GettingStarted/index.html)
+- [jdk7 garbage collection and documentation](http://stackoverflow.com/questions/8111310/java-7-jdk-7-garbage-collection-and-documentation)
+- [g1 cms java garbage collector](http://blog.sematext.com/2013/06/24/g1-cms-java-garbage-collector)
+- [java7 g1 options](http://stackoverflow.com/questions/8262674/java7-g1-options)
+- [large java heap with g1 collector part 1](http://mpouttuclarke.wordpress.com/2013/03/13/large-java-heap-with-g1-collector-part-1)
+
+{{% tip %}}
+It is highly recommended that you use the latest JDK release when using these options.
+{{% /tip %}}
+
+## Capture Detailed Garbage Collection stats
+To capture the detailed information about garbage collection and how it is performing, add following parameters to JVM settings:
+
+
+```bash
+-verbose:gc -XX:+PrintGCDetails -XX:+PrintGCTimeStamps -Xloggc:/path/to/log/directory/gc-log-file.log
+```
+
+Modify the path and file names appropriately. You will need to use a different file name for each invocation in order to not overwrite the files from multiple processes.
+
+{{% include "/COM/jconsolejmapwarning.markdown" %}}
+
+## Soft References LRU Policy
+In the attempt to provide the highest level of performance possible, XAP takes advantage of features in the Java language that allows for effective caching in the face of memory demands. In particular, the [SoftReference](http://docs.oracle.com/javase/6/docs/api/java/lang/ref/SoftReference.html) class is used to store data up until there is a need for explicit garbage collection, at which point the data stored in soft references will be collected if possible. The system default is 1000, which represents the amount of time (in milliseconds) they will survive past their last reference. `-XX:SoftRefLRUPolicyMSPerMB` is the parameter that allows you to determine how much data is cached by allowing the JVM to control how long it endures; A recommended setting this value to **500** in active, dynamic systems:
+
+
+```bash
+-XX:SoftRefLRUPolicyMSPerMB=500
+```
+
+The above means that softly reachable objects will remain alive for 500 milliseconds after the last time they were referenced.
+
+## Permanent Generation Space
+For applications that are using relatively large amount of third party libraries (PU using large amount of jars) the default permanent generation space size may not be adequate. In such a case, you should increase the permanent generation space size and please also refer to the suggested parameters above that should be used together with the other CMS parameters (-XX:+CMSClassUnloadingEnabled). Here are a suggested values:
+
+
+```bash
+-XX:PermSize=512m -XX:MaxPermSize=512m
+```
+
+{{% exclamation %}} GigaSpaces XAP is a Java-based product. .Net and C++ applications using XAP should also be aware the usage of the JVM libraries as part of the .Net and C++ client libraries.
+
+See the [Tuning Java Virtual Machines]({{%latestadmurl%}}/tuning-java-virtual-machines.html) section and the [Java SE 6 HotSpot Virtual Machine Garbage Collection Tuning](http://java.sun.com/javase/technologies/hotspot/gc/gc_tuning_6.html) for detailed JVM tuning recommendations.
+
+# Space Memory Management
+The Space supports two [Memory Management]({{%latestadmurl%}}/memory-management-facilities.html) modes:
+
+- `ALL_IN_CACHE` - this assumes all application data is stored within the space.
+- `LRU` - this assumes some of the application data is stored within the space, and all the rest is stored in some external data source.
+
+When running with `ALL_IN_CACHE`, the memory management:
+
+- Stops clients from writing data into the space once the JVM utilized memory crosses the WRITE threshold (percentage of the heap max size).
+- Throws a `MemoryShortageExecption` back to the client once the JVM utilized memory crosses the `high_watermark_percentage` threshold.
+
+When running with `ALL_IN_CACHE`, you should make sure the default memory management parameters are tuned according the JVM heap size. A large heap size (over 2 G RAM) requires special attention. Here is an example of memory manager settings for a **10 G heap size**:
+
+
+```xml
+<os-core:embedded-space id="space" name="mySpace" >
+    <os-core:properties>
+        <props>
+            <prop key="space-config.engine.memory_usage.high_watermark_percentage">95</prop>
+            <prop key="space-config.engine.memory_usage.write_only_block_percentage">94</prop>
+            <prop key="space-config.engine.memory_usage.write_only_check_percentage">93</prop>
+            <prop key="space-config.engine.memory_usage.low_watermark_percentage">92</prop>
+        </props>
+    </os-core:properties>
+</os-core:embedded-space>
+```
+
+# Local Cache
+The [local cache]({{%latestjavaurl%}}/local-cache.html) is used as a client side cache that stores objects the client application reads from the space. It speeds up repeated read operations of the same object. The `readById`/`readByIds` operation has a special optimization with a local cache that speeds up the retrieval time of the object from the local cache, in the case that it is already cached. The local cache evicts objects once a threshold is met. When there is a client application with a large heap size, you might want to configure the local cache eviction parameters to control the eviction behavior:
+
+
+```xml
+<os-core:space-proxy id="space" name="mySpace" />
+
+<os-core:local-cache id="localCacheSpace" space="space" update-mode="PULL" >
+    <os-core:properties>
+        <props>
+            <prop key="space-config.engine.cache_size">5000000</prop>
+            <prop key="space-config.engine.memory_usage.high_watermark_percentage">75</prop>
+            <prop key="space-config.engine.memory_usage.write_only_block_percentage">73</prop>
+            <prop key="space-config.engine.memory_usage.write_only_check_percentage">71</prop>
+            <prop key="space-config.engine.memory_usage.low_watermark_percentage">45</prop>
+            <prop key=" space-config.engine.memory_usage.eviction_batch_size">1000</prop>
+            <prop key="space-config.engine.memory_usage.retry_yield_time">100</prop>
+            <prop key="space-config.engine.memory_usage.retry_count">20</prop>
+        </props>
+    </os-core:properties>
+</os-core:local-cache>
+<os-core:giga-space id="gigaSpace" space="localCacheSpace"/>
+```
+
+- With the above parameters, the local cache is evicted once the client JVM memory utilization crosses the 75% threshold (or there are more than 5,000,000 objects within the local cache).
+- Data is evicted in batches of 1,000 objects, trying to lower the memory utilization to 45%.
+- If the eviction mechanism does not manage to lower the utilization to 45%, it has another 20 tries and stops.
+- After each eviction activity, and before measuring the memory utilization, a pause of 100 ms happens, to allow the JVM to release the evicted objects.
+
+{{% tip %}}
+The `space-config.engine.cache_size` is set to a large value, to instruct the local cache to evict, based on the available free memory, and not based on the total number of objects within the local cache.
+{{% /tip %}}
+
+# Primaries Space Distribution
+By default, when running GSCs on multiple machines and deploying a space with backups, XAP tries to provision primary spaces to all available GSCs across all the machines.
+The `max-instances-per-vm` and the `max-instances-per-machine` deploy parameters should be set when deploying your Data-Grid, to determine how the deployed Processing Unit (e.g. space) is provisioned into the different running GSCs.
+
+Without setting the `max-instances-per-vm` and the `max-instances-per-machine`, XAP might provision a primary and a backup instance of the same partition into GSCs running on the same physical machine. To avoid this behavior, you should set the `max-instances-per-vm=1` and the `max-instances-per-machine=1`. This makes sure that the primary and backup instances of the same partition are provisioned into different GSCs running on different machines. If there is one machine running GSCs and `max-instances-per-machine=1`, **backup instances are not provisioned**.
+
+Here is an example of how you should deploy a Data-Grid with 4 partitions, with a backup per partition (total of 8 spaces), where you have 2 spaces per GSC, and the primary and backup are not running on the same box (even when you have other GSCs running):
+
+
+```bash
+gs deploy-space -cluster schema=partitioned-sync2backup total_members=4,1
+   -max-instances-per-vm 2  -max-instances-per-machine 1 MySpace
+```
+
+{{% tip %}}
+After a machine startup (where GSCs are started), when the ESM is not used to deploy the IMDG, spaces do not "re balance" across all the machines to have an even number of primaries per machine. You may have machines running more (or all) primaries, and another machine running only backups.
+{{% /tip %}}
+
+# Total Max Instances Per VM
+This parameter controls the total amount of PU instances that can be instantiated within a GSC. This is very different than the `max-instances-per-vm` that controls how many instances a partition may have within a GSC.  To control the Total Max PU Instances a GSC may host you should use `com.gigaspaces.grid.gsc.serviceLimit` system property and set its value before starting the GigaSpaces agent:
+ 
+
+```java
+set GSC_JAVA_OPTIONS=-Dcom.gigaspaces.grid.gsc.serviceLimit=1
+```
+
+Note the default value of the `com.gigaspaces.grid.gsc.serviceLimit` is **500** that may not work well for most production environments.
+
+With most production environments with static deployment configuration it is advised to keep the `com.gigaspaces.grid.gsc.serviceLimit` value to **ONE**. Having multiple space instances within the same GSC makes it hard to handle failures, handle garbage collection and resource configuration such as LRMI thread pool , etc.
+
+By using `com.gigaspaces.grid.gsc.serviceLimit=1` you may avoid a scenario where a new space or failed space instance would be provisioned into a GSC that already hosting a space instance. This may result **Memory Shortage Exception** or **Out of Memory Error** that may cause a provisioning failure.
+
+# Rebalancing - Dynamic Data Redistribution
+
+## Automatic Rebalancing
+XAP supports automatic discovery, rebalancing (aka Dynamic Redistribution of Data) and expansion/contraction of the IMDG **while the application is running**. When deploying an IMDG, the system partitions the data (and the collocated business logic) into logical partitions. You may choose the number of logical partitions or let XAP calculate this number.
+
+The logical partitions may initially run on certain containers, and later get relocated to other containers (started after the data grid has been deployed) on other machines, thus allowing the system to expand and increase its memory and CPU capacity while the application is still running. The number of logical partitions and replicas per partition should be determined at deployment time.  The number of containers hosting the IMDG instances may be changed at runtime.
+
+![rebalance_util.jpg](/attachment_files/sbp/rebalance_util.jpg)
+
+The component that is responsible to scale the IMDG at runtime is called the Elastic Service Manager (ESM) and it is used with the [Elastic Processing Unit]({{%latestjavaurl%}}/elastic-processing-unit.html):
+
+![flow.gif](/attachment_files/sbp/flow.gif)
+
+{{% tip %}}
+When using the [Elastic Processing Unit]({{%latestjavaurl%}}/elastic-processing-unit.html), instances will be continuously re balanced across all available machines.
+{{% /tip %}}
+
+
+# Storage Type - Controlling Serialization
+
+When a client application accessing a remote space (using a clustered topology or non-clustered) the data is serialized and sent over the network to the relevant JVM hosting the target space partition. The serialization involves some overhead. The [Storage Type]({{%latestjavaurl%}}/storage-types---controlling-serialization.html) decoration allows you to control the serialization behavior when non-primitive fields used with your space class.
+
+{{%tabs%}}
+
+{{%tab "  Object Mode "%}}
+![storage-type-object.jpg](/attachment_files/sbp/storage-type-object.jpg)
+{{% /tab %}}
+
+{{%tab "  Binary Mode "%}}
+![storage-type-binary.jpg](/attachment_files/sbp/storage-type-binary.jpg)
+{{% /tab %}}
+
+{{%tab "  Compressed Mode "%}}
+![storage-type-compressed.jpg](/attachment_files/sbp/storage-type-compressed.jpg)
+{{% /tab %}}
+
+{{% /tabs %}}
+
+## OBJECT Storage Type
+The `OBJECT` (default) serialization mode (called also native) performs serialization of all non-primitive fields at the client side, and then de-serialize these at the space side before stored within the space.
+
+This mode is optimized for scenarios when there is a **business logic colocated with the space** (e.g. notify/polling container) or when having business logic that is sent to be executed within the space (e.g. Task Executor). The colocated business logic access non-primitive space object fields without going through any serialization. This speeds up any activity performed by the colocated business logic. The downside with this mode, is the relative overhead associated with the remote client due-to the serialization/de-serialization involved with non-primitive space object fields.
+
+## BINARY Storage Type
+When having space objects that embed large collections (e.g. List, Map data types) where there is no colocated business logic running with the space (e.g. polling/notify container colocated with the space), you should use the `BINARY` Storage Type.
+
+When running with this mode, the collections within the space object are serialized at the client side but are **not de-serialized** at the space side before stored within the space; these are stored in their binary form. When reading the space object back into the client side, these collections are sent back into the client application without going through any serialization at the space side (as they are already stored in their binary serialized form), and de-serialized at the client side.  Due-to this optimization, this mode speeds up write and read performance when the space object involves collections with relatively large amount of elements.
+
+You may control the Storage type at the space level, class level or field level.
+
+See the [Controlling Serialization]({{%latestjavaurl%}}/storage-types---controlling-serialization.html) for more details.
+
+# Runtime Files Location
+GigaSpaces XAP generates some files while the system is running. You should change the location of the generated files location using the following system properties. See below how:
+
+
+| System Property | Description | Default |
+|:----------------|:------------|:--------|
+|`com.gigaspaces.logger.RollingFileHandler.filename-pattern`|The location of log files and their file pattern.| `<gigaspaces-xap root>\logs`|
+|`com.gs.deploy`|The location of the deploy directory of the GSM. |`<gigaspaces-xap root>\deploy`|
+|`com.gs.work`|The location of the work directory of the GSM and GSC. Due to the fact that this directory is critical to the system proper function, it should be set to a local storage in order to avoid failure in case of network failure when a remote storage is used.|`<gigaspaces-xap root>\work`|
+|`user.home`|The location of system defaults config. Used by the GS-UI, and runtime system components.| |
+|`com.gigaspaces.lib.platform.ext` | PUs shared classloader libraries folder. PU jars located within this folder loaded once into the **JVM system classloader** and shared between all the PU instances classloaders within the GSC. In most cases this is a better option than the `com.gs.pu-common` for JDBC drivers and other 3rd party libraries. This is useful option when you  want multiple processing units to share the same 3rd party jar files and do not want to repackage the processing unit jar whenever one of these 3rd party jars changes.| `<gigaspaces-xap root>\lib\platform\ext`|
+|`com.gs.pu-common`|The location of common classes used across multiple processing units. The libraries located within this folder **loaded into each PU instance classloader** (and not into the system classloader as with the `com.gigaspaces.lib.platform.ext`. |`<gigaspaces-xap root>\lib\optional\pu-common`|
+|`com.gigaspaces.grid.gsa.config-directory`|The location of the GSA configuration files. [The GigaSpaces Agent](/product_overview/service-grid.html#gsa) (GSA) manages different process types. Each process type is defined within this folder in an xml file that identifies the process type by its name. |`<gigaspaces-xap root>\config\gsa`|
+|`java.util.logging.config.file`| It indicates file path to the Java logging file location. Use it to enable finest logging troubleshooting of various GigaSpaces XAP Services. You may control this setting via the `GS_LOGGING_CONFIG_FILE_PROP` environment variable.| `<gigaspaces-xap root>\config\gs_logging.properties`|
+
+{{% note %}}
+The `com.gigaspaces.lib.platform.ext` and the `com.gs.pu-common` are useful to decrease the deployment time in case your processing unit **contains a lot of 3rd party jars files**. In such case, each GSC will download the processing unit jar file (along with all the jars it depends on) to its local working directory from the GSM, and in case of large deployments spanning tens or hundreds of GSCs this can be quite time consuming. In such cases you should consider **placing the jars on which your processing unit depends on** in a shared location on your network, and then point the `com.gs.pu-common` or `com.gigaspaces.lib.platform.ext` directory to this location.
+{{%/note%}}
+
+# Log Files
+XAP generates log files for each running component . This includes GSA, GSC, GSM, Lookup service and client side. By default, these are created within the `<gigaspaces-xap-root>\logs` folder. After some time you might end up with a large number of files that are hard to maintain and search. You should backup old log files or delete these. You can use the [logging backup-policy]({{%latestadmurl%}}/logging-backing-custom-policy.html) to manage your log files.
+
+# Hardware Selection
+The general rule when selecting the HW to run GigaSpaces XAP would be: The faster the better. Multi-core machines with large amount of memory would be most cost effective since these will allow GigaSpaces XAP to provide ultimate performance leveraging large JVM heap size handling simultaneous requests with minimal thread context switch overhead.
+
+Running production systems with 30G-50G heap size is doable with some JVM tuning when leveraging multi-core machines. The recommended HW is [Intel Xeon Processor 5600 Series](http://ark.intel.com/ProductCollection.aspx?series=47915). Here is an example for [recommended server configuration](http://www.cisco.com/en/US/products/ps10280/prod_models_comparison.html):
+
+
+|Model|Cisco UCS B200 M2 Blade Server|Cisco UCS B250 M2 Extended Memory Blade Server|
+|:----|:----------------------------:|:--------------------------------------------:|
+|Processor Sockets|2|2|
+|Processors Supported|Intel Xeon processor 5600 Series|Intel Xeon processor 5600 Series|
+|Memory Capacity|12 DIMMs; up to 192 GB|48 DIMMs; up to 384 GB|
+|Memory Size and Speed|4, 8, and 16 GB DDR3; 1066 MHz and 1333 MHz|4 and 8 GB DDR3; 1066 MHz and 1333 MHz|
+|Internal Disk Drive|2x 2.5-in. SFF SAS or 15mm SATA SSD|2x 2.5-in. SFF SAS or 15mm SATA SSD|
+|Integrated Raid|0,1|0,1|
+|Mezzanine I/O Adapter Slots|1|2|
+|I/O Throughput|Up to 20 Gbps|Up to 40 Gbps|
+|Form Factor|Half width|Full width|
+|Max. Servers per Chassis|8|4|
+
+## CPU
+Since most of the application activities are conducted in-memory, the CPU speed impacts your application performance fairly drastically. You might have a machine with plenty of CPU cores, but a slow CPU clock speed, which eventually slows down the application or the Data-Grid response time. So as a basic rule, pick the fastest CPU you can find. Since the Data-Grid itself and its container are highly multi-threaded components, it is important to use machines with more than a single core to host the GSC to run your Data-Grid or application. A good number for the amount of GSCs per machine is half of the total number of cores.
+
+## Disk
+With any XAP based system log files will be generated. A good best practice would be to allocate at least 100MB of free disk size per machine running XAP. Make sure you delete old log files or move them to some backup location. XAP Data-Grid may overflow data into the `work directory` when there is a long replication disconnection or replication delay. The location of the `work directory` should be on a local storage on each XAP node in order to make this replication backlog data always available to the node. The storage should have enough disk space to store the replication backlog as explained in [Controlling the Replication Redo Log]({{%latestadmurl%}}/controlling-the-replication-redo-log.html) page.
+
+# Virtualized OS
+
+GigaSpaces XAP supports VMWare vSphere 5+ running the following guest operating systems:
+
+- Windows 2008 Server SP2
+- Linux RHEL 5.x/6.x
+- Solaris 10
+
+Configuration:
+
+- Only Type 1 Hypervisor is recommended for production use.
+- vCPU may be over-subscribed, if it is under-utilized (less than 50%). In environments with high CPU utilization, vCPU must be reserved (pinned).
+- Hyper-threading should be enabled.
+- vMEM must be reserved (pinned).
+
+Other considerations:
+
+- Do not over-commit virtual memory
+- Reserve memory at the virtual machine level
+- When using replication, use [anti-affinity](https://pubs.vmware.com/vsphere-51/index.jsp#com.vmware.vsphere.resmgmt.doc/GUID-94FCC204-115A-4918-9533-BFC588338ECB.html?resultof=%2522%2541%256e%2574%2569%252d%2541%2566%2566%2569%256e%2569%2574%2579%2522%2520%2522%2552%2575%256c%2565%2573%2522%2520%2522%2572%2575%256c%2565%2522%2520) rules to ensure that primary and backup nodes do not share the same virtual and machine physical host. 
+- Reserve sufficient memory for the operating system (~2GB per VM)
+
+## VM Tuning Guidelines
+
+To determine the VM memory configuration, lets assume you are using Linux/Windows OS 64 Bit with no other significant process running on it (only XAP), where 2 XAP GSCs consume 60GB (30GB each), LUS and GSM consume 0.5GB each and the guest OS consumes 2GB. The total configured memory for the virtual machine would be:
+
+
+```bash
+VM memory for XAP VM = (2 X 30GB) + (2 X 0.5GB) + 2GB = 63GB
+```
+
+Set the VM memory as the memory reservation. You can choose to set the memory reservation as 63GB , but over time you should monitor the active memory used by the virtual machine that hosts XAP processes and adjust the memory reservation to the actual active memory value, which could be less than 63GB. NUMA rules apply - make sure that each socket on the server has at least 64GB of RAM to host this virtual machine, along with relevant number of vCPUs needed.
+
+## Plan for some Headroom
+If your application data consume 10GB per GSC , allow for 50% headroom for optimal performance. This implies the actual heap utilization for the GSC should not cross the 15GB. Set the memory reservation to 17GB. Setting a memory reservation enforce a reserved physical memory to be available by VMware ESXÂ® or ESXi to the virtual machine when it starts. Do not over commit memory. When sizing memory for XAP processes (GSC , GSA , GSM, LUS) on one virtual machine, the total reserved memory for the virtual machine should not exceed what is available within one NUMA node for optimal performance.
+
+## XAP GSC JVM and VM Ratio
+Have one XAP GSC JVM instance per virtual machine. Typically, this is not a requirement. However, because XAP GSC JVMs can be quite large (up to 100-200GB), it is advisable to adhere to this rule in this case.
+
+Increasing the JVM heap space to accommodate large data grid partition instance capacity is better than running a second instance of on the same single virtual machine. If increasing the JVM heap size is not an option, then consider placing the second GSC JVM on a separate newly created virtual machine, thus promoting more effective horizontal scalability. As you increase the number of XAP GSC, also increase the number of virtual machines to maintain a 1:1 ratio among the XAP GSC JVM and the virtual machines.
+
+You should have minimum of **four vCPU** virtual machine running with a VM running a single XAP GSC. This should provide enough CPU power to handle both JVM garbage collection activity and application related JVM activity. For extreme low latency and highly concurrent applications accessing the data grid with multiple threads/clients you may need more than four vCPUs per virtual machine.
+
+## VM Placement
+You may deploy a data-grid to provision multiple copies of the same data on any virtual machine. It is possible to accidentally place two redundant data copies on the same ESX/ESXi host. This is not optimal if a host fails. To create a more robust configuration, use VM1-to-VM2 anti-affinity rules to indicate to vSphere that VM1 and VM2 can never be placed on the same host because they hold replicated instances. You may use XAP Zones to control each replicated data-grid instances location to provision these on specific GSCs/VMs.
+
+## vMotion, DRS Cluster with XAP
+Once you install XAP, place Vmware Distributed Resource Scheduler (DRS) in manual mode to prevent an automatic VMware vSphereÂ® vMotionÂ® migration that can impact XAP response times. vMotion can complement XAP features during scheduled maintenance to help minimize downtime impact due-to hardware and software upgrades. To speed up vMotion migration process it is recommended to trigger vMotion migrations over a 10GbE network interface.
+
+Avoid vMotion operations with a VM running the lookup service (LUS) as the latency introduced to this process can cause members of XAP cluster to falsely suspect that other members are unavailable.
+
+Avoid having vMotion moving multiple VMs in the same time. This might result a split brain and system instability.
+
+Use DRS clusters dedicated to XAP. If this is not an option and XAP has to run in a shared DRS cluster make sure that DRS rules are set up to prevent vMotion migrating XAP processes into virtual machines.
+
+In some cases a vMotion migration might not succeed and instead fails back due-to a rapidly changing volatile memory space, which can be the case with partitioned data-grid cluster and in some cases also replicated data-grid. The fail back is a fail-safe mechanism to the source virtual machine and it does not impact the source virtual machine.
+
+vMotion makes this fail back decision based on the time it takes to complete the iterative copy process that captures changes between the source virtual machine to the destination virtual machine.
+
+If the changes are too rapid and vMotion is not able to complete the iterative copy within the default 100 seconds, it checks whether it can failsafe to the running source virtual machine without interruption. Therefore, vMotion only transfers the source virtual machine to the destination if it is certain that it can complete the memory copy.
+
+## VMware HA and XAP
+VMware HA should be disabled on virtual machines running XAP. If this is a dedicated XAP Grid DRS cluster, you can disable HA across the cluster. For a shared cluster, it is important to exclude XAP virtual machines from HA. Set up anti-affinity rules between the virtual machines running XAP preventing primary and backup of the same partition to run on the same ESX host within the DRS cluster.
+
+## References
+- XAP's [VMWare guidelines](/release_notes/100vmware-guidelines.html)
+- [Enterprise Java Applications on VMware - Best Practices Guide](http://www.vmware.com/resources/techresources/1087)
+- [Workloads in vSphere VMs](http://www.vmware.com/resources/techresources/10220)
