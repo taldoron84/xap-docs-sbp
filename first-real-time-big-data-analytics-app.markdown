@@ -247,18 +247,8 @@ The following are step-by-step instructions for running the application in XAP:
 
 - [Download](http://www.gigaspaces.com/LatestProductVersion) and [install]({{%latestjavaurl%}}/installation.html) XAP.
 - Edit `<XapInstallationRoot>/gslicense.xml>` and place the license key file provided with the email sent to you after downloading GigaSpaces XAP as the `<licensekey>` value.
-- Start a shell prompt in the `<XapInstallationRoot>/recipes/apps/streaming-bigdata` folder.
-- Run
-
-
-```bash
-mvn package
-```
-
-Compile and package the source code into JARs
-
-
-- Start a [Grid Service Agent](/product_overview/service-grid.html#gsa) by running the `gs-agent.sh/bat` script. This will start two [GSCs](/product_overview/service-grid.html#gsc) (GSCs are the container JVMs for your processing units) and a [GSM](/product_overview/service-grid.html#gsm).
+- Make sure you have the `feeer` and `processor` PUs built.
+- Start a [Grid Service Agent](/product_overview/service-grid.html#gsa) by running the `gs-agent.sh/bat` script. 
 
 {{%tabs%}}
 {{%tab "  Unix "%}}
@@ -286,7 +276,7 @@ Step 4: Then deploy the processor
 
 
 ```bash
-./gs.sh deploy ../recipes/apps/streaming-bigdata/bigDataApp/processor/rt-analytics-processor.jar
+./gs.sh deploy ../processor/target/rt-processor-rt-analytics1.0.jar
 ```
 
 {{% /tab %}}
@@ -294,7 +284,7 @@ Step 4: Then deploy the processor
 
 
 ```bash
-gs deploy ..\recipes\apps\streaming-bigdata\bigDataApp\processor\rt-analytics-processor.jar
+gs deploy ..\processor\target\rt-processor-rt-analytics1.0.jar
 ```
 
 {{% /tab %}}
@@ -304,13 +294,13 @@ You should see the following output:
 
 
 ```bash
-Deploying [rt-analytics-processor.jar] with name [rt-processor-XAP-{{% currentversion %}}] under groups [{{%version "default-lookup-group" %}}] and locators []
-Uploading [rt-analytics-processor] to [http://127.0.0.1:61765/]
+Deploying [rt-processor-rt-analytics1.0.jar] with name [rt-processor-rt-analytics1.0] under groups [{{%version "default-lookup-group" %}}] and locators []
+Uploading [rt-processor-rt-analytics1.0] to [http://127.0.0.1:61765/]
 Waiting indefinitely for [4] processing unit instances to be deployed...
-[rt-analytics-processor] [1] deployed successfully on [127.0.0.1]
-[rt-analytics-processor] [1] deployed successfully on [127.0.0.1]
-[rt-analytics-processor] [2] deployed successfully on [127.0.0.1]
-[rt-analytics-processor] [2] deployed successfully on [127.0.0.1]
+[rt-processor-rt-analytics1.0] [1] deployed successfully on [127.0.0.1]
+[rt-processor-rt-analytics1.0] [1] deployed successfully on [127.0.0.1]
+[rt-processor-rt-analytics1.0] [2] deployed successfully on [127.0.0.1]
+[rt-processor-rt-analytics1.0] [2] deployed successfully on [127.0.0.1]
 Finished deploying [4] processing unit instances
 ```
 
@@ -321,7 +311,7 @@ Finished deploying [4] processing unit instances
 
 
 ```bash
-./gs.sh deploy ../recipes/apps/streaming-bigdata/bigDataApp/feeder/rt-analytics-feeder.jar
+./gs.sh deploy ../feeder/taret/rt-feeder-rt-analytics1.0
 ```
 
 {{% /tab %}}
@@ -329,7 +319,7 @@ Finished deploying [4] processing unit instances
 
 
 ```bash
-gs deploy ..\recipes\apps\streaming-bigdata\bigDataApp\feeder\rt-analytics-feeder.jar
+gs deploy ..\feeder\target\rt-feeder-rt-analytics1.0
 ```
 
 {{% /tab %}}
@@ -343,11 +333,11 @@ You should see the following output:
 
 
 ```java
-Deploying [rt-analytics-feeder.jar] with name [rt-analytics-feeder] under groups [{{%version "default-lookup-group" %}}] and locators []
-Uploading [rt-analytics-feeder] to [http://127.0.0.1:61765/]
+Deploying [rt-feeder-rt-analytics1.0.jar] with name [rt-feeder-rt-analytics1.0] under groups [{{%version "default-lookup-group" %}}] and locators []
+Uploading [rt-feeder-rt-analytics1.0] to [http://127.0.0.1:61765/]
 SLA Not Found in PU.  Using Default SLA.
 Waiting indefinitely for [1] processing unit instances to be deployed...
-[rt-analytics-feeder] [1] deployed successfully on [127.0.0.1]
+[rt-feeder-rt-analytics1.0] [1] deployed successfully on [127.0.0.1]
 Finished deploying [1] processing unit instances
 ```
 
