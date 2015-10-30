@@ -269,7 +269,7 @@ start /min gs-agent.bat
 {{% /tab %}}
 {{% /tabs %}}
 
-Step 4: Then deploy the processor
+- Deploy the processor
 
 {{%tabs%}}
 {{%tab "  Unix "%}}
