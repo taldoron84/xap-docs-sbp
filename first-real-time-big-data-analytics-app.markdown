@@ -25,7 +25,6 @@ The amount of data that flows in these systems is huge. Twitter, for example, 50
 
 This tutorial explains the challenges of a Real-time (RT) Analytics system using Twitter as an example, and show in details how these challenges can be met by using GigaSpaces XAP.
 
-
 # The Challenge
 
 Twitter users aren't just interested in reading tweets of the people they follow; they are also interested in finding new people and topics to follow based on popularity. This poses several challenges to the Twitter architecture due to the vast volume of tweets. In this example, we focus on the challenges relating to calculating the **word count** use case. The challenge here is straightforward:
@@ -73,16 +72,14 @@ In our Twitter example, we need to build a flow that provides the **Map** / **Re
 
 Our solution therefore uses 2 modules for persisting and processing data, as follows:
 
-- The feeder module persists raw tweets (the data) in the Space (IMDG)--The feeder partitions the Tweets using their ID (assumed to be globally unique) to achieve a scalable solution with rapid insertion of tweets into the Space.
-- The processor module implements the **Map** / **Reduce** algorithm that processes tweets in the Space, resulting in real-time word counts. The tweets are then moved from the Space to the historical data store located in an Apache Cassandra Big-Data Store --The processor implements a workflow of events using the IMDG ability to store transient data in-memory and trigger processing activity in-memory.
-The processor's **Map** phase has the following logical steps:
+- The feeder write raw tweets into the Space (IMDG)-- The tweets are routed to their relevant partition using their ID (assumed to be globally unique). This makes the solution scalable.
+- The processor module implements the **Map** / **Reduce** algorithm that processes tweets in the Space, resulting in real-time word counts. The tweets are then moved from the Space to the historical data store. The processor performs the following steps:
 
 1. Tokenizes tweets into maps of tokens and writes them to the Space (triggered by the writing of raw tweets to the Space).
-1. Filters unwanted words from the maps of tokens and writes the filtered maps to the Space (triggered by the writing of maps of tokens to the Space).
-1. Generates a token counter per word, distributing the counters across the grid partitions for scalability and performance (triggered by the writing of filtered maps of tokens to the Space).
+2. Filters unwanted words from the maps of tokens and writes the filtered maps to the Space (triggered by the writing of maps of tokens to the Space).
+3. Generates a token counter per word, distributing the counters across the grid partitions for scalability and performance (triggered by the writing of filtered maps of tokens to the Space).
 
 The processor's **Reduce** phase aggregates the local results into global word counters.
-
 
 # Implementing the Solution
 
@@ -95,17 +92,11 @@ To implement our solution, we use Cassandra (or a local file) as the historical 
 {{% /column %}}
 {{% /section %}}
 
-- The [`processor`](https://github.com/CloudifySource/cloudify-recipes/tree/master/apps/streaming-bigdata/processor) module is a XAP [processing unit]({{%latestjavaurl%}}/the-processing-unit-structure-and-configuration.html) that contains the Space and performs the real-time workflow of processing the incoming tweets. The processing of data objects is performed using event containers.
+- The processor module is a XAP [processing unit]({{%latestjavaurl%}}/the-processing-unit-structure-and-configuration.html) that contains the Space and performs the real-time workflow of processing the incoming tweets. The processing of data objects is performed using event containers.
 
-- The [`feeder`](https://github.com/CloudifySource/cloudify-recipes/tree/master/apps/streaming-bigdata/feeder) module is implemented as a processing unit thereby enabling the dynamic deployment of multiple instances of the feeder across multiple nodes, increasing the load it can manage, and thus the ability handle larger tweet streams. The processing unit contains the following feeder strategies:
-    - The [`TwitterHomeTimelineFeederTask`](https://github.com/CloudifySource/cloudify-recipes/tree/master/apps/streaming-bigdata/feeder/src/main/java/org/openspaces/bigdata/feeder/TwitterHomeTimelineFeederTask.java) class, which feeds in tweets from Twitter's public timeline using [Spring Social](http://www.springsource.org/spring-social), converting them to a canonical [Space Document]({{%latestjavaurl%}}/document-api.html) representation, and writes them to the Space ,which in turn invokes the relevant event processors of the processor module.
-    - The [`ListBasedFeederTask`](https://github.com/CloudifySource/cloudify-recipes/tree/master/apps/streaming-bigdata/feeder/src/main/java/org/openspaces/bigdata/feeder/ListBasedFeederTask.java) class is a simulation feeder for testing purposes, which simulates tweets locally, avoiding the need to connect to the Twitter API over the Internet.
+- The feeder module is implemented as a processing unit. It is simulating tweets , converting them to Space Documents objects and writes them to the Space. This in turn invokes the relevant event processors on the processor module.
 
-- Optionally, the [`common`](https://github.com/CloudifySource/cloudify-recipes/tree/master/apps/streaming-bigdata/common) module for including items that are shared between the feeder and the processor modules (e.g. common interfaces, shared data model, etc.).
-
-- The [`bigDataApp`](https://github.com/CloudifySource/cloudify-recipes/tree/master/apps/streaming-bigdata/bigDataApp) directory contains the recipes and other scripts required to automatically deploy, monitor and manage the entire application together with the [Cassandra](http://cassandra.apache.org/) back-end using [Cloudify](http://getcloudify.org).
-
-
+- The  common module including items that are shared between the feeder and the processor modules (e.g. common interfaces, shared data model, etc.).
 
 # Building the Application
 
@@ -115,20 +106,7 @@ The following are step-by-step instructions building the application:
 1. Follow these [instructions]({{%latestjavaurl%}}/installation-guide.html#java-installation) to download and install the latest version of XAP.
 
 2. Getting the Application
-The application source can be found under `<XapInstallationRoot>/recipes/apps/streaming-bigdata folder`.
-{{%/panel%}}
-
-Alternatively, you can download the source files in zip format from the [repository home on github](https://github.com/CloudifySource/cloudify-recipes/archive/2_5_1.zip)
-The source are maintained in [Github Gigaspaces cloudify-recipes repository](https://github.com/CloudifySource/cloudify-recipes/tree/2_5_1/apps/streaming-bigdata).
-If you're a github user and have already [setup the github client](http://help.github.com/mac-set-up-git/), you can [fork](http://help.github.com/fork-a-repo) the repository and clone it to your local machine, as follows:
-
-
-```bash
-cd <project root directory>
-git clone --branch=2_5_1 <your new repository URL>
-```
-
-We welcome your contributions and suggestions for improvements, and invite you to submit them by performing a [pull request](http://help.github.com/send-pull-requests/). We will review your recommendations and have relevant changes merged.
+Get the [demo application](https://github.com/gigaspaces/rt-analytics) and place the files under an empty folder.
 
 3. Install Maven and the GigaSpaces Maven plug-in
 The application uses [Apache Maven](http://maven.apache.org/). If you don't have Apache Maven installed, please [download](http://maven.apache.org/download.html#Installation) and install it. Once installed:
@@ -138,9 +116,8 @@ The application uses [Apache Maven](http://maven.apache.org/). If you don't have
 - Run the GigaSpaces Maven plug-in installer by calling the `<XapInstallationRoot>/tools/maven/installmavenrep.bat/sh` script.
 
 4. Building the Application
-Move to the `<applicationRoot>` folder (contains the application's project files).
-Edit the pom.xml file and make sure the <gsVersion> include the correct   XAP release you have installed. For example if you have XAP {{%version "xap-version" %}} installed you should have the following:
-
+Move to the application root folder.
+Edit the pom.xml file and make sure the <gsVersion> include the correct XAP release you have installed. For example if you have XAP {{%version "xap-version" %}} installed you should have the following:
 
 ```bash
 <properties>
@@ -150,29 +127,14 @@ Edit the pom.xml file and make sure the <gsVersion> include the correct   XAP re
 
 To Build the project type the following at your command (Windows) or shell (*nix):
 
-
 ```bash
 mvn install
 ```
 
-If you are getting **No gslicense.xml license file was found in current directory** error, please run the following:
-
-
-```bash
-mvn package -DargLine="-Dcom.gs.home="<XapInstallationRoot>"
-```
-
-Where **XapInstallationRoot** should be XAP root folder - example:
-
-
-```bash
-mvn package -DargLine="-Dcom.gs.home="c:/{{%version gshome-directory %}}"
-```
-
 The Maven build will download the required dependencies, compile the source files, run the unit tests, and build the required jar files. In our example, the following processing unit jar files are built:
 
-- `<project root>/feeder/target/rt-feeder-XAP-9.x.jar`
-- `<project root>/processor/target/rt-processor-XAP-9.x.jar`
+- `<project root>/feeder/target/rt-feeder-rt-analytics1.0.jar`
+- `<project root>/processor/target/rt-processor-rt-analytics1.0.jar`
 
 Once the build is complete, a summary message similar to the following is displayed:
 
@@ -198,9 +160,7 @@ Once the build is complete, a summary message similar to the following is displa
 
 Since the application is a Maven project, you can load it using your Java IDE and thus automatically configure all module and classpath configurations.
 
-- With [IntelliJ](http://www.intellij.com), simply click "File -> Open Project" and point to `<applicationRoot>/pom.xml`. IntelliJ will load the project and present the modules for you.
 - With [Eclipse](http://www.eclipse.org), install the [M2Eclipse plugin](http://eclipse.org/m2e/m2e-downloads.html) and click "File -> Import" , "Maven -> Existing Maven Projects" , select the `streaming-bigdata` folder and click the `Finish` button.
-
 
 
 {{%section%}}
@@ -218,15 +178,10 @@ Since the application is a Maven project, you can load it using your Java IDE an
 {{%/section%}}
 
 
-
-
 Once the project is loaded in your IDE, you can run the application, as follows:
 
 - In **Eclipse**, create two run configurations. One for the **feeder** and one for the **processor**. For both, the main class must be [`org.openspaces.pu.container.integrated.IntegratedProcessingUnitContainer`](http://www.gigaspaces.com/docs/JavaDoc{{%currentversion%}}/org/openspaces/pu/container/integrated/IntegratedProcessingUnitContainer.html).
-Configure the GigaSpaces home folder using the **com.gs.home** system property:
-`-Dcom.gs.home="c:\{{%version "gshome-directory" %}}"`
-Configure the active spring profiles using the **spring.profiles.active** system property:
-`-Dspring.profiles.active=list-feeder,file-archiver`
+
 
 rt-processor project run configuration:
 
@@ -256,8 +211,6 @@ rt-feeder project run configuration:
 {{%/column%}}
 {{%/section%}}
 
-- In IntelliJ, create two run configurations, with [`org.openspaces.pu.container.integrated.IntegratedProcessingUnitContainer`](http://www.gigaspaces.com/docs/JavaDoc{{%currentversion%}}/org/openspaces/pu/container/integrated/IntegratedProcessingUnitContainer.html) as the main class, and make sure that the feeder configuration uses the classpath of the `feeder` module, and that the processor configuration uses that of the `processor` module.
-
 For more information about the `IntegratedProcessingUnitContainer` class (runs the processing units within your IDE), see [Running and Debugging Within Your IDE]({{%latestjavaurl%}}/running-and-debugging-within-your-ide.html).
 
 {{% tip %}}
@@ -265,7 +218,6 @@ Make sure you have updated **gslicense.xml** located under the GigaSpaces XAP ro
 {{% /tip %}}
 
 To run the application, run the **processor** configuration, and then the **feeder** configuration. An output similar to the following is displayed:
-
 
 ```bash
 2013-02-22 13:09:38,524  INFO [org.openspaces.bigdata.processor.TokenFilter] - filtering tweet 305016632265297920
@@ -288,22 +240,6 @@ To run the application, run the **processor** configuration, and then the **feed
 2013-02-22 13:09:41,487  INFO [org.openspaces.bigdata.processor.GlobalTokenCounter] - Increment  local token time by 1
 ```
 
-## Switching between Online Feeder and the Test Feeder
-
-You can switch between the On-Line `TwitterHomeTimelineFeederTask` Feeder and the Test `ListBasedFeederTask` Feeder. The former uses **real-time** Twitter time line data, while the latter uses simulated tweet data. By default, `ListBasedFeederTask` is enabled. To switch to `TwitterHomeTimelineFeederTask`
-
-- add `-Dspring.profiles.active=twitter-feeder -Dtwitter.screenName=diggupdates` to the rt-feeder project VM arguments configuration.
-- Get your twitter API secret keys:
-   - Log in to http://dev.twitter.com/
-   - Go to My applications and `Create a new Application`
-   - Copy the `Consumer Key` and `Consumer Secret` to [feeder.properties](https://github.com/CloudifySource/cloudify-recipes/blob/master/apps/streaming-bigdata/feeder/src/main/resources/META-INF/spring/feeder.properties)
-   - Click the `My Access Token` button on bottom of the page.
-   - Copy the `Access Token` and `Access Token Secret` to [feeder.properties](https://github.com/CloudifySource/cloudify-recipes/blob/master/apps/streaming-bigdata/feeder/src/main/resources/META-INF/spring/feeder.properties)
-
-{{% warning %}}
-Since the [Twitter API uses rate limiting](https://dev.twitter.com/docs/rate-limiting), the twitter feeder is configured to poll once every 24 seconds (150 requests per hour) `-Dtwitter.delayInMs=24000`. Your feeder might stop if this rate limit is exceeded.
-{{% /warning %}}
-
 # Running the Application with XAP Runtime Environment
 
 The following are step-by-step instructions for running the application in XAP:
@@ -318,45 +254,8 @@ The following are step-by-step instructions for running the application in XAP:
 mvn package
 ```
 
-to compile and package the source code into JARs
+Compile and package the source code into JARs
 
-Step 1: Change to the `<XapInstallationRoot>/bin>` folder.
-Step 2: Choose between the `twitter-feeder` and the `list-feeder` spring profile (All tweets are persisted to a file-archiver, cassandra-archiver is explained next):
-
-{{%tabs%}}
-{{%tab "  Unix twitter "%}}
-
-
-```bash
-export GSC_JAVA_OPTIONS="-Dspring.profiles.active=twitter-feeder,file-archiver"
-```
-
-{{% /tab %}}
-{{%tab "  Unix list "%}}
-
-
-```bash
-export GSC_JAVA_OPTIONS="-Dspring.profiles.active=list-feeder,file-archiver"
-```
-
-{{% /tab %}}
-{{%tab "  Windows twitter "%}}
-
-
-```bash
-set GSC_JAVA_OPTIONS=-Dspring.profiles.active=twitter-feeder,file-archiver
-```
-
-{{% /tab %}}
-{{%tab "  Windows list "%}}
-
-
-```bash
-set GSC_JAVA_OPTIONS=-Dspring.profiles.active=list-feeder,file-archiver
-```
-
-{{% /tab %}}
-{{% /tabs %}}
 
 Step 3: Start a [Grid Service Agent](/product_overview/service-grid.html#gsa) by running the `gs-agent.sh/bat` script. This will start two [GSCs](/product_overview/service-grid.html#gsc) (GSCs are the container JVMs for your processing units) and a [GSM](/product_overview/service-grid.html#gsm).
 
@@ -460,9 +359,9 @@ Once the application is running, you can use the XAP UI tools to view your appli
 To learn about additional options for deploying your XAP processing units, please see [Deploying onto the Service Grid]({{%latestjavaurl%}}/deploying-onto-the-service-grid.html)
 {{% /info %}}
 
-# Viewing Most Popular Words on Twitter
+# Viewing Most Popular Words
 
-To view the most popular words on Twitter , start the GS-UI using the gs-ui.bat/sh , click the Query icon as demonstrated below and execute the following SQL Query by clicking the ![rt-tw6.jpg](/attachment_files/rt-tw6.jpg) button:
+To view the most popular words , start the GS-UI using the gs-ui.bat/sh , click the Query icon as demonstrated below and execute the following SQL Query by clicking the ![rt-tw6.jpg](/attachment_files/rt-tw6.jpg) button:
 
 
 ```bash
@@ -474,35 +373,8 @@ You should see the top most popular words on twitter ordered by their popularity
 
 {{%popup   "/attachment_files/rt-tw4new.jpg"%}}
 
-
 You can re-execute the query just by clicking the ![rt-tw5.jpg](/attachment_files/rt-tw5.jpg) button again. This will give you real-time view on the most popular words on Twitter.
 
-# Persisting to Cassandra
-
-Once raw tweets are processed, they are moved from the Space to the historical data backend store. By default, this points to a **simple flat file archiver** storage implemented with the `FileArchiveOperationHandler`. The example application also includes a Cassandra driver `CassandraArchiveHandler`.
-
-{{% tip %}}
-For more advanced persistency implementation see the [Cassandra Space Persistency Solution]({{%latestjavaurl%}}/cassandra-space-persistency.html).
-{{% /tip %}}
-
-{{% tip %}}
-The next section uses cloudify to automate the manual steps described below
-{{% /tip %}}
-
-The following are step-by-step instructions configuring the application to persist to Cassandra:
-
-1. Download, install, and start the Cassandra database. For more information, see Cassandra's [Getting Started](http://wiki.apache.org/cassandra/GettingStarted) page.
-2. Define the TWITTER cassandra keyspace by running the following shell command:
-
-
-```bash
-<cassandra home>/bin/cassandra-cli --host <cassandra host name> --file <project home>/bigDataApp/cassandra/cassandraKeyspace.txt
-```
-
-3. Deploy the processor and feeder
-4. Start the Grid Components as described in the previous section. Do not deploy the application just yet. We need to start cassandra first.
-We need to teardown the existing application since we injected the spring profile using environment variables that affect all Grid components.
-Notice how this time we use the `cassandra-archiver` profile (instead of the `file-archiver profile`).
 
 {{%tabs%}}
 {{%tab "  Unix "%}}
@@ -550,108 +422,7 @@ RowKey: 0439486840025000
 ...
 ```
 
-# Running the Example using Cloudify
 
-To run the application with the Cassandra DB as one application on any cloud, we will use [Cloudify](http://getcloudify.org). A key concept with Cloudify is deploying and managing the entire application life cycle using a [Recipe](http://www.getcloudify.org/guide/{{%latestcloudifyrelease%}}/developing/recipes_overview.html). This approach provides total application life-cycle automation without any code or architecture change. Furthermore, it is cloud neutral so you don't get locked-in to a specific cloud vendor.
-
-The following snippet shows the application's recipe:
-
-
-```java
-application {
-	name="big_data_app"
-
-	service {
-		name = "feeder"
-		dependsOn = ["processor"]
-	}
-	service {
-		name = "processor"
-		dependsOn = ["cassandra"]
-	}
-	service {
-		name = "cassandra"
-	}
-}
-```
-
-The following snippet shows the life-cycle events described in the Cassandra service recipe:
-
-
-```java
-service {
-  name "rt_cassandra"
-  icon "Apache-cassandra-icon.png"
-  numInstances 1
-  type "NOSQL_DB"
-  lifecycle{
-		init 		"cassandra_install.groovy"
-		preStart 	"cassandra_prestart.groovy"
-		start 		"cassandra_start.groovy"
-		postStart 	"cassandra_poststart.groovy"
-
-	}
-...
-}
-```
-
-The following snippet shows the processing unit described in the processor recipe:
-
-
-```java
-service {
-    name "processor"
-    numInstances 4
-    maxAllowedInstances 4
-    statefulProcessingUnit {
-        binaries "rt-analytics-processor.jar"
-		springProfilesActive "cassandra-archiver,cassandra-discovery"
-        sla {
-            memoryCapacity 512
-            maxMemoryCapacity 512
-            highlyAvailable true
-            memoryCapacityPerContainer 128
-        }
-    }
-}
-```
-
-The application recipe is packaged, as follows:
-![rt_app.png](/attachment_files/rt_app.png)
-
-### Testing the application on a Local Cloud
-
-XAP comes with a cloud emulator called `localcloud`. It allows you to test the recipe execution on your local machine. Follo these step-by-step instructions to installing and run the application on the `localcloud`:
-
-1. Move to the <XapInstallationRoot>/tools/cli/ folder, and at the command (Windows) prompt, type: `cloudify.bat` (or at the shell *nix prompt, type: `cloudify.sh`).
-1. To start the localcloud services, at the prompt, type `bootstrap-localcloud`. This may take few minutes.
-1. To deploy the application, at the prompt, type:
-
-
-```bash
-install-application <XapInstallationRoot>/recipes/apps/streaming-bigdata/bigDataApp
-```
-
-{{% info title="Tracking installation progress "%}}
-You can track the progress on the shell and on the web management console (localhost:8099).
-{{% /info %}}
-
-For more information, see [Deploying Applications](http://getcloudify.org/guide/2.6/deploying/deploying_apps.html) page.
-
-### Running on Clouds
-
-To run the application on one of the supported clouds, proceed the following steps:
-
-1. Configure the cloud driver configuration file and get the cloud certificate. For more information, see [Post-Installation Configuration](http://getcloudify.org/guide/{{%latestcloudifyrelease%}}/setup/post_installation_configuration.html) page.
-1. Bootstrap the cloud. For more information, see [The Bootstrapping Process](http://shlomo-tech-tav.github.com/guide/bootstrapping/bootstrapping_process) page.
-1. To install and deploy the application, use the `install-application` command, as described in the previous section.
-
-{{% info title="Running XAP on the Cloud "%}}
-In order to use your license on the cloud environment you should perform the following:
-
-- cd to `<XAP installation root>/tools/cli/plugins/ecs/<cloud name>/upload`
-- create directory cloudify-overrides
-- copy your license(<XAP installation root>/gslicense.xml) to the above directory.
 {{% /info %}}
 
 
