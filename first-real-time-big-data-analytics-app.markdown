@@ -105,7 +105,7 @@ The following are step-by-step instructions building the application:
 1. Follow these [instructions]({{%latestjavaurl%}}/installation-guide.html#java-installation) to download and install the latest version of XAP.
 
 2. Getting the Application
-Get the [demo application](https://github.com/gigaspaces/rt-analytics) and place the files under an empty folder.
+Get the [demo application](https://github.com/gigaspaces/rt-analytics-streaming-bigdata) and place the files under an empty folder.
 
 3. Install Maven and the GigaSpaces Maven plug-in
 The application uses [Apache Maven](http://maven.apache.org/). If you don't have Apache Maven installed, please [download](http://maven.apache.org/download.html#Installation) and install it. Once installed:
