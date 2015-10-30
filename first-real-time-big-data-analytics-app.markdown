@@ -102,7 +102,6 @@ To implement our solution, we use Cassandra (or a local file) as the historical 
 
 The following are step-by-step instructions building the application:
 
-{{%panel%}}
 1. Follow these [instructions]({{%latestjavaurl%}}/installation-guide.html#java-installation) to download and install the latest version of XAP.
 
 2. Getting the Application
@@ -128,7 +127,7 @@ Edit the pom.xml file and make sure the <gsVersion> include the correct XAP rele
 To Build the project type the following at your command (Windows) or shell (*nix):
 
 ```bash
-mvn install
+mvn package
 ```
 
 The Maven build will download the required dependencies, compile the source files, run the unit tests, and build the required jar files. In our example, the following processing unit jar files are built:
@@ -178,9 +177,10 @@ Since the application is a Maven project, you can load it using your Java IDE an
 {{%/section%}}
 
 
+
 Once the project is loaded in your IDE, you can run the application, as follows:
 
-- In **Eclipse**, create two run configurations. One for the **feeder** and one for the **processor**. For both, the main class must be [`org.openspaces.pu.container.integrated.IntegratedProcessingUnitContainer`](http://www.gigaspaces.com/docs/JavaDoc{{%currentversion%}}/org/openspaces/pu/container/integrated/IntegratedProcessingUnitContainer.html).
+In **Eclipse**, create two run configurations. One for the **feeder** and one for the **processor**. For both, the main class must be [`org.openspaces.pu.container.integrated.IntegratedProcessingUnitContainer`](http://www.gigaspaces.com/docs/JavaDoc{{%currentversion%}}/org/openspaces/pu/container/integrated/IntegratedProcessingUnitContainer.html).
 
 
 rt-processor project run configuration:
@@ -210,6 +210,7 @@ rt-feeder project run configuration:
 {{%popup   "/attachment_files/rt-feeder2.png"%}}
 {{%/column%}}
 {{%/section%}}
+
 
 For more information about the `IntegratedProcessingUnitContainer` class (runs the processing units within your IDE), see [Running and Debugging Within Your IDE]({{%latestjavaurl%}}/running-and-debugging-within-your-ide.html).
 
@@ -244,10 +245,10 @@ To run the application, run the **processor** configuration, and then the **feed
 
 The following are step-by-step instructions for running the application in XAP:
 
-1. [Download](http://www.gigaspaces.com/LatestProductVersion) and [install]({{%latestjavaurl%}}/installation.html) XAP.
-1. Edit `<XapInstallationRoot>/gslicense.xml>` and place the license key file provided with the email sent to you after downloading GigaSpaces XAP as the `<licensekey>` value.
-1. Start a shell prompt in the `<XapInstallationRoot>/recipes/apps/streaming-bigdata` folder.
-1. Run
+- [Download](http://www.gigaspaces.com/LatestProductVersion) and [install]({{%latestjavaurl%}}/installation.html) XAP.
+- Edit `<XapInstallationRoot>/gslicense.xml>` and place the license key file provided with the email sent to you after downloading GigaSpaces XAP as the `<licensekey>` value.
+- Start a shell prompt in the `<XapInstallationRoot>/recipes/apps/streaming-bigdata` folder.
+- Run
 
 
 ```bash
@@ -257,7 +258,7 @@ mvn package
 Compile and package the source code into JARs
 
 
-Step 3: Start a [Grid Service Agent](/product_overview/service-grid.html#gsa) by running the `gs-agent.sh/bat` script. This will start two [GSCs](/product_overview/service-grid.html#gsc) (GSCs are the container JVMs for your processing units) and a [GSM](/product_overview/service-grid.html#gsm).
+- Start a [Grid Service Agent](/product_overview/service-grid.html#gsa) by running the `gs-agent.sh/bat` script. This will start two [GSCs](/product_overview/service-grid.html#gsc) (GSCs are the container JVMs for your processing units) and a [GSM](/product_overview/service-grid.html#gsm).
 
 {{%tabs%}}
 {{%tab "  Unix "%}}
@@ -313,7 +314,7 @@ Waiting indefinitely for [4] processing unit instances to be deployed...
 Finished deploying [4] processing unit instances
 ```
 
-Step 5: Next, deploy the feeder:
+- Deploy the feeder:
 
 {{%tabs%}}
 {{%tab "  Unix "%}}
@@ -352,7 +353,7 @@ Finished deploying [1] processing unit instances
 
 Once the application is running, you can use the XAP UI tools to view your application , access the data and the counters and manage the application:
 
-- For the Web Based UI run gs-webui.bat/sh and point your browser to localhost:8099 http://localhost:8099
+- For the Web Based UI run gs-webui.bat/sh and point your browser to [localhost:8099](http://localhost:8099)
 - For the Rich Based UI run gs-ui.bat/sh
 
 {{% info "More Deployment Options "%}}
@@ -374,53 +375,6 @@ You should see the top most popular words on twitter ordered by their popularity
 {{%popup   "/attachment_files/rt-tw4new.jpg"%}}
 
 You can re-execute the query just by clicking the ![rt-tw5.jpg](/attachment_files/rt-tw5.jpg) button again. This will give you real-time view on the most popular words on Twitter.
-
-
-{{%tabs%}}
-{{%tab "  Unix "%}}
-
-
-```bash
-./gs.sh gsa shutdown
-export GSC_JAVA_OPTIONS="-Dspring.profiles.active=twitter-feeder,cassandra-archiver -Dcassandra.hosts=127.0.0.1"
-nohup ./gs-agent.sh >/dev/null 2>&1
-./gs.sh deploy ../recipes/apps/streaming-bigdata/bigDataApp/processor/rt-analytics-processor.jar
-./gs.sh deploy ../recipes/apps/streaming-bigdata/bigDataApp/feeder/rt-analytics-feeder.jar
-```
-
-{{% /tab %}}
-{{%tab "  Windows "%}}
-
-
-```bash
-gs.bat gsa shutdown
-set GSC_JAVA_OPTIONS=-Dspring.profiles.active=twitter-feeder,cassandra-archiver -Dcassandra.hosts=127.0.0.1
-start /min gs-agent.bat
-gs deploy ..\recipes\apps\streaming-bigdata\bigDataApp\processor\rt-analytics-processor.jar
-gs deploy ..\recipes\apps\streaming-bigdata\bigDataApp\feeder\rt-analytics-feeder.jar
-```
-
-{{% /tab %}}
-{{% /tabs %}}
-
-5. You can view the data within Cassandra using the Tweet column family - Move to the Cassandra `bin` folder and run the `cassandra-cli` command:
-
-
-```bash
->cassandra-cli.bat
-[default@unknown] connect localhost/9160;
-[default@unknown] use TWITTER;
-[default@TWITTER] list Tweet;
--------------------
-RowKey: 0439486840025000
-=> (column=Archived, value=00000000, timestamp=1361398666863002)
-=> (column=CreatedAt, value=0000013cf9aea1c8, timestamp=1361398666863004)
-=> (column=FromUserId, value=0000000039137bb7, timestamp=1361398666863003)
-=> (column=Processed, value=01, timestamp=1361398666863001)
-=> (column=Text, value=405f5f4c6f7665526562656c64652073656775696e646f2021205573613f20234172746875724d65754d61696, timestamp=136139866
-6863000)
-...
-```
 
 
 {{% /info %}}
