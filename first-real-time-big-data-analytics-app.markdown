@@ -102,9 +102,10 @@ To implement our solution, we use Cassandra (or a local file) as the historical 
 
 The following are step-by-step instructions building the application:
 
-1. Follow these [instructions]({{%latestjavaurl%}}/installation-guide.html#java-installation) to download and install the latest version of XAP.
+1. Install XAP 
+Follow these [instructions]({{%latestjavaurl%}}/installation-guide.html#java-installation) to download and install the latest version of XAP.
 
-2. Getting the Application
+2. Get the demo application code from github
 Get the [demo application](https://github.com/gigaspaces/rt-analytics-streaming-bigdata) and place the files under an empty folder.
 
 3. Install Maven and the GigaSpaces Maven plug-in
@@ -115,8 +116,7 @@ The application uses [Apache Maven](http://maven.apache.org/). If you don't have
 - Run the GigaSpaces Maven plug-in installer by calling the `<XapInstallationRoot>/tools/maven/installmavenrep.bat/sh` script.
 
 4. Building the Application
-Move to the application root folder.
-Edit the pom.xml file and make sure the <gsVersion> include the correct XAP release you have installed. For example if you have XAP {{%version "xap-version" %}} installed you should have the following:
+Move to the application root folder. Edit the `pom.xml` file and make sure the `<gsVersion>` include the correct XAP release you have installed. For example if you have XAP {{%version "xap-version" %}} installed you should have the following:
 
 ```bash
 <properties>
