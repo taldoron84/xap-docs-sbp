@@ -70,10 +70,12 @@ In our Twitter example, we need to build a flow that provides the **Map** / **Re
 {{% /column %}}
 {{% /section %}}
 
-Our solution therefore uses 2 modules for persisting and processing data, as follows:
+Our solution uses two modules for processing data:
+- Feeder:
+The **feeder** write raw tweets into the Space (IMDG)-- The tweets are routed to their relevant partition using their ID (assumed to be globally unique). This makes the solution scalable.
 
-- The feeder write raw tweets into the Space (IMDG)-- The tweets are routed to their relevant partition using their ID (assumed to be globally unique). This makes the solution scalable.
-- The processor module implements the **Map** / **Reduce** algorithm that processes tweets in the Space, resulting in real-time word counts. The tweets are then moved from the Space to the historical data store. The processor performs the following steps:
+- Processor:
+The **processor** module implements the **Map/Reduce** algorithm that processes tweets in the Space, resulting in real-time word counts. The tweets are then moved from the Space to the historical data store. The processor performs the following steps:
 
 1. Tokenizes tweets into maps of tokens and writes them to the Space (triggered by the writing of raw tweets to the Space).
 2. Filters unwanted words from the maps of tokens and writes the filtered maps to the Space (triggered by the writing of maps of tokens to the Space).
@@ -85,18 +87,18 @@ The processor's **Reduce** phase aggregates the local results into global word c
 
 {{% section %}}
 {{% column width="90%" %}}
-To implement our solution, we use Cassandra (or a local file) as the historical data tier and build a XAP application that processes and persists the data in real-time using the following modules:
+We use a local file to store the historical data. XAP will process and persist the data in real-time using the following modules:
 {{% /column %}}
 {{% column width="10%" %}}
 {{%popup   "/attachment_files/twitter_topo.png"%}}
 {{% /column %}}
 {{% /section %}}
 
-- The processor module is a XAP [processing unit]({{%latestjavaurl%}}/the-processing-unit-structure-and-configuration.html) that contains the Space and performs the real-time workflow of processing the incoming tweets. The processing of data objects is performed using event containers.
+- The **processor** module is a XAP [processing unit]({{%latestjavaurl%}}/the-processing-unit-structure-and-configuration.html) that contains the Space and performs the real-time workflow of processing the incoming tweets. The processing of data objects is performed using event containers.
 
-- The feeder module is implemented as a processing unit. It is simulating tweets , converting them to Space Documents objects and writes them to the Space. This in turn invokes the relevant event processors on the processor module.
+- The **feeder** module is implemented as a processing unit. It is simulating tweets , converting them to Space Documents objects and writes them to the Space. This in turn invokes the relevant event processors on the processor module.
 
-- The  common module including items that are shared between the feeder and the processor modules (e.g. common interfaces, shared data model, etc.).
+- The **common** module including items that are shared between the feeder and the processor modules (e.g. common interfaces, shared data model, etc.).
 
 # Building the Application
 
