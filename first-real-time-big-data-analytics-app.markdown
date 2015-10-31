@@ -1,6 +1,6 @@
 ---
 type: post
-title:  Real Time Big Data Analytics Application
+title:  Real Time Big Data Analytics
 categories: SBP
 weight: 1000
 parent: examples.html
@@ -370,6 +370,6 @@ You should see the top most popular words on twitter ordered by their popularity
 You can re-execute the query just by clicking the ![rt-tw5.jpg](/attachment_files/rt-tw5.jpg) button again. This will give you real-time view on the most popular words on Twitter.
 
 
-{{% /info %}}
+
 
 
