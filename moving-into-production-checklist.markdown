@@ -950,7 +950,7 @@ When using the [Elastic Processing Unit]({{%latestjavaurl%}}/elastic-processing-
 
 # Storage Type - Controlling Serialization
 
-When a client application accessing a remote space (using a clustered topology or non-clustered) the data is serialized and sent over the network to the relevant JVM hosting the target space partition. The serialization involves some overhead. The [Storage Type]({{%latestjavaurl%}}/storage-types---controlling-serialization.html) decoration allows you to control the serialization behavior when non-primitive fields used with your space class.
+When a client application accessing a remote space (using a clustered topology or non-clustered) the data is serialized and sent over the network to the relevant JVM hosting the target space partition. The serialization involves some overhead. The [Storage Type]({{%latestjavaurl%}}/storage-types-controlling-serialization.html) decoration allows you to control the serialization behavior when non-primitive fields used with your space class.
 
 {{%tabs%}}
 
@@ -980,7 +980,7 @@ When running with this mode, the collections within the space object are seriali
 
 You may control the Storage type at the space level, class level or field level.
 
-See the [Controlling Serialization]({{%latestjavaurl%}}/storage-types---controlling-serialization.html) for more details.
+See the [Controlling Serialization]({{%latestjavaurl%}}/storage-types-controlling-serialization.html) for more details.
 
 # Runtime Files Location
 GigaSpaces XAP generates some files while the system is running. You should change the location of the generated files location using the following system properties. See below how:

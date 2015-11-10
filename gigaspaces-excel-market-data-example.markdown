@@ -26,7 +26,7 @@ The example demonstrates the following:
 - Building and using Excel RTD and UDF components.
 
 
-{{% refer %}}Getting Started with RTD and UDF? See the [Writing Your First RTD/UDF Application](./writing-your-first-rtd-or-udf-application.html) section and review the [prerequisites](./prerequisites---gigaspaces-excel-integration.html).{{% /refer %}}
+{{% refer %}}Getting Started with RTD and UDF? See the [Writing Your First RTD/UDF Application](./writing-your-first-rtd-or-udf-application.html) section and review the [prerequisites](./prerequisites-gigaspaces-excel-integration.html).{{% /refer %}}
 
 # Example Structure
 

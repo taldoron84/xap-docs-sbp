@@ -46,8 +46,8 @@ Using Microsoft Excel UDF (User-Defined Functions), Excel writes an Entry to the
 
 {{% refer %}}**Learn how to do this**:
 
-- [HelloUDF example](./rtd-and-udf-examples---gigaspaces-excel-integration.html#HelloUDF -- Performing Excel Functions in Space) (basic)
-- [UDFSample example](./rtd-and-udf-examples---gigaspaces-excel-integration.html#UDFSample -- Performing Excel Functions in Space) (advanced)
+- [HelloUDF example](./rtd-and-udf-examples-gigaspaces-excel-integration.html#HelloUDF -- Performing Excel Functions in Space) (basic)
+- [UDFSample example](./rtd-and-udf-examples-gigaspaces-excel-integration.html#UDFSample -- Performing Excel Functions in Space) (advanced)
 - [Writing Your First UDF Application](./writing-your-first-rtd-or-udf-application.html){{% /refer %}}
 
 ## 4 -- Implementing Finish Trigger
@@ -60,8 +60,8 @@ The space writes a notification to the Microsoft Excel RTD (Real-Time Data) serv
 
 **Learn how to do this**:
 
-- [HelloRTD example](./rtd-and-udf-examples---gigaspaces-excel-integration.html#HelloRTD -- Loading Data from Space to Excel) (basic)
-- [RTDSample example](./rtd-and-udf-examples---gigaspaces-excel-integration.html#RTDSample -- Loading Data from Space to Excel) (advanced)
+- [HelloRTD example](./rtd-and-udf-examples-gigaspaces-excel-integration.html#HelloRTD -- Loading Data from Space to Excel) (basic)
+- [RTDSample example](./rtd-and-udf-examples-gigaspaces-excel-integration.html#RTDSample -- Loading Data from Space to Excel) (advanced)
 - [Writing Your First UDF Application](./writing-your-first-rtd-or-udf-application.html)
 
 For details on building Excel Real-Time Data components in Visual Basic .NET, see the [Microsoft website](http://msdn2.microsoft.com/en-us/library/aa140061(office.10).aspx).
