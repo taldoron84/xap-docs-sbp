@@ -564,10 +564,10 @@ Click on the Applications Tab and confirm the Web Services URL and PORT
 {{%accord title="Step 17: Test the rules"%}}
 Open an Internet Browser and begin testing the Decision and Generic Data Lookup Services
 
-http://localhost:8080/web-services/mycompany/rest/com.mycompany.app.model.facts.Applicant/1
-http://localhost:8080/web-services/mycompany/rest/com.mycompany.app.model.facts.Applicant
-http://localhost:8080/web-services/mycompany/rest/decision/processApplicationService/1
-http://localhost:8080/web-services/mycompany/rest/decision/checkHolidayService/summer/july
+`http://localhost:8080/web-services/mycompany/rest/com.mycompany.app.model.facts.Applicant/1` <br>
+`http://localhost:8080/web-services/mycompany/rest/com.mycompany.app.model.facts.Applicant` <br>
+`http://localhost:8080/web-services/mycompany/rest/decision/processApplicationService/1` <br>
+`http://localhost:8080/web-services/mycompany/rest/decision/checkHolidayService/summer/july`
 {{%/accord%}}
 
 {{%/accordion%}}

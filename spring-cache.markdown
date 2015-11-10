@@ -64,7 +64,7 @@ public void loadBooks(InputStream batch)
 
 ## Data-locality with a local cache (highest performance)
 
-Since most cache queries in Spring are ID-based lookups, the performance can be dramatically improved by utilizing the [Local Cache]({%latestjavaurl%}/local-cache.html) feature of XAP.
+Since most cache queries in Spring are ID-based lookups, the performance can be dramatically improved by utilizing the [Local Cache]({{%latestjavaurl%}}/local-cache.html) feature of XAP.
 
 Here is an example how to configure the Local Cache:
 

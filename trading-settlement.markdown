@@ -249,7 +249,7 @@ jetty.sessions.spaceUrl=jini://*/*/settlementSpace?useLocalCache
     - **deploy-mirror.bat**
     - **deploy-blotter.bat** (could take up to 10 minutes to deploy)
 
-9. **Connect** to the blotter (gwt-dealsBlotter processing unit) using your browser (http://127.0.0.1:8080/gwt-dealsBlotter/).
+9. **Connect** to the blotter (gwt-dealsBlotter processing unit) using your browser `http://127.0.0.1:8080/gwt-dealsBlotter/`.
 10. **Log in** with username that matches this format:  <any characters>@<trading entity> where <trading entity> = bank1 or cust1 or bank2 or cust2, etc.  For example, username = 123@bank1.  Password can be any characters.
 11. **Start** the application by clicking on the Administration tab and then clicking Start Feeder. You can Speed up the feeder rate by decreasing the refresh Interval to 1000 and clicking the Start Feeder.
 12. When the number of com.gigaspaces.settlement.model.Trade object > 50 (use the GS-UI - Data Type List for the settlementSpace to see the amount of objects), the settlementSpace will scale up by creating 2 additional GSCs. See the Hosts view.
