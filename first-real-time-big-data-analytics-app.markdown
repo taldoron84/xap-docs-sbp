@@ -106,7 +106,7 @@ We use a local file to store the historical data. XAP will process and persist t
 The following are step-by-step instructions building the application:
 
 1. Install XAP 
-Follow these [instructions]({{%latestjavaurl%}}/installation-guide.html#java-installation) to download and install the latest version of XAP.
+Follow these [instructions]({{%latestjavaurl%}}/installation-java.html) to download and install the latest version of XAP.
 
 2. Get the demo application code from github
 Get the [demo application](https://github.com/gigaspaces/rt-analytics-streaming-bigdata) and place the files under an empty folder.
