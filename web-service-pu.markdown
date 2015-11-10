@@ -40,7 +40,7 @@ Step 1. Download the [Web Service WAR file](/attachment_files/sbp/CustomerServic
 
 Step 2. Download the [Web Service project](/attachment_files/sbp/WebServicePU.zip). This includes the entire source code for the client and the web service.
 
-Step 3. Setup the application project class path libraries. See the [Client Application Project jars](#Client Application Project jars) for details.
+Step 3. Setup the application project class path libraries. See the [Client Application Project jars](#client-application-project-jars) for details.
 
 Step 4. Start GigaSpaces agent.
 
@@ -63,7 +63,7 @@ Step 6. Run the Client application.
 java com.example.customerservice.client.CustomerServiceClient
 ```
 
-See the [The Client Application](#The Client Application) for details.
+See the [The Client Application](#the-client-application) for details.
 
 # Web Service Configuration
 The WAR file includes the web service configuration. It is placed within `\CustomerServicePort\WEB-INF\cxf-servlet.xml`.
