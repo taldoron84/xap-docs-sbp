@@ -158,7 +158,7 @@ To obtain the space proxy reference, all your application needs to do is retriev
 GigaSpace gigaSpace = (GigaSpace) getServletContext().getAttribute("gigaSpace");
 ```
 
-{{% info title="Spring-Based Web Applications "%}}
+{{% info "Spring-Based Web Applications "%}}
 If you're application is Spring based and uses the Spring MVC framework, you can avoid any coding to get the space reference and use dependency injection to wire the space proxy into your application components.
 {{% /info %}}
 
@@ -213,7 +213,7 @@ By using the space, you gain the following benefits:
 - You can store information that outlives the user session
 - You can share information between all user sessions
 
-{{% info title="Mixing Space and HTTP Session Approaches "%}}
+{{% info "Mixing Space and HTTP Session Approaches "%}}
 Note that incase needed, you can use both approaches in the same application, and decide on a case by case basis.
 {{% /info %}}
 {{% /section %}}

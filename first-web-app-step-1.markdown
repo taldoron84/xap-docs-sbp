@@ -172,7 +172,7 @@ You can also define the maximum number of instances per machine, as follows:
 <os-sla:sla number-of-instances="1" max-instances-per-machine="1"/>
 ```
 
-{{% info title="Web Container Instantiation "%}}
+{{% info "Web Container Instantiation "%}}
 By default, each application instance provisioned to the GSC will have its own Jetty server. The server will share some of the Jetty resources like request buffers and thread pools, but will bind to separate ports. The service grid also allows for running the web container in a **shared** mode, in which case all of the deployed applications will use the same Jetty instance
 {{% /info %}}
 
@@ -190,7 +190,7 @@ By default, each application instance provisioned to the GSC will have its own J
 
 # Configuring Dynamic Load Balancing
 
-{{% info title="Prerequisite for this section "%}}
+{{% info "Prerequisite for this section "%}}
 To complete this section successfully you will need to download and install the [Apache 2.2 web server](http://httpd.apache.org/download.cgi) in your local environment. Also make sure that you have the GigaSpaces XAP distribution installed on the same machine that Apache is installed on.
 {{% /info %}}
 
