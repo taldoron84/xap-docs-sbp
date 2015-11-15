@@ -145,7 +145,7 @@ exception will be encountered.
 
 The sample application can be deployed into IIS and ran from Visual Studio at the same time, emulating a light weight 
 clustered server environment. All applications expected to read and write data that will be consumed by other applications 
-must share the same [machine key](http://msdn.microsoft.com/en-us/library/w8h3skw9(v=vs.100).aspx).
+must share the same [machine key](http://msdn.microsoft.com/en-us/library/w8h3skw9.aspx).
 
 #### Configuration
 
@@ -177,7 +177,7 @@ must share the same [machine key](http://msdn.microsoft.com/en-us/library/w8h3sk
 #### Deployment
 Deploy an [IMDG](./dotnet-your-first-xap-application.html) with the name of `sessionSpace`.
 
-Deploy the application using [Microsoft's publish web application](http://msdn.microsoft.com/en-us/library/dd465337(v=vs.110).aspx) feature built into Visual Studio. We've already defined a publish profile
+Deploy the application using [Microsoft's publish web application](http://msdn.microsoft.com/en-us/library/dd465337.aspx) feature built into Visual Studio. We've already defined a publish profile
 to publish the application into the standard web directory of the local machine (`c:\inetpub\wwwroot\`). 
 
 {{% note %}}

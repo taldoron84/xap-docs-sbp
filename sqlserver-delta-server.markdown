@@ -48,7 +48,7 @@ Change Data Capture is a new feature in SQL Server 2008 that records insert, upd
 
 Change data capture records insert, update, and delete activity that is applied to a SQL Server table. This makes the details of the changes available in an easily consumed relational format. Column information and the metadata that is required to apply the changes to a target environment is captured for the modified rows and stored in change tables that mirror the column structure of the tracked source tables. Table-valued functions are provided to allow systematic access to the change data by consumers.
 
-For further information please consult the Microsoft [documentation](http://technet.microsoft.com/en-us/library/bb522489(v=sql.105).aspx).
+For further information please consult the Microsoft [documentation](http://technet.microsoft.com/en-us/library/bb522489.aspx).
 In our example we will only demonstrate the notifications for INSERT, UPDATE and Delete.
 
 ## Change Data Capture (CDC) Setup And Configuration
