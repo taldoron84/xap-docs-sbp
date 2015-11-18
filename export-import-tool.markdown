@@ -9,7 +9,7 @@ weight: 50
 
 |Author|XAP Version|Last Updated | Reference | Download |
 |------|-----------|-------------|-----------|----------|
-| Shay Hasidim, John Burke<br>Christos Erototcritou, Pavlo Romanenko| 10.1.1 | July 2015|    |    |
+| Shay Hasidim, John Burke<br>Christos Erototcritou, Pavlo Romanenko| 10.1.1 | July 2015|    | {{%git "https://github.com/GigaSpaces-ProfessionalServices/import-export"%}}   |
 
 
 
@@ -17,13 +17,15 @@ weight: 50
 
 With this tool we will demonstrate how to export data from a space via serializing it to a file. We can then re-import the data back into the space. The tool executes distributed tasks in 'preprocess' mode, which reads the serialization files and returns a de-duplicated list of the classes only.
 
+{{%align center%}}
 ![xap-export-import.png](/attachment_files/import-export-tool.jpg)
+{{%/align%}}
 
 # Getting started
 
 ### Download the Export/Import Example
 
-You can download the example project  from [here](/sbp/download_files/ImportExportTool.zip) and unzip it into an empty folder.
+You can download the example project  from {{%git "https://github.com/GigaSpaces-ProfessionalServices/import-export"%}} and unzip it into an empty folder.
 
 
 ### Build and Running the Tool
