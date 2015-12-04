@@ -124,6 +124,7 @@ The patterns below are presented as is. While most of them are used in real life
 |[WAN Gateway Multi-Master Replication](./wan-replication-gateway.html)| Beginner | Multi-Master WAN replication example.|
 |[WAN Gateway Master-Slave Replication](./wan-gateway-master-slave-replication.html)| Beginner | Single-Master/Multi-slave replication topology example.|
 |[WAN Gateway Pass-Through Replication](./wan-gateway-pass-through-replication.html)| Beginner | Pass-Through WAN replication topology example.|
+|[WAN Gateway Command Line Interface Tool](./wan-gateway-command-line-tool.html)| Advanced | Configure and deploy WAN Gateway via command line.|
 |[Observable WAN](./observable-wan.html)|Advanced|Monitor and measure the replication performance of a multi-site deployment.|
 
 
