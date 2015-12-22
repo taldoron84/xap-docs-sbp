@@ -1,6 +1,6 @@
 ---
 type: post
-title:  Export-Import Tool
+title:  Export/Import Tool
 categories: SBP
 parent: solutions.html
 weight: 50
@@ -9,141 +9,527 @@ weight: 50
 
 |Author|XAP Version|Last Updated | Reference | Download |
 |------|-----------|-------------|-----------|----------|
-| Shay Hasidim, John Burke<br>Christos Erototcritou, Pavlo Romanenko| 10.1.1 | July 2015|    | {{%git "https://github.com/GigaSpaces-ProfessionalServices/import-export"%}}   |
+| Skyler Severns | 10.2.0 | December 2015|    | {{%git "https://github.com/GigaSpaces-ProfessionalServices/import-export"%}}   |
 
 
+The Export/Import tool was originally created to help our engineers quickly replicate test scenarios.
+Since its creation this tool has evolved to be an easy-to-use method for migrating data to new XAP deployments, capturing data snapshots,
+and bootstrapping disparate environments.
 
-# Introduction
+The Export/Import tool leverages several XAP features that make its operations the most performant and functional for each
+ use case. The fundamental feature leveraged by Export/Import is XAP's [Task Execution API]({{%latestjavaurl%}}/task-execution-overview.html).
 
-With this tool we will demonstrate how to export data from a space via serializing it to a file. We can then re-import the data back into the space. The tool executes distributed tasks in 'preprocess' mode, which reads the serialization files and returns a de-duplicated list of the classes only.
+When the Export/Import tool is started it will send either an Export or Import task to each partition, and this is where
+the actual operation will be performed. To put it simply each primary instance is responsible for exporting or importing their own data.
+
+<br />
+## *When to use Export/Import?*
+
+- Creating a snapshot of data
+- Introducing a new environment
+- Upgrading XAP versions
+- Setting up integration-style test scenarios
+
+You can download and build the source code from our GitHub repository {{%git "https://github.com/GigaSpaces-ProfessionalServices/import-export"%}}.
+Directions on how to build the project can be found in the repository's `README` document.
+ Alternatively you can contact your [GigaSpaces Technical Account Manager](http://www.gigaspaces.com/services-technical-account-management) for pre-built binaries.
+
+<br />
+# Export
+During the export a remote task is sent to each primary space instance on the grid; or a subset
+of the space instances if specified via the command line options.
+
+Once the task begins executing on the grid it will acquire a list of all space classes described in that instance,
+and use this list to drive the creation of export files. It is at this time that a new thread pool will be created
+ to dictate how many files can be exported in parallel.
+
+For each combination of class name and partition a query will be performed on the local space instance. If any space class
+ instances match the route to the new partition it will be written to disk. If no matches were found the file will not be written.
+
+Files Name Pattern:
+
+    {class-name-with-package}.{originating-partition}.{target-partition}.ser.gz
+    Example: com.j_spaces.examples.benchmark.messages.MessagePOJO.ser.gz
+
+File Content Structure (Uncompressed):
+
+    UTF: Class Name
+    Int: Row Count
+    Obj: Specialized Type Description (Portable/Serializable Class Definition)
+    Obj: Space Class Instance (x Row Count)
 
 {{%align center%}}
-![xap-export-import.png](/attachment_files/import-export-tool.jpg)
+![How Exporting Data Works](/sbp/attachment_files/export-import/export.png)
 {{%/align%}}
 
-# Getting started
+<br />
+## *Usage*
+Due to the number of configuration options available we are unable to show all permutations of the tool, but the simplest and most
+common usage is shown below.
 
-### Download the Export/Import Example
-
-You can download the example project  from {{%git "https://github.com/GigaSpaces-ProfessionalServices/import-export"%}} and unzip it into an empty folder.
-
-
-### Build and Running the Tool
-
-##### Step 1: Setup XAP maven plugin
-
-Please [install the OpenSpaces Maven plugin]({{%latestjavaurl%}}/maven-plugin.html#MavenPlugin-Installation) before you run this example.
-
-##### Step 2: Deploy a space and write some data
-
-- modify `<gsVersion>` within the `ImportExportTool\pom.xml` to include the right XAP release - below example having XAP 10.1.1 (10.1.1-12800-RELEASE) as the `<gsVersion>` value:
-
-
-```xml
-<properties>
-        <gsVersion>10.1.1-12800-RELEASE</gsVersion>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-</properties>
-```
-
-
-##### Step 3: Build the project
-
+{{%tabs%}}
+{{%tab "  Linux "%}}
 
 ```bash
-cd <project_root>
-mvn clean install
+./setAppEnv.sh
+
+$JAVA_HOME/bin/java -cp $GS_HOME/lib/required/*:./lib/* com.gigaspaces.tools.importexport.Program -o export -g $LOOKUPGROUPS -s myspace --jarless -d /tmp/export/output
 ```
 
-##### Step 4: Deploy a space and write some data
-If you do not have an already deployed space with data, you will need to deploy a new space and write some dummy data to it.
-In this example you should execute [benchmark from GS-UI]({{%latestadmurl%}}/benchmark-browser.html) and write MessagePOJOs to the grid.
- 
-##### Step 5:	Run the tool to export the objects
-
-For Windows:
-
+{{% /tab %}}
+{{%tab "  Windows "%}}
 
 ```bash
-cd <project_root>
-java -classpath D:\gigaspaces-xap-premium-10.1.1-ga\lib\required\*;D:\gigaspaces-xap-premium-10.1.1-ga\lib\platform\benchmark;target\*;lib\* com.gigaspaces.tools.importexport.SpaceDataImportExportMain -e -l 127.0.0.1 -s space -d D:\gs
+call "%~dp0\setAppEnv.bat"
+
+%JAVA_HOME%\bin\java.exe -cp %GS_HOME%\lib\required\*;.\lib\* com.gigaspaces.tools.importexport.Program -o export -g %LOOKUPGROUPS% -s myspace --jarless -d c:\tmp\output
 ```
 
-for Linux:
+{{% /tab %}}
+{{% /tabs %}}
+<br />
+```
+PS C:\var\import-export> .\export.ps1
+2015-12-12 23:02:15,130 CONFIG [com.gigaspaces.logger] - Log file: C:\opt\gigaspaces\xap-10.2.0-ga\logs\2015-12-12~23.02
+-gigaspaces-service-riomhairenua-13864.log
+2015-12-12 23:02:15,125  INFO [com.gigaspaces.tools.importexport.config.SpaceConnectionFactory] - Creating connection wi
+th url:
+/./myspace?total_members=2,0&schema=default&cluster_schema=partitioned-sync2backup&id=1&groups=space-test-10&state=start
+ed
+2015-12-12 23:02:15,199  INFO [import-export] - Started import/export operation with the following configuration:
+EXPORT [Space: myspace, Lookup Groups: [space-test-10], Lookup Locators: [], Output/Input Directory: c:\var\import-expor
+t\output, Operating Partitions: '[]', Export/Import Classes: '[]', XAP Read Batch Size: 1000, PU Name Override: null, Se
+curity level: null, New partition count: Not specified, Threads: 20, Jarless: true, Thread sleep ms: 1000]
 
+2015-12-12 23:02:17,203  INFO [import-export] - Partition 1 Finished ---------------------
+
+        Partition Id: 1
+        Process Id: 10048
+        Hostname: 127.0.0.1
+        Elapsed Process Time (ms): 1610
+
+        Files:
+                com.j_spaces.examples.benchmark.messages.MessagePOJO.1.1.ser.gz | Records: 5000 | Elapsed time (ms): 742
+
+
+2015-12-12 23:02:17,204  INFO [import-export] - Partition 2 Finished ---------------------
+
+        Partition Id: 2
+        Process Id: 11592
+        Hostname: 127.0.0.1
+        Elapsed Process Time (ms): 1595
+
+        Files:
+                com.j_spaces.examples.benchmark.messages.MessagePOJO.2.2.ser.gz | Records: 5000 | Elapsed time (ms): 737
+
+
+PS C:\var\import-export>
+```
+
+<br />
+## *Options*
+<table>
+    <thead>
+        <tr>
+            <th>Short Name</th>
+            <th>Long Name</th>
+            <th>Optional / Required</th>
+            <th>Default Value</th>
+            <th>Acceptable Values</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <th colspan="6"> Grid Connection Information</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-s</td>
+            <td>--space</td>
+            <td>required</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Name of the target space to perform the operation on.</td>
+        </tr>
+        <tr>
+            <td>-l</td>
+            <td>--locators</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>A comma separated list of XAP lookup locators for the target grid.</td>
+        </tr>
+        <tr>
+            <td>-g</td>
+            <td>--groups</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>A comma separated list of XAP lookup groups for the target grid.</td>
+        </tr>
+        <tr>
+            <td>-u</td>
+            <td>--username</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Specifies an XAP username with read and execute privileges. Required when connecting to a secured grid.</td>
+        </tr>
+        <tr>
+            <td>-a</td>
+            <td>--password</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Specifies an XAP password corresponding to the specified XAP username. Required when connecting to a secured grid.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>--security-level</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>grid, space, both</td>
+            <td>Indicates the level of security for the grid.</td>
+        </tr>
+    </tbody>
+    <thead>
+            <tr>
+                <th colspan="6">General Configuration</th>
+            </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-o</td>
+            <td>--operation</td>
+            <td>required</td>
+            <td>export</td>
+            <td>export, import</td>
+            <td>A flag indicating whether an export or import will be performed.</td>
+        </tr>
+        <tr>
+            <td>-d</td>
+            <td>--directory</td>
+            <td>required</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>A full path to the directory containing either previously exported files, or where the exported files should be placed.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>--pu-name</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Overrides the name of the processing unit, relevant only when the processing unit is different from space name.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>--jarless</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Indicates that the import / export will not use Java class definitions during processing.</td>
+        </tr>
+        <tr>
+            <td>-c</td>
+            <td>--classes</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>A comma separated list of class names to operate on. The class names are case sensitive.</td>
+        </tr>
+        <tr>
+            <td>-p</td>
+            <td>--partitions</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>A comma separated list of partitions that will be operated on.</td>
+        </tr>
+        <tr>
+            <td>-n</td>
+            <td>--number</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Relevant only when exporting data for use in a grid with a different partition count (i.e. Exporting data from a 6 partition grid to 2 partition grid or vice versa.)</td>
+        </tr>
+    </tbody>
+    <thead>
+            <tr>
+                <th colspan="6">Performance Configuration</th>
+            </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-b</td>
+            <td>--batch</td>
+            <td>optional</td>
+            <td>1000</td>
+            <td>n/a</td>
+            <td>Performance option to batch records retrieved from the space.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>--thread-sleep</td>
+            <td>optional</td>
+            <td>1000</td>
+            <td>n/a</td>
+            <td>Number of milliseconds to sleep between checks for task completion.</td>
+        </tr>
+        <tr>
+            <td>-t</td>
+            <td>--threads</td>
+            <td>optional</td>
+            <td>20</td>
+            <td>n/a</td>
+            <td>Number of threads to simultaneously process import or export files.</td>
+        </tr>
+    </tbody>
+</table>
+
+<br />
+# Import
+During the import a remote task is sent to each primary space instance. From there each primary instance will search the file system
+for relevant files. Relevancy is determined by the second integer in the file name also known as the destination partition ID.
+
+All files destine for the new partition will then be queued and processed from the export/import thread pool. The number of
+files that will be processed in parallel for each partition is configurable and based on the size of the export/import thread pool.
+
+{{%align center%}}
+![How Exporting Data Works](/sbp/attachment_files/export-import/import.png)
+{{%/align%}}
+## *Usage*
+Due to the number of configuration options available we are unable to show all permutations of the tool, but the simplest and most
+common usage is shown below.
+
+{{%tabs%}}
+{{%tab "  Linux "%}}
 
 ```bash
-cd <project_root>
-java -classpath /home/adminuser/gigaspaces-xap-premium-10.1.1-ga/lib/required/*:/home/adminuser/gigaspaces-xap-premium-10.1.1-ga/lib/platform/benchmark/*:target/*:lib/* com.gigaspaces.tools.importexport.SpaceDataImportExportMain -e -s space -l 127.0.0.1 -d /tmp/gs
+./setAppEnv.sh
+
+$JAVA_HOME/bin/java -cp $GS_HOME/lib/required/*:./lib/* com.gigaspaces.tools.importexport.Program -o import -g $LOOKUPGROUPS -s myspace -d /tmp/export/output
 ```
 
-{{%note%}}
-Make sure that classes of the POJOs are set in the classpath before running.
-{{%/note%}}
-
-{{%note%}}
-Make sure that classes directory for serialized files(you specify it with -d {directory}) exists.
-{{%/note%}}
-
+{{% /tab %}}
+{{%tab "  Windows "%}}
 
 ```bash
-2015-07-14 17:47:08,432  INFO [com.gigaspaces.common] - (tid-821) : found 1 classes
-2015-07-14 17:47:08,449  INFO [com.gigaspaces.common] - (tid-821) : starting export to file /tmp/gs/com.j_spaces.examples.benchmark.messages.MessagePOJO.1.1.ser.gz
-2015-07-14 17:47:08,449  INFO [com.gigaspaces.common] - (tid-821) : starting export thread for com.j_spaces.examples.benchmark.messages.MessagePOJO
-2015-07-14 17:47:08,449  INFO [com.gigaspaces.common] - (tid-821) : starting export to file /tmp/gs/com.j_spaces.examples.benchmark.messages.MessagePOJO.1.2.ser.gz
-2015-07-14 17:47:08,450  INFO [com.gigaspaces.common] - (tid-821) : starting export thread for com.j_spaces.examples.benchmark.messages.MessagePOJO
-2015-07-14 17:47:08,450  INFO [com.gigaspaces.common] - (tid-821) : waiting for 2 import operations to complete-complete
-2015-07-14 17:47:08,450  INFO [com.gigaspaces.common] - (tid-938) : reading space class : com.j_spaces.examples.benchmark.messages.MessagePOJO
-2015-07-14 17:47:08,451  INFO [com.gigaspaces.common] - (tid-938) : space partition contains 5000 objects
-2015-07-14 17:47:08,451  INFO [com.gigaspaces.common] - (tid-938) : writing to file : /tmp/gs/com.j_spaces.examples.benchmark.messages.MessagePOJO.1.1.ser.gz
-2015-07-14 17:47:08,461  INFO [com.gigaspaces.common] - (tid-938) : read 5000 objects from space partition
-2015-07-14 17:47:08,461  INFO [com.gigaspaces.common] - (tid-938) : export operation took 24 millis
-2015-07-14 17:47:08,462  INFO [com.gigaspaces.common] - (tid-938) : reading space class : com.j_spaces.examples.benchmark.messages.MessagePOJO
-2015-07-14 17:47:08,462  INFO [com.gigaspaces.common] - (tid-938) : space partition contains 5000 objects
-2015-07-14 17:47:08,462  INFO [com.gigaspaces.common] - (tid-938) : writing to file : /tmp/gs/com.j_spaces.examples.benchmark.messages.MessagePOJO.1.2.ser.gz
-2015-07-14 17:47:08,463  INFO [com.gigaspaces.common] - (tid-938) : read 5000 objects from space partition
-2015-07-14 17:47:08,463  INFO [com.gigaspaces.common] - (tid-938) : export operation took 22 millis
-2015-07-14 17:47:08,465  INFO [com.gigaspaces.common] - (tid-821) : finished writing 1 classes
+call "%~dp0\setAppEnv.bat"
+
+%JAVA_HOME%\bin\java.exe -cp %GS_HOME%\lib\required\*;.\lib\* com.gigaspaces.tools.importexport.Program -o import -g %LOOKUPGROUPS% -s myspace -d c:\tmp\output
 ```
 
-
-For each exported space class data `/tmp/gs`(or any other directory you specify) will have the `n` zip files(n - number of partitions in the target grid) with the class instances content.
-
-##### Step 6:	Run the tool to import the objects back into a space<br/>
-
-Once you restart the data grid you can reload your data back. This will reload the data from the zip files into the space:
-For Windows:
-
-```bash
-cd <project_root>
-java -classpath D:\gigaspaces-xap-premium-10.1.1-ga\lib\required\*;D:\gigaspaces-xap-premium-10.1.1-ga\lib\platform\benchmark;target\*;lib\* com.gigaspaces.tools.importexport.SpaceDataImportExportMain -i -l 127.0.0.1 -s space -d D:\gs
+{{% /tab %}}
+{{% /tabs %}}
+<br />
 ```
-for Linux:
+PS C:\var\import-export> .\import.ps1
+2015-12-13 00:58:12,624 CONFIG [com.gigaspaces.logger] - Log file: C:\opt\gigaspaces\xap-10.2.0-ga\logs\2015-12-13~00.58-gigaspaces-service-
+riomhairenua-3836.log
+2015-12-13 00:58:12,618  INFO [com.gigaspaces.tools.importexport.config.SpaceConnectionFactory] - Creating connection with url:
+/./myspace?total_members=2,0&schema=default&cluster_schema=partitioned-sync2backup&id=1&groups=space-test-10&state=started
+2015-12-13 00:58:12,697  INFO [import-export] - Started import/export operation with the following configuration:
+IMPORT [Space: myspace, Lookup Groups: [space-test-10], Lookup Locators: [], Output/Input Directory: c:\var\import-export\output, Operating
+Partitions: '[]', Export/Import Classes: '[]', XAP Read Batch Size: 1000, PU Name Override: null, Security level: null, New partition count:
+ Not specified, Threads: 20, Jarless: false, Thread sleep ms: 1000]
 
-```bash
-cd <project_root>
-java -classpath /home/adminuser/gigaspaces-xap-premium-10.1.1-ga/lib/required/*:/home/adminuser/gigaspaces-xap-premium-10.1.1-ga/lib/platform/benchmark/*:target/*:lib/* com.gigaspaces.tools.importexport.SpaceDataImportExportMain -i -s space -l 10.23.11.212 -d /tmp/gs
+2015-12-13 00:58:14,699  INFO [import-export] - Partition 1 Finished ---------------------
+
+        Partition Id: 1
+        Process Id: 10048
+        Hostname: 127.0.0.1
+        Elapsed Process Time (ms): 1096
+
+        Files:
+                com.j_spaces.examples.benchmark.messages.MessagePOJO.1.1.ser.gz | Records: 5000 | Elapsed time (ms): 1095
+
+2015-12-13 00:58:14,700  INFO [import-export] - Partition 2 Finished ---------------------
+
+        Partition Id: 2
+        Process Id: 11592
+        Hostname: 127.0.0.1
+        Elapsed Process Time (ms): 1099
+
+        Files:
+                com.j_spaces.examples.benchmark.messages.MessagePOJO.2.2.ser.gz | Records: 5000 | Elapsed time (ms): 1092
+
+PS C:\var\import-export>
 ```
 
-{{%note%}}
-A space read call for each class is executed before trying to perform any import.
-{{%/note%}}
+<br />
+## *Options*
+<table>
+    <thead>
+        <tr>
+            <th>Short Name</th>
+            <th>Long Name</th>
+            <th>Optional / Required</th>
+            <th>Default Value</th>
+            <th>Acceptable Values</th>
+            <th>Description</th>
+        </tr>
+        <tr>
+            <th colspan="6"> Grid Connection Information</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-s</td>
+            <td>--space</td>
+            <td>required</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Name of the target space to perform the operation on.</td>
+        </tr>
+        <tr>
+            <td>-l</td>
+            <td>--locators</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>A comma separated list of XAP lookup locators for the target grid.</td>
+        </tr>
+        <tr>
+            <td>-g</td>
+            <td>--groups</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>A comma separated list of XAP lookup groups for the target grid.</td>
+        </tr>
+        <tr>
+            <td>-u</td>
+            <td>--username</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Specifies an XAP username with read and execute privileges. Required when connecting to a secured grid.</td>
+        </tr>
+        <tr>
+            <td>-a</td>
+            <td>--password</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Specifies an XAP password corresponding to the specified XAP username. Required when connecting to a secured grid.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>--security-level</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>grid, space, both</td>
+            <td>Indicates the level of security for the grid.</td>
+        </tr>
+    </tbody>
+    <thead>
+            <tr>
+                <th colspan="6">General Configuration</th>
+            </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-o</td>
+            <td>--operation</td>
+            <td>required</td>
+            <td>export</td>
+            <td>export, import</td>
+            <td>A flag indicating whether an export or import will be performed.</td>
+        </tr>
+        <tr>
+            <td>-d</td>
+            <td>--directory</td>
+            <td>required</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>A full path to the directory containing either previously exported files, or where the exported files should be placed.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>--pu-name</td>
+            <td>optional</td>
+            <td>n/a</td>
+            <td>n/a</td>
+            <td>Overrides the name of the processing unit, relevant only when the processing unit is different from space name.</td>
+        </tr>
+    </tbody>
+    <thead>
+            <tr>
+                <th colspan="6">Performance Configuration</th>
+            </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>-b</td>
+            <td>--batch</td>
+            <td>optional</td>
+            <td>1000</td>
+            <td>n/a</td>
+            <td>Performance option to batch records retrieved from the space.</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>--thread-sleep</td>
+            <td>optional</td>
+            <td>1000</td>
+            <td>n/a</td>
+            <td>Number of milliseconds to sleep between checks for task completion.</td>
+        </tr>
+        <tr>
+            <td>-t</td>
+            <td>--threads</td>
+            <td>optional</td>
+            <td>20</td>
+            <td>n/a</td>
+            <td>Number of threads to simultaneously process import or export files.</td>
+        </tr>
+    </tbody>
+</table>
+<br />
 
-## Options
-The tool supports the following arguments:
+# Troubleshooting & Frequently Asked Questions
+<br />
+### *Can I use the Export/Import tool with a secured grid?*
 
-|                          |                    |                   |               |               |
-|:-------------------------|:-------------------|:------------------|:--------------|:--------------|
-| Short Name               | Long Name          | Optional/required | Default value | Description                                                                                                                                                                |
-| -e                       | --export           | optional          | NA            | Performs space class export                                                                                                                                                |
-| -i                       | --import           | optional          | NA            | Performs space class import                                                                                                                                                |
-| -l                       | --locators         | optional          | NA            | Comma separated list of lookup locators (ex. 127.0.0.1:4174,192.168.1.100).                                                                                                |
-| -g                       | --groups           | optional          | NA            | Comma separated list of lookup groups (ex. skyler,xap97).                                                                                                                  |
-| -s                       | --space            | required          | NA            | The name of the space                                                                                                                                                      | 
-| -c                       | --classes          | optional          | NA            | The classes whose objects to import/export - comma separated                                                                                                               |
-| -b                       | --batch            | optional          | 1000          | The batch size                                                                                                                                                             |
-| -p                       | --partitions       | optional          | NA            | The partition(s) to restore - comma separated                                                                                                                              |
-| -n                       | --number           | optional          | NA            | Number of partitions to export. For instance: now space has 4 partitions, but you want to export all the data to space with 3 partitions, then "-n 3" has to be specified  |
-| -d                       | --directory        | required          | NA            | Read-from/write-to directory                                                                                                                                               |
-| -u                       | --username         | optional          | NA            | The username when connecting to a secured space.                                                                                                                           |
-| -p                       | --password         | optional          | NA            | The password when connecting to a secured space.                                                                                                                           |
+Yes, the Export/Import tool will work with secured infrastructure components and/or secured spaces. The username and password provided
+should have sufficient privileges to *execute* a remote task on the grid.
+
+If using a secured space the space must be authenticated with sufficient privileges to *read, write, and update all classes, as well as monitor_pu*.
+<br />
+### *I'm receiving a FileNotFoundException; what does this mean?*
+
+The most common reason for this exception is that your storage directory (the `-d` command line option) may not exist on all hosts.
+Double check the directory exists before re-running the Export/Import tool.
+<br />
+### *Can I use this to upgrade XAP versions?*
+
+Yes, this tool has been tested for upgrades between XAP 9.7, XAP 10, and XAP 11.
+<br />
+### *One or more of my files did not get imported, why is that?*
+
+Each partition is responsible for exporting or importing its data. Because of this the files will be stored in the directory provided
+on that partition's host machine.
+
+It is recommended that all machines mount a NFS drive that will be used during the export and import operations. This will ensure all partitions
+regardless of hosts will have access to the export files.
+<br />
+### *Why should I use the `--jarless` option during export?*
+
+If you do not provided the `--jarless` option during export you will be required to include your application jars on the Export/Import tool's classpath
+as well as the classpath used by your processing unit running on XAP. The jars would be required on both import and export operations.
+
+When `--jarless` is provided all objects will be read as an XAP [Space Document]({{%latestjavaurl%}}/document-overview.html) this
+removes the requirement to include your application jars in the classpath. Documents and Space Classes can be interoperable,
+and when following XAP documentation and best practices should be interoperable.
+<br />
+### *Why am I receiving a NoClassDefFoundError and/or a ClassNotFoundException?*
+
+There are several reasons this could be. If you're seeing this on one of your space classes during import it is because
+the classes were exported without the `--jarless` option and you will need to include your jars in the Export/Import tools
+classpath as well as the Processing Unit's classpath.
+
+If this is occurring during export you may be missing jars on the classpath, or the class definitions in the space may not be available
+to the export thread. If it is the latter the solution would be making your jars available to the processing unit instances
+by placing the required jars in your pu_common folder before the processing units are deployed.
