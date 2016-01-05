@@ -11,6 +11,8 @@ weight: 500
 
 [Export-Import Tool](./export-import-tool.html)
 
+[WAN Gateway CLI Tool](./wan-gateway-command-line-tool.html)
+
 [Elastic Distributed Calculation Engine](./elastic-distributed-calculation-engine.html)
 
 [XAP.NET ASP.NET Session State Store](./dotnet-session-store.html)

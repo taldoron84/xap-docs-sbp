@@ -3,7 +3,7 @@ type: post
 title:  WAN Gateway CLI Tool
 categories: SBP
 parent: solutions.html
-weight: 300
+weight: 60
 ---
 
 
