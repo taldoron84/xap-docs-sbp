@@ -54,7 +54,6 @@ Files Name Pattern:
 File Content Structure (Uncompressed):
 
     UTF: Class Name
-    Int: Row Count
     Obj: Specialized Type Description (Portable/Serializable Class Definition)
     Obj: Space Class Instance (x Row Count)
 
