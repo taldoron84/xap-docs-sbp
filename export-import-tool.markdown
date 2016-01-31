@@ -86,8 +86,9 @@ call "%~dp0\setAppEnv.bat"
 
 {{% /tab %}}
 {{% /tabs %}}
-<br />
-```
+
+
+```bash
 PS C:\var\import-export> .\export.ps1
 2015-12-12 23:02:15,130 CONFIG [com.gigaspaces.logger] - Log file: C:\opt\gigaspaces\xap-10.2.0-ga\logs\2015-12-12~23.02
 -gigaspaces-service-riomhairenua-13864.log
@@ -322,8 +323,9 @@ call "%~dp0\setAppEnv.bat"
 
 {{% /tab %}}
 {{% /tabs %}}
-<br />
-```
+
+
+```bash
 PS C:\var\import-export> .\import.ps1
 2015-12-13 00:58:12,624 CONFIG [com.gigaspaces.logger] - Log file: C:\opt\gigaspaces\xap-10.2.0-ga\logs\2015-12-13~00.58-gigaspaces-service-
 riomhairenua-3836.log
@@ -489,7 +491,7 @@ PS C:\var\import-export>
 <br />
 
 # Troubleshooting & Frequently Asked Questions
-<br />
+ 
 ### *Can I use the Export/Import tool with a secured grid?*
 
 Yes, the Export/Import tool will work with secured infrastructure components and/or secured spaces. The username and password provided
