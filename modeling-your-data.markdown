@@ -41,7 +41,9 @@ If an entity is associated with several containers (parent entities), it can't b
 
 A space may store many type of entities. A space can be compared to a database that may have many tables, in the same way a space may have many space classes. Practically there is no limit to the number of Entities (space classes or data types) you may store within a given space cluster. Each space class may have unlimited number of instances (space objects or entries).
 
+{{%align center%}}
 ![in-line-cache.jpg](/attachment_files/in-line-cache.jpg)
+{{%/align%}}
 
 Unlike legacy caching products that promote a Map per Entity approach storage model, with the space data modeling approach, you can treat your entire application objects naturally having one global In-Memory data source regardless their data type.
 
@@ -51,7 +53,9 @@ Unlike legacy caching products that promote a Map per Entity approach storage mo
 
 With Embedded Relationships a parent object physically contains the associated object(s) and there is a **strong** lifecycle dependency between them - once you delete the containing object, you also delete all of its contained objects. With this type of object association, you are always ensuring a local transaction since the entire object graph is stored in the same entry within the Space.
 
+{{%align center %}}
 ![model_embed.jpg](/attachment_files/model_embed.jpg)
+{{%/align%}}
 
 ### Embedded Relationships Data Retrieval Flow
 
@@ -69,12 +73,18 @@ With the embedded model, updating (as well adding or removing) a nested collecti
 
 With Non-Embedded Relationships a parent object is associated with a number of other objects, so you can navigate from one object to others. However, there is no life cycle dependency between them, so if you delete the referencing object (parent), you don't automatically delete the referenced (child) object(s). The association is therefore manifested in storing the child IDs in the parent rather than storing the actual associated object itself. This type of relationship means that you might want to access the child object separately  without accessing their parent objects. This approach avoid the need to duplicate child object in case these are references by more than a single parent object. This approach might enforce you to perform multiple space operations when accessing the entire parent-child graph across multiple space cluster partitions.
 
+{{%align center%}}
 ![model_non_embed.jpg](/attachment_files/model_non_embed.jpg)
+{{%/align%}}
 
 ### Non-Embedded Relationships Data Retrieval Flow
 
 The following describes the different data modeling options available with Non-Embedded Relationships:
+
+{{%align center%}}
 ![space-data-modeling-options.jpg](/attachment_files/space-data-modeling-options.jpg)
+{{%/align%}}
+
 
 #### Parent-First Data Retrieval Flow
 
@@ -104,7 +114,7 @@ With the following example we have the **Author** and the **Book** entities. Her
 
 
 |Author|Book|
-|:-----|:---|
+|:-----|:----|
 |id:Integer| id:Integer|
 |lastName:String| title:String|
 
@@ -1261,7 +1271,11 @@ See the [Parent Child Relationship](./parent-child-relationship.html) for an exa
 ## Real World Example
 
 In the [Pet Clinic application](http://www.openspaces.org/display/DAE/GigaSpaces+PetClinic) that is based on the [Spring pet clinic sample](http://static.springsource.org/docs/petclinic.html), a Pet is only associated with an Owner. We can therefore store each Pet with its owner on the same partition. We can even embed the Pet object within the physical Owner entry.
+
+{{%align center%}}
 ![petclinic_class_model.gif](/attachment_files/petclinic_class_model.gif)
+{{%/align%}}
+
 However, if a Pet would have been associated with a Vet as well, we could have certainly not embedded the Pet in the Vet physical entry (without duplicating each Pet entry) and could not even store the Pet and its Vet in the same partition.
 
 # Thumb Rules for Choosing Embedded Relationships
