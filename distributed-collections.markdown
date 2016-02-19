@@ -15,11 +15,11 @@ weight: 18
 
 ## Introduction
 
-This project is a PoC for distributed java collections implementation on top of Gigaspaces XAP. It currently includes the implementation of `java.util.concurrent.BlockingQueue` and `java.util.Set` with a number of features on top of them, e.g. different collocation modes.
+This is a distributed java collections implementation on top of Gigaspaces XAP. It currently includes the implementation of `java.util.concurrent.BlockingQueue` and `java.util.Set` with a number of features on top of them, e.g. different collocation modes.
 
 ## Building project
 
-This project is based on Maven, so to build it, you would run next command:
+This project is based on Maven, to build it run following:
 
 ```bash
 # with unit tests
@@ -29,11 +29,11 @@ mvn clean package -Dcom.gs.home=<path to xap install>
 mvn clean package -DskipTests=true
 ```
 
-Project contains multi-partitioned space unit tests, so a proper licence to run them is required. To pass the licence file to tests, the `com.gs.home` JVM argument is used. A proper value is path to folder without slash in the end, e.g. `/home/ec2-user/gigaspaces-xap-premium-10.2.0-ga`.
+The project includes multi-partitioned space unit tests. Please use proper XAP licence key to run these. To pass the licence file to tests, the `com.gs.home` JVM argument is used. A proper value is path to folder without slash at the end, e.g. `/home/ec2-user/gigaspaces-xap-premium-10.2.0-ga`.
 
 ## Using collections
 
-Each collection declaration requires passing `Gigaspace` to the configurer or bean factory. Here is how you can create set and queue via Spring XML and Java configurations:
+Each collection declaration requires passing `Gigaspace` bean to the configurer or bean factory. Here is how you can create set and queue via Spring XML and Java configurations:
 
 ##### Java declaration
 
