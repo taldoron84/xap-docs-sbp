@@ -516,9 +516,9 @@ gs-ui.bat
 
 **Step 6.**	Deploy Applications
 
-Find the `Launch` menu at the top of the GS Management Center UI<br>
-Choose SBA Application-Processing Unit from the drop-down <br>
-At the top of the Deployment Wizard browse for the listed directory and choose the jar/war file (You do not need to alter the deployment options) Just click the `Deploy` button on the bottom <br>
+- Find the `Launch` menu at the top of the GS Management Center UI.<br>
+- Choose SBA Application-Processing Unit from the drop-down. <br>
+- At the top of the Deployment Wizard browse for the listed directory and choose the jar/war file (You do not need to alter the deployment options)Just click the `Deploy` button on the bottom. <br>
 1)	realTimeAnalyticsTimeSeries\processor\target\my-app-processor.jar <br>
 2)	realTimeAnalyticsTimeSeries\feeder\target\my-app-feeder.jar  <br>
 3)	realTimeAnalyticsTimeSeries\web\target\my-app-web.war

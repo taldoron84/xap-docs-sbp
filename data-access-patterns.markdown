@@ -35,6 +35,8 @@ weight: 100
 
 [Excel that Scales Solution](./excel-that-scales-solution.html)
 
+[Storing Partition Summary Information](./storing-partition-information.html)
+
 [Finding Partition Load](./finding-partition-load.html)
 
 [Global ID Generator](./global-id-generator.html)
