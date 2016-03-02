@@ -12,13 +12,13 @@ weight: 600
 
 
 # Overview
-You may have a scenario where computation is done on a partition by partition basis and you wish to save the results, instead of recalculating them each time. This example calculates values per partition and saves it to the current partition. It will work regardless of the number of partitions that are running in the space. The example uses an [executor service](#serviceexecutor) to make the calcuations on each partition. The `ClusterInfo` object is used to get information about the partition the service is currently executing in. The results are then saved to a PartitionSummary object.
+You may have a scenario where computation is done on a partition by partition basis and you wish to save the results, instead of recalculating them each time. This example calculates values per partition and saves it to the current partition. It will work regardless of the number of partitions that are running in the space. The example uses an Executor Service to make the calcuations on each partition. The `ClusterInfo` object is used to get information about the partition the service is currently executing in. The results are then saved to a PartitionSummary object.
 
-The following code demonstrates Space Based Remoting, aka Service Executor.
+The following code demonstrates Space Based Remoting, aka Service Executor. A complete example can be found [here](/attachment_files/sbp/Store-Partition-Summary.zip).
 
 {{% tabs %}}
 
-{{% tab "Service Interface" %}}
+{{% tab "Service Interface" }}
 
 ```java
 public interface ISummary {
@@ -26,9 +26,9 @@ public interface ISummary {
 }
 ```
 
-{{% /tab %}}
+{{% /tab}}
 
-{{% tab "Service Implementation" %}}
+{{% tab "Service Implementation" }}
 The Service Implementation includes the code that is to be run on each partition and saves the summary information. The `ClusterInfo` object is used to gather the partition information.
 
 ```java
@@ -76,9 +76,9 @@ public class SummaryService implements ISummary {
 }
 
 ```
-{{% /tab %}}
+{{% /tab}}
 
-{{% tab "The Client"%}}
+{{% tab "The Client" }}
 This is how a client might invoke the service:
 
 ```java
@@ -90,16 +90,16 @@ This is how a client might invoke the service:
         iSummary.summary();
 
 ```
-{{% /tab %}}
+{{% /tab}}
 
 {{% /tabs %}}
 
 # ProtectiveMode Exception
-The second part of this example explains how to correct the `ProtectiveMode` exception that may occur unless the routing field is handled.
+The second part of this example explains how to correct the `ProtectiveMode` exception that may occur.
 
 In XAP 9.7, a `ProtectiveMode` was added to protect against writing an object directly to a partition that is assigned the wrong routing value.
 
-In case your application writes directly to one of the partitions and assigns the wrong routing value you’ll get the following exception:
+If an application writes directly to one of the partitions and assigns the wrong routing value you’ll get the following exception:
 
 ```java
 com.gigaspaces.client.protective.ProtectiveModeException: Operation is rejected - the routing value in the written entry of type 'PartitionSummary' does not match this space partition id. The value within the entry's routing property named 'routingId' is 1 which matches partition id 2 while current partition id is 1...
