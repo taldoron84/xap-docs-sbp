@@ -18,7 +18,7 @@ The following code demonstrates Space Based Remoting, aka Service Executor. A co
 
 {{% tabs %}}
 
-{{% tab "Service Interface" }}
+{{% tab "Service Interface" %}}
 
 ```java
 public interface ISummary {
@@ -26,9 +26,9 @@ public interface ISummary {
 }
 ```
 
-{{% /tab}}
+{{% /tab %}}
 
-{{% tab "Service Implementation" }}
+{{% tab "Service Implementation" %}}
 The Service Implementation includes the code that is to be run on each partition and saves the summary information. The `ClusterInfo` object is used to gather the partition information.
 
 ```java
@@ -76,9 +76,9 @@ public class SummaryService implements ISummary {
 }
 
 ```
-{{% /tab}}
+{{% /tab %}}
 
-{{% tab "The Client" }}
+{{% tab "The Client" %}}
 This is how a client might invoke the service:
 
 ```java
@@ -90,7 +90,7 @@ This is how a client might invoke the service:
         iSummary.summary();
 
 ```
-{{% /tab}}
+{{% /tab %}}
 
 {{% /tabs %}}
 
