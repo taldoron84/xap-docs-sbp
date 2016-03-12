@@ -3,7 +3,7 @@ type: post
 title:  Storing Partition Summary Information
 categories: SBP
 parent: data-access-patterns.html
-weight: 600
+weight: 650
 ---
 
 |Author|XAP Version|Last Updated | Reference | Download |
