@@ -682,7 +682,7 @@ Step 2. Take a measurement of the free memory (use JConsole or jmap).<br>
 Step 3. Write a sample number of objects into the IMDG (have a decent number of objects written - 100,000 is a good number).<br>
 Step 4. Measure the free memory again.
 
-This test should give good understanding of the object footprint within the IMDG. Donâ€™t forget that if you have a backup instance running, the amount of memory you will need to accommodate for your objects, is double.
+This test should give good understanding of the object footprint within the IMDG. If you have a backup instance running, the amount of memory you will need to accommodate for your objects, is double.
 
 ### Compound Index reduce Index Footprint
 
