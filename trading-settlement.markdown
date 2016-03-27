@@ -17,7 +17,7 @@ weight: 500
 # Overview
 This is a demo of a trading settlement system.  Settlement occurs after a trade, and involves the delivery of securities for payment between one party and another.  Because the demo operates in real-time, it can be expanded to provide risk management or be integrated with a rules engine for complex event processing (CEP).
 
-Due to the speed at which markets move today, reliable risk assessment requires the ability to analyze trades and their impact on a portfolio in as close to real-time as possible.  In addition, having a [straight-through processing](http://en.wikipedia.org/wiki/Straight-through_processing) capability provides major benefits for risk and cost reduction. This demo illustrates how such minimum-latency systems can be built and we do so with the entire tier-based architecture built on GigaSpaces, including the following components:
+Due to the speed at which markets move today, reliable risk assessment requires the ability to analyze trades and their impact on a portfolio in near-real-time.  In addition, having a [straight-through processing](http://en.wikipedia.org/wiki/Straight-through_processing) capability provides major benefits for risk and cost reduction. This demo illustrates how such minimum-latency systems can be built and we do so with the entire tier-based architecture built on GigaSpaces, including the following components:
 
 - Data tier
 - Business logic execution tier
