@@ -14,6 +14,13 @@ weight: 40
 
 
 
+{{%warning%}}
+{{% fontsize 20 %}}
+The Spark integration approach below has been deprecated, please [visit InsightEdge](http://InsightEdge.io) learn about using Spark with our in-memory data grid.
+{{% /fontsize%}}
+{{%/warning%}}
+
+
 # Introduction
 
 Real-time processing is becoming more and more popular. [Spark Streaming](https://spark.apache.org/streaming/) is an extension of the core Spark API that allows scalable, high-throughput, fault-tolerant stream processing of live data streams.
