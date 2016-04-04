@@ -105,7 +105,6 @@ The patterns below are presented as is. While most of them are used in real life
 |[JMX Space Statistics](./jmx-space-statistics.html)| Beginner | Using JMX to expose space statistics.|
 |[Scaling Agent](./scaling-agent.html)| Beginner | Using the administration API to scale web applications. Can be used when moving **J2EE Web applications** into XAP elastic Web Container.|
 |[Web Load Balancer Agent PU](./web-load-balancer-agent-pu.html)| Advanced | Using the administration API to build customized HTTP load-balancer agent. Can be used when moving **J2EE Web applications** into XAP elastic Web Container.|
-|[Moving into Production Checklist](./moving-into-production-checklist.html)| Advanced | All what you need to review before moving your system into production.|
 |[Capacity Planning](./capacity-planning.html)| Advanced | Considerations for sizing your system before moving into production.|
 |[Recipes For XAP Cloud Deployment](./automated-xap-deployment-with-cloudify.html)| Advanced | Recipes For XAP Cloud Deployment.|
 |[Puppet to install and configure XAP](./puppet-xap-module.html)| Advanced | This pattern explains how to use Puppet to install and configure XAP.|
