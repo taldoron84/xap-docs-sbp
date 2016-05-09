@@ -33,8 +33,6 @@ weight: 100
 
 [Even Data Distribution](./even-data-distribution.html)
 
-[Excel that Scales Solution](./excel-that-scales-solution.html)
-
 [Storing Partition Summary Information](./storing-partition-information.html)
 
 [Finding Partition Load](./finding-partition-load.html)
