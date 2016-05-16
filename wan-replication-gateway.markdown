@@ -118,8 +118,8 @@ The total TP will be:
 Total TP = (Partition TP X Partitions count X Distribution X Network Speed)+ Replication Meta data size / Replication Frequency
 ```
 
-If we have 10 IMDG partitions, each sending 5000 objects/sec 1K size to the GW with a replication frequency of 10 replication cycles per/sec (100 ms delay between each replication cycle , i.e. 1000 operations per batch) with even distribution (1) and network speed between the sites is 10 requests/sec (i.e. 100 ms latency) theÂ Total TPÂ we will have is: (10 X 5000 X 1 X 10) / 10 = 50,000 objects per second. = 50M per second
-Â 
+If we have 10 IMDG partitions, each sending 5000 objects/sec 1K size to the GW with a replication frequency of 10 replication cycles per/sec (100 ms delay between each replication cycle , i.e. 1000 operations per batch) with even distribution (1) and network speed between the sites is 10 requests/sec (i.e. 100 ms latency) the Total TP we will have is: (10 X 5000 X 1 X 10) / 10 = 50,000 objects per second. = 50M per second
+ 
 The above assumes the network bandwidth is larger than 50M.
 
 # WAN Gateway Replication Benchmark

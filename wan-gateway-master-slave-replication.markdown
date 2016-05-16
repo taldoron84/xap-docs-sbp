@@ -87,8 +87,6 @@ in  terms of replication over the WAN, these sites should not replicate to  the 
 
 {{% /tab %}}
 
-Â 
-
 {{%tab "  New York Gateway "%}}
 
 
