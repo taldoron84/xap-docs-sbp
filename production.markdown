@@ -44,4 +44,5 @@ weight: 300
 
 [Hot deploy](./xap-hot-deploy.html)
 
+[Refresh Business Logic](./refreshable-business-logic-example.html)
 {{%/fpanel%}}
