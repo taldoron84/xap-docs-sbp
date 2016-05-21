@@ -48,6 +48,7 @@ The patterns below are presented as is. While most of them are used in real life
 |[Sql Server Delta Server](./sqlserver-delta-server.html)| Beginner |This pattern presents the Sql Server Delta Server allowing the data grid to receive updates from the database conducted by applications that are not using the data grid as their system of record (Non-Aware Data-Grid Clients) |
 |[Sql Server Data Grid](./sqlserver-datagrid.html)| Beginner |This pattern presents a Data Grid using SQL Server as its persistence layer. Initial Load and Write behind are demonstrated with this best practice. |
 |[XAP.NET MongoDB Data Grid](./mongodb-datagrid.html)| Beginner |This pattern presents a Data Grid using MongoDB as its persistence layer. Initial Load and Write behind are demonstrated with this best practice.|
+|[Excel that Scales Solution](./excel-that-scales-solution.html)| Beginner | Leveraging GigaSpaces .Net API to scale Excel applications.|
 |[Global ID Generator](./global-id-generator.html)| Beginner | Replacing Database sequencing with lightweight In-Memory ID Generator.|
 |[Web Service PU](./web-service-pu.html)|Beginner | Web Service Processing Unit. Using the CXF Framework.|
 |[ODBC Driver](./odbc-driver.html)| Beginner | Accessing GigaSpaces Data Grid via 3rd party ODBC Driver.|
