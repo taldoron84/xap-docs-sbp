@@ -183,6 +183,7 @@ pu.download=false
 # Running the Example
 
 **Step 1.** Extract the [example](/attachment_files/sbp/refreshable-prototype.zip) archive into a folder. Navigate to the folder (calling it <refreshable-prototype>), modify the setDevEnv.bat file to have proper paths for GigaSpaces home, Java home and Ant home. Also modify the NIC_ADDR variable to have proper ip address. Run the startShell.bat script. This will open a command window.
+
 **Step 2.** Build the example to use your GigaSpaces and Java versions using following,
 
 ```bash
