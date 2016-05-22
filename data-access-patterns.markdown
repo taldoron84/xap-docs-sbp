@@ -35,7 +35,6 @@ weight: 100
 
 [Storing Partition Summary Information](./storing-partition-information.html)
 
-[Finding Partition Load](./finding-partition-load.html)
 
 [Global ID Generator](./global-id-generator.html)
 

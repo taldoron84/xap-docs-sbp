@@ -70,9 +70,9 @@ To monitor  the application, start the GigaSpaces UI using the `<XAP root>/bin/g
 
 # Backing the HttpSession with the Space for High Availability
 
-Please refer to [this page](./first-web-app-step-2.html) for directions on how to enable `HttpSession` high availability for the web application.
+Please refer to [this page]({{%currentjavatuturl%}]/first-web-app-step-2.html) for directions on how to enable `HttpSession` high availability for the web application.
 
 # Configuring Dynamic Load Balancing
 
-Please refer to [this page](./first-web-app-step-3.html) for directions on how to enable `HttpSession` high availability for the web application.
+Please refer to [this page]({{%latestjavatuturl%}}/first-web-app-step-3.html) for directions on how to enable `HttpSession` high availability for the web application.
 
