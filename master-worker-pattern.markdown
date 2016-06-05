@@ -592,6 +592,13 @@ Deploying the Workers PU:
 
 {{% /tabs %}}
 
+
+# .Net Implementation
+
+Here is an example of the Master Worker Pattern for .NET {{%download "/sbp/download_files/MasterWorkerForDotNet.zip"%}}
+
+
+
 # References
 
 - [JavaSpaces Principles, Patterns, and Practice: Chapter 11](http://java.sun.com/developer/Books/JavaSpaces/chapter11.html)
