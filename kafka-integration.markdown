@@ -91,27 +91,102 @@ The following maven dependency needs to be included in your project in order to 
 
 ## Mirror service
 
-Here is an example of the Kafka Space Synchronization Endpoint configuration:
+Here is an example of the Kafka Space Synchronization Endpoint configuration with the mirrored Space:
 
 
+{{%tabs%}}
+
+{{%tab "Mirror Processing Unit"%}}
 ```xml
-<bean id="kafkaSpaceSynchronizationEndpoint" class="com.epam.openspaces.persistency.kafka.KafkaSpaceSynchronizationEndpointFactoryBean">
-	<property name="producerProperties">
-		<props>
-			<prop key="metadata.broker.list"> localhost:9092</prop>
-			<prop key="request.required.acks">1</prop>
-		</props>
-	</property>
-</bean>
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:os-core="http://www.openspaces.org/schema/core"
+       xmlns:os-events="http://www.openspaces.org/schema/events"
+       xmlns:os-remoting="http://www.openspaces.org/schema/remoting"
+       xmlns:os-sla="http://www.openspaces.org/schema/sla"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.openspaces.org/schema/core http://www.openspaces.org/schema/9.1/core/openspaces-core.xsd
+       http://www.openspaces.org/schema/events http://www.openspaces.org/schema/9.1/events/openspaces-events.xsd
+       http://www.openspaces.org/schema/remoting http://www.openspaces.org/schema/9.1/remoting/openspaces-remoting.xsd
+       http://www.openspaces.org/schema/sla http://www.openspaces.org/schema/sla/9.1/openspaces-sla.xsd">
 
-<!--
-	The mirror space. Uses the Kafka external data source. Persists changes done on the Space that
-	connects to this mirror space into the Kafka.
--->
-<os-core:mirror id="mirror" url="/./mirror-service" space-sync-endpoint="kafkaSpaceSynchronizationEndpoint" operation-grouping="group-by-replication-bulk">
-	<os-core:source-space name="space" partitions="2" backups="1"/>
-</os-core:mirror>
+    <bean id="propertiesConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations">
+            <list>
+                <value>classpath:kafka.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="kafkaSpaceSynchronizationEndpoint" class="com.epam.openspaces.persistency.kafka.KafkaSpaceSynchronizationEndpointFactoryBean">
+        <property name="producerProperties">
+            <props>
+                <!-- Kafka producer properties. Consult Kafka documentation for a list of available properties -->
+                <prop key="metadata.broker.list">${metadata.broker.list}</prop>
+                <prop key="request.required.acks">${request.required.acks}</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!--
+        The mirror space. Uses the Kafka external data source. Persists changes done on the Space that
+        connects to this mirror space into the Kafka.
+    -->
+    <os-core:mirror id="mirror" url="/./mirror-service" space-sync-endpoint="kafkaSpaceSynchronizationEndpoint" operation-grouping="group-by-replication-bulk">
+        <os-core:source-space name="space" partitions="2" backups="1"/>
+    </os-core:mirror>
+
+</beans>
 ```
+{{%/tab%}}
+
+{{%tab "Processing Unit"%}}
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:os-core="http://www.openspaces.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.openspaces.org/schema/core http://www.openspaces.org/schema/9.1/core/openspaces-core.xsd">
+
+    <!--
+        Spring property configurer which allows us to use system properties (such as user.name).
+    -->
+    <bean id="propertiesConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
+
+    <!--
+        Enables the usage of @GigaSpaceContext annotation based injection.
+    -->
+    <os-core:giga-space-context/>
+
+    <!--
+        A bean representing a space (an IJSpace implementation).
+    -->
+    <os-core:space id="space" url="/./space" schema="default" mirror="true">
+        <os-core:space-type type-name="Product">
+            <os-core:id property="CatalogNumber"/>
+            <os-core:basic-index path="Name"/>
+            <os-core:extended-index path="Price"/>
+        </os-core:space-type>
+    </os-core:space>
+
+    <!--
+        OpenSpaces simplified space API built on top of IJSpace/JavaSpace.
+    -->
+    <os-core:giga-space id="gigaSpace" space="space" />
+</beans>
+```
+{{%/tab%}}
+{{%/tabs%}}
+
+
+{{%refer%}}
+For more information on the Mirror service see [asynchronous persistence]({{%latestjavaurl%}}/asynchronous-persistency-with-the-mirror.html)
+{{%/refer%}}
+
+
+# Producer Properties
 
 Please consult Kafka documentation for the full list of available producer properties.
 The default properties applied to Kafka producer are the following:
