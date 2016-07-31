@@ -88,15 +88,53 @@ The following maven dependency needs to be included in your project in order to 
 </dependency>
 ```
 
+## Processing Unit
+
+Here is an example of the Kafka Processing Unit configuration:
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:os-core="http://www.openspaces.org/schema/core"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.openspaces.org/schema/core http://www.openspaces.org/schema/9.1/core/openspaces-core.xsd">
+
+    <!--
+        Spring property configurer which allows us to use system properties (such as user.name).
+    -->
+    <bean id="propertiesConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
+
+    <!--
+        Enables the usage of @GigaSpaceContext annotation based injection.
+    -->
+    <os-core:giga-space-context/>
+
+    <!--
+        A bean representing a space (an IJSpace implementation).
+    -->
+    <os-core:space id="space" url="/./space" schema="default" mirror="true">
+        <os-core:space-type type-name="Product">
+            <os-core:id property="CatalogNumber"/>
+            <os-core:basic-index path="Name"/>
+            <os-core:extended-index path="Price"/>
+        </os-core:space-type>
+    </os-core:space>
+
+    <!--
+        OpenSpaces simplified space API built on top of IJSpace/JavaSpace.
+    -->
+    <os-core:giga-space id="gigaSpace" space="space" />
+</beans>
+```
+ 
+
+
 
 ## Mirror service
 
-Here is an example of the Kafka Space Synchronization Endpoint configuration with the mirrored Space:
+Here is an example of the Kafka Space Synchronization Endpoint configuration:
 
-
-{{%tabs%}}
-
-{{%tab "Mirror Processing Unit"%}}
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -139,46 +177,8 @@ Here is an example of the Kafka Space Synchronization Endpoint configuration wit
 
 </beans>
 ```
-{{%/tab%}}
+ 
 
-{{%tab "Processing Unit"%}}
-```
-<?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:os-core="http://www.openspaces.org/schema/core"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
-       http://www.openspaces.org/schema/core http://www.openspaces.org/schema/9.1/core/openspaces-core.xsd">
-
-    <!--
-        Spring property configurer which allows us to use system properties (such as user.name).
-    -->
-    <bean id="propertiesConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"/>
-
-    <!--
-        Enables the usage of @GigaSpaceContext annotation based injection.
-    -->
-    <os-core:giga-space-context/>
-
-    <!--
-        A bean representing a space (an IJSpace implementation).
-    -->
-    <os-core:space id="space" url="/./space" schema="default" mirror="true">
-        <os-core:space-type type-name="Product">
-            <os-core:id property="CatalogNumber"/>
-            <os-core:basic-index path="Name"/>
-            <os-core:extended-index path="Price"/>
-        </os-core:space-type>
-    </os-core:space>
-
-    <!--
-        OpenSpaces simplified space API built on top of IJSpace/JavaSpace.
-    -->
-    <os-core:giga-space id="gigaSpace" space="space" />
-</beans>
-```
-{{%/tab%}}
-{{%/tabs%}}
 
 
 {{%refer%}}
