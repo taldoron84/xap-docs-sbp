@@ -29,7 +29,7 @@ The Elastic Calculation Engine example illustrates the following:
 
 
 
-The Distributed Calcualtion Engine performs Net Present Value calculations where the Trades used for the calculation divided into several Books. These books could represent different types of Trades, different markets, different customers , etc.
+The Distributed Calculation Engine performs Net Present Value calculations where the Trades used for the calculation divided into several Books. These books could represent different types of Trades, different markets, different customers , etc.
 
 # Colocated vs. Remote Calculations
 Calculations can be deployed colocated with the data or separately.
