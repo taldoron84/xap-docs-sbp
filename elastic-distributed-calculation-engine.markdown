@@ -18,7 +18,7 @@ weight: 100
 
 
 
-Financial services, Healthcare, Transportations,Fraud Detection, Payment systems,etc. produce reports constantly. Some of them produce reports where the data required for the report is generated over night via batch processing, and some other type of reports are produced instantly upon user request. This type of processing activity requires fast access to the raw data and the ability to utilize distributed resources available on the local environment or on the cloud.
+Financial services, Healthcare, Transportations, Fraud Detection, Payment systems, etc. produce reports constantly. Some of them produce reports where the data required for the report is generated over night via batch processing, and some other type of reports are produced instantly upon user request. This type of processing activity requires fast access to the raw data and the ability to utilize distributed resources available on the local environment or on the cloud.
 
 The Elastic Calculation Engine example illustrates the following:
 
@@ -29,7 +29,7 @@ The Elastic Calculation Engine example illustrates the following:
 
 
 
-The Distributed Calcualtion Engine performs Net Present Value calculations where the Trades used for the calculation divided into several Books. These books could represent different types of Trades, different markets, different customers , etc.
+The Distributed Calculation Engine performs Net Present Value calculations where the Trades used for the calculation divided into several Books. These books could represent different types of Trades, different markets, different customers , etc.
 
 # Colocated vs. Remote Calculations
 Calculations can be deployed colocated with the data or separately.
